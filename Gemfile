@@ -68,6 +68,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem "devise"
+
 gem "bootstrap", "~> 5.2"
 
 gem "simple_form"
@@ -81,3 +83,5 @@ gem "cloudinary"
 gem "font-awesome-sass", "~> 6.1"
 
 gem "autoprefixer-rails"
+
+gem 'pg'
