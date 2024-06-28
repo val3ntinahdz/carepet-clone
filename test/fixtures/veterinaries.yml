@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dni: MyString
+  specialization: MyString
+  user: one
+
+two:
+  dni: MyString
+  specialization: MyString
+  user: two
