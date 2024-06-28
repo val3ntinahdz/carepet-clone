@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_26_002038) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_28_012212) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,64 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_26_002038) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "datetime"
+    t.string "reason"
+    t.string "comments"
+    t.float "fee"
+    t.bigint "pet_id", null: false
+    t.bigint "service_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_appointments_on_pet_id"
+    t.index ["service_id"], name: "index_appointments_on_service_id"
+  end
+
+  create_table "conditions", force: :cascade do |t|
+    t.date "diagnosis_date"
+    t.date "recovery_date"
+    t.string "comments"
+    t.bigint "pet_id", null: false
+    t.bigint "disease_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disease_id"], name: "index_conditions_on_disease_id"
+    t.index ["pet_id"], name: "index_conditions_on_pet_id"
+  end
+
+  create_table "diseases", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.string "name"
+    t.string "pet_type"
+    t.string "breed"
+    t.date "birthday_date"
+    t.string "gender"
+    t.integer "weight"
+    t.integer "height"
+    t.string "vaccines"
+    t.string "allergies"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.string "description"
+    t.float "fee"
+    t.bigint "veterinary_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["veterinary_id"], name: "index_services_on_veterinary_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -54,6 +112,41 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_26_002038) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vaccinations", force: :cascade do |t|
+    t.date "date"
+    t.string "comments"
+    t.bigint "pet_id", null: false
+    t.bigint "vaccine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_vaccinations_on_pet_id"
+    t.index ["vaccine_id"], name: "index_vaccinations_on_vaccine_id"
+  end
+
+  create_table "vaccines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "veterinaries", force: :cascade do |t|
+    t.string "dni"
+    t.string "specialization"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_veterinaries_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "appointments", "pets"
+  add_foreign_key "appointments", "services"
+  add_foreign_key "conditions", "diseases"
+  add_foreign_key "conditions", "pets"
+  add_foreign_key "pets", "users"
+  add_foreign_key "services", "veterinaries"
+  add_foreign_key "vaccinations", "pets"
+  add_foreign_key "vaccinations", "vaccines"
+  add_foreign_key "veterinaries", "users"
 end

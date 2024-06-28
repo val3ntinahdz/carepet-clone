@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  datetime: 2024-06-27
+  reason: MyString
+  comments: MyString
+  fee: 1.5
+  pet: one
+  service: one
+
+two:
+  datetime: 2024-06-27
+  reason: MyString
+  comments: MyString
+  fee: 1.5
+  pet: two
+  service: two

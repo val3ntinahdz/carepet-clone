@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2024-06-27
+  comments: MyString
+  pet: one
+  vaccine: one
+
+two:
+  date: 2024-06-27
+  comments: MyString
+  pet: two
+  vaccine: two
