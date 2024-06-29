@@ -7,4 +7,6 @@ class Pet < ApplicationRecord
   has_many :appointments
   has_many :services, through: :appointments
   has_many :veterinaries, through: :services
+  has_many :trainings
+  has_many :nutritions
 end
