@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :vaccinations, except: %i[new create]
   resources :conditions, except: %i[new create]
   resources :allergies, except: %i[new create]
+  resources :trainings, except: %i[new create]
+  resources :nutritions, except: %i[new create]
 
   resources :veterinaries do
     resources :services, only: %i[new create]
