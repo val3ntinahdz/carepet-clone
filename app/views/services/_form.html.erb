@@ -1,0 +1,7 @@
+<%= simple_form_for [@veterinary, @service] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :fee %>
+  <%= f.input :category %>
+  <%= f.submit "Create", class:'orange-btn' %>
+<% end %>
