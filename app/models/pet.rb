@@ -9,4 +9,6 @@ class Pet < ApplicationRecord
   has_many :veterinaries, through: :services
   has_many :trainings
   has_many :nutritions
+  has_many :allergies
+  has_many :allergens, through: :allergies
 end
