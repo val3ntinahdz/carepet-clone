@@ -1,0 +1,43 @@
+<div class="container mt-2 p-5">
+  <div class="p-3">
+    <%= link_to "", veterinaries_path, class: "back fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
+  </div>
+  <h5>Details</h5>
+  <div class="vet-header">
+    <img src="<%= asset_path('https://static.vecteezy.com/system/resources/previews/008/957/222/original/male-doctor-avatar-occupation-clipart-icon-in-flat-design-vector.jpg') %>" alt="Dr. <%= @veterinary.user.first_name %>" class="vet-image">
+    <div class="vet-info">
+      <h2>Dr. <%= @veterinary.user.first_name %> <%= @veterinary.user.last_name %></h2>
+      <div class="d-flex align-items-center">
+        <p>Spec. <%= @veterinary.specialization %></p><span class="ml-2"> ⭐ 4.9 (24 Reviews)</span>
+      </div>
+      <div class="card mt-3">
+        <div class="card-body">
+          <i class="fa-solid fa-location-pin" style="color: #376cc8;"></i>
+          <p>Mexico City, Mx.</p>
+          <i class="fa-solid fa-user-tie" style="color: #376cc8;"></i>
+          <p><strong>6 years</strong> of experience</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about mt-3">
+    <strong>About</strong>
+    <p class="text-muted">
+      Dr. <%= @veterinary.user.first_name %> is a dedicated and compassionate veterinarian with over 6 years of experience.
+      Specializing in <%= @veterinary.specialization %>... <a class="text-warning text-decoration-none">Read more</a>
+    </p>
+  </div>
+  <hr>
+  <div class="vet-services mt-4">
+    <h3>This vet's services</h3>
+    <% @veterinary.services.each do |service| %>
+      <ul class="service-list">
+        <h4><%= link_to service.name, service_path(service) %></h4>
+        <p>Category: <%= service.category %></p>
+        <p>Fee: $<%= service.fee %></p>
+      </ul>
+    <% end %>
+  </div>
+  <hr>
+  <h3>Reviews</h3>
+</div>

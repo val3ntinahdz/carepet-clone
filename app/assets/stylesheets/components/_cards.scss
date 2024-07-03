@@ -1,0 +1,44 @@
+.specialist-card {
+  display: flex;
+  align-items: center;
+  padding: 13px;
+  margin: 10px 0;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .specialist-info {
+    h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .rating-distance {
+      margin-top: 5px;
+      span {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}

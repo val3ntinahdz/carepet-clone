@@ -41,21 +41,7 @@ class AppointmentsController < ApplicationController
     @appointment.destroy
     redirect_to root_path, notice: 'Appointment cancelled successfully!'
   end
-
-  def my_appointments
-    @my_appointments = current_user.appointments
-  end
-
-  def veterinary_appointments
-    # @veterinary_apppointments = []
-    # current_user.services.each do |service|
-    #   service.appointments.each do |appointment|
-    #     @veterinary_appointments << appointment
-    #   end
-    # end
-    @appointments = Appointment.joins(:service).where(services: { veterinary_id: current_user.id})
-  end
-
+  
   private
 
   def appointment_params
