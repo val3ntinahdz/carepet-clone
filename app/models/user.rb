@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_one :veterinary
   has_many :services, through: :veterinary
   has_many :appointments, through: :services
+  has_one_attached :photo
 end
