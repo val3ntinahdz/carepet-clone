@@ -2,8 +2,9 @@ class ServicesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @veterinary = Veterinary.find(params[:veterinary_id])
-    @services = @veterinary.services
+    # @veterinary = Veterinary.find(params[:veterinary_id])
+    # @services = @veterinary.services
+    @services = Service.all
   end
 
   def show
