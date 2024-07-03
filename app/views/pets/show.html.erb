@@ -1,0 +1,12 @@
+<div class="p-3">
+  <%= link_to "", pets_path(@pets), class: "back fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
+</div>
+<div class="d-flex flex-column mb-3">
+  <div class="p-2">Name: <%= @pet.name %></div>
+  <div class="p-2">Breed: <%= @pet.breed %></div>
+  <div class="p-2">Birth date: <%= @pet.birthday_date %></div>
+  <div class="p-2">Gender: <%= @pet.gender %></div>
+  <div class="p-2">Weight: <%= @pet.weight %> kg</div>
+  <div class="p-2">Height: <%= @pet.height %> cm</div>
+  <div class="p-2">Color: <%= @pet.color %></div>
+</div>

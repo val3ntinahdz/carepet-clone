@@ -1,0 +1,11 @@
+<%= simple_form_for(@pet) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :pet_type, collection: ["Dog", "Cat"] %>
+  <%= f.input :breed %>
+  <%= f.input :birthday_date %>
+  <%= f.input :gender, collection: ["Male", "Female"] %>
+  <%= f.input :weight, label: "Weight (kg)" %>
+  <%= f.input :height, label: "Height (cm)" %>
+  <%= f.input :color %>
+  <%= f.submit "Create", class:'petbutton' %>
+<% end %>
