@@ -1,0 +1,12 @@
+.icon-text {
+  display: flex;
+  align-items: flex-start;
+
+  .icon-text i {
+    margin-right: 8px;
+  }
+
+  .icon-text p {
+    margin: 0;
+  }
+}
