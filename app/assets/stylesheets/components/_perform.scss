@@ -18,13 +18,41 @@
 }
 
 .petimg {
-  max-height: 200px;
+  width: 100%;
+  align-content: center;
 }
 
-.back {
-  color:rgb(255, 135, 37)
+.petshow {
+  width: 100%;
+  align-content: center;
+  transition: 0.5s;
+  cursor: pointer;
+  box-shadow: rgba(45, 35, 66, 0.2) 0 2px 4px,rgba(45, 35, 66, 0.15) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
 }
+.petshow:hover {
+  box-shadow: rgba(45, 35, 66, 0.3) 0 4px 8px, rgba(45, 35, 66, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-5px);
+}
+
 .pls {
   padding-top: 34px;
-  color:rgb(255, 135, 37)
+  color:rgb(255, 135, 37);
+}
+.navpet {
+  color:rgb(255, 135, 37);
+}
+.peted {
+  color: white;
+}
+.petcard {
+  background-color: rgb(255, 135, 37);
+  color: white;
+}
+
+.card {
+  transition: 0.5s;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-10px);
 }
