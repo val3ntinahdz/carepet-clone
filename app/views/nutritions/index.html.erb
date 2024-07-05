@@ -1,3 +1,24 @@
-<%= @nutrition_data %>
+<h1><%= @pet.name.capitalize %>'s Nutrition Plan</h1>
+
+<% @nutrition_data.each do |meal| %>
+  <div class="meal-card">
+    <p><%= meal.date.strftime("%A, %B %e, %Y") %></p>
+    <p><%= meal.meal_type.capitalize %></p>
+    <p>Meal: <%= meal.food_items %></p>
+    <p>Calories: <%= meal.calories %></p>
+    <p>Notes: <%= meal.notes %></p>
+    <%= button_to mark_meal_as_completed_path(pet_id: @pet.id, nutrition_id: meal.id), class: "" do %>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <%= meal.completed? ? "checked" : "" %> >
+              <label class="form-check-label" for="flexSwitchCheckDefault">Mark as Completed</label>
+            </div>
+    <% end %>
+  </div>
+<% end %>
+
+
+
+
+
 
 <%= console %>
