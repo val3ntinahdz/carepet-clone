@@ -7,13 +7,11 @@
   <div class="row">
     <% @pets.each do |pet| %>
     <div class="col-6">
-      <div class="card my-2 shadow">
-        <img src="https://c0.wallpaperflare.com/preview/500/556/924/doberman-dog-beauty-nature.jpg" class="card-img-top petimg" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"><%= pet.name %></h5>
-          <p class="card-text"><%= pet.breed %></p>
-          <%= link_to "Details", pet_path(pet), class: "petbutton text-decoration-none" %>
-        </div>
+      <div class="card my-2 shadow rounded-top">
+        <%= image_tag("Pug.png", class: "petimg rounded-top", alt: "pet-avatar") %>
+        <h5 class="card-title px-3 pt-1"><%= pet.name %></h5>
+        <p class="px-3"><%= pet.breed %></p>
+        <%= link_to "Details", pet_path(pet), class: "petbutton text-decoration-none" %>
       </div>
     </div>
     <% end %>
