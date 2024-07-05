@@ -33,11 +33,45 @@
         <div class="p-2">Color: <%= @pet.color %></div>
       </div>
 
-      <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">hola</div>
+      <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+      <p>Applied vaccines</p>
+      <ul>
+        <% @applied_vaccines.each do |vaccine| %>
+          <li><%= vaccine.name %></li>
+        <% end %>
+      </ul>
+      <p>Non-applied vaccines</p>
+      <ul>
+        <% @non_applied_vaccines.each do |vaccine| %>
+          <li><%= vaccine.name %></li>
+        <% end %>
+      </ul>
+      </div>
 
-      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">hola</div>
+      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+      <ul>
+        <% @conditions.each do |condition| %>
+          <li><%= condition.disease.name %></li>
+          <li>Diagnosis date: <%= condition.diagnosis_date %></li>
+          <li>Recovery date: <%= condition.recovery_date %></li>
+          <li>Comments: <%= condition.comments %></li>
+          <hr>
+        <% end %>
+      </ul>
+      </div>
 
-      <div class="tab-pane fade" id="allergie-tab-pane" role="tabpanel" aria-labelledby="allergie-tab" tabindex="0">holass</div>
+      <div class="tab-pane fade" id="allergie-tab-pane" role="tabpanel" aria-labelledby="allergie-tab" tabindex="0">
+      <ul>
+        <% @allergies.each do |allergie| %>
+          <li><%= allergie.allergen.name %></li>
+          <li>Detected on: <%= allergie.detected_on %></li>
+          <li>Severity: <%= allergie.severity %></li>
+          <li>Reactions: <%= allergie.reactions %></li>
+          <li>Comments: <%= allergie.comments %></li>
+          <hr>
+        <% end %>
+      </ul>
+      </div>
 
       <div class="text-center align-text-bottom mt-5">
         <%= link_to 'Delete', pet_path(@pet), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Do you want to proceed?"}, class: 'petbutton text-decoration-none ps-2' %>
