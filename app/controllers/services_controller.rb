@@ -2,8 +2,12 @@ class ServicesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @veterinary = Veterinary.find(params[:veterinary_id])
-    @services = @veterinary.services
+    if params[:query].present?
+      @services = Service.search_by(params[:query])
+      @veterinaries = @services.map { |service| service.veterinary_id }
+    else
+      @services = Service.all
+    end
   end
 
   def show
