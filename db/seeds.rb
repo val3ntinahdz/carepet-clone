@@ -120,7 +120,21 @@ pets = [
   }
 ]
 
-pets.each { |pet| Pet.create!(pet) }
+pet_images_urls = [
+  "https://res.cloudinary.com/drlgwfwr5/image/upload/v1720291025/development/6stmx7y5cdl87v5tmlxa9zjwb9zg.png",
+  "https://res.cloudinary.com/drlgwfwr5/image/upload/v1720292773/development/yqeyp4ugaevoz493qb0p0mxw5mwd.png",
+  "https://res.cloudinary.com/drlgwfwr5/image/upload/v1720293878/development/n87ojag4v1drh2r1gobac1t1gfyz.png",
+  "https://res.cloudinary.com/drlgwfwr5/image/upload/v1720292749/development/9y7ocutql448185wp3t68yr1pc6n.png"
+]
+
+pets.each_with_index do |pet, i|
+  Pet.skip_callback(:create, :before, :set_photo)
+  new_pet = Pet.new(pet)
+  file =  URI.open(pet_images_urls[i])
+  new_pet.photo.attach(io: file, filename: "#{pet[:name]}_pet.jpg", content_type: "image/png")
+  new_pet.save!
+  Pet.set_callback(:create, :before, :set_photo)
+end
 
 # Crear vacunas, alérgenos y enfermedades
 vaccines = [
