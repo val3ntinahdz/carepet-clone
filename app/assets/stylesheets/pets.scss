@@ -10,6 +10,7 @@
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  align-content: center;
   //box-shadow: 0 6px 10px 0 rgba(0,0,0,0.18);
 }
 .petbutton:hover {
@@ -45,14 +46,17 @@
   color: white;
 }
 .petcard {
-  background-color: rgb(255, 135, 37);
-  color: white;
-}
-
-.card {
+  border: none;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
   transition: 0.5s;
   cursor: pointer;
 }
-.card:hover {
+.petcard:hover {
   transform: translateY(-10px);
+}
+#breed {
+  padding-left: 15px;
 }
