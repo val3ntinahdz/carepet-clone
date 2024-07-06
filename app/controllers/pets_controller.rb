@@ -16,7 +16,7 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     @pet.user = current_user
     if @pet.save
-      redirect_to pet_path(@pet)
+      redirect_to pet_path(@pet), notice: 'Pet added succesfully'
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,15 +26,16 @@ class PetsController < ApplicationController
 
   def update
     if @pet.update(pet_params)
-      redirect_to pet_path(@pet)
+      redirect_to pet_path(@pet), notice: 'Pet was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
+    @pet = Pet.find(params[:id])
     @pet.destroy
-    redirect_to user_pet_path
+    redirect_to pets_path, notice: 'Pet was successfully deleted.'
   end
 
   private
