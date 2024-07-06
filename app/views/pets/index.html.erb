@@ -7,7 +7,7 @@
     <% @pets.each do |pet| %>
     <div class="col-6">
       <div class="petcard shadow">
-        <%= image_tag("Pug.png", class: "petimg rounded-top", alt: "pet-avatar") %>
+        <%= cl_image_tag(pet.photo.key, class: "petimg rounded-top", alt: "pet-avatar") %>
         <h5 class="card-title px-3 pt-1"><%= pet.name %></h5>
         <p id="breed"><%= pet.breed %></p>
         <div class="pb-3 px-3">
