@@ -1,11 +1,12 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
 @import "bootstrap";
 @import "font-awesome";
-@import "components/navbar";
-@import "components/buttons";
-@import "components/cards";
-@import "components/footer";
-@import "components/banner";
-@import "components/colors";
-@import "pets";
-@import "services";
-@import "veterinaries";
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";

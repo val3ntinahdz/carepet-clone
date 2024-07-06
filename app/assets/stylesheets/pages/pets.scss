@@ -1,0 +1,62 @@
+.petnew{
+  background: radial-gradient(circle at 10% 20%, rgb(255, 131, 61) 0%, rgb(249, 183, 23) 90%);
+}
+.petbutton {
+  background-color: rgb(255, 135, 37);
+  color: white;
+  border-radius: 5px;
+  border: 0cap;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-content: center;
+  //box-shadow: 0 6px 10px 0 rgba(0,0,0,0.18);
+}
+.petbutton:hover {
+  background-color: rgb(202, 101, 16);
+  transition: 0.7s;
+}
+
+.petimg {
+  width: 100%;
+  align-content: center;
+}
+
+.petshow {
+  width: 100%;
+  align-content: center;
+  transition: 0.5s;
+  cursor: pointer;
+  box-shadow: rgba(45, 35, 66, 0.2) 0 2px 4px,rgba(45, 35, 66, 0.15) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+}
+.petshow:hover {
+  box-shadow: rgba(45, 35, 66, 0.3) 0 4px 8px, rgba(45, 35, 66, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-5px);
+}
+
+.pls {
+  padding-top: 34px;
+  color:rgb(255, 135, 37);
+}
+.navpet {
+  color:rgb(255, 135, 37);
+}
+.peted {
+  color: white;
+}
+.petcard {
+  border: none;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.petcard:hover {
+  transform: translateY(-10px);
+}
+#breed {
+  padding-left: 15px;
+}
