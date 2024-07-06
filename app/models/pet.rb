@@ -19,9 +19,11 @@ class Pet < ApplicationRecord
   private
 
   def set_photo
-    # puts
-    # puts
-    # puts " == Generating photo! =="
+    puts
+    puts
+    puts "USING OPEANAI TO GENERATE A PHOTO FOR PET #{name}"
+    puts
+    puts
     prompt = <<-PROMPT
     Create a high resolution and high-quality Pixar 3D animated film style image of a #{color} #{breed} in nature.
     Capture the essence of the scene with detailed rendering and lifelike textures.
