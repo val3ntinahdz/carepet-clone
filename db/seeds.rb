@@ -1,14 +1,18 @@
 require 'open-uri'
 
 # Limpiar las tablas existentes
-User.destroy_all
-Veterinary.destroy_all
-Pet.destroy_all
-Vaccine.destroy_all
-Allergen.destroy_all
-Disease.destroy_all
-Service.destroy_all
+
 Appointment.destroy_all
+Service.destroy_all
+Condition.destroy_all
+Disease.destroy_all
+Allergy.destroy_all
+Allergen.destroy_all
+Vaccination.destroy_all
+Vaccine.destroy_all
+Pet.destroy_all
+Veterinary.destroy_all
+User.destroy_all
 
 # Crear usuarios
 user1 = User.create!(
