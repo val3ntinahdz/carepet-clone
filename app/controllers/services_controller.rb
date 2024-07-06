@@ -1,10 +1,15 @@
 class ServicesController < ApplicationController
-  before_action :authenticate_user!
 
   def index
     if params[:query].present?
       @services = Service.search_by(params[:query])
-      @veterinaries = @services.map { |service| service.veterinary_id }
+      @veterinaries = @services.map { |service| service.veterinary.user }
+      @markers = @veterinaries.map do |veterinary|
+        {
+          lat: veterinary.latitude,
+          lng: veterinary.longitude
+        }
+      end
     else
       @services = Service.all
     end
