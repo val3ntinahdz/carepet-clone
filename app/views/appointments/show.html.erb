@@ -1,5 +1,11 @@
 <div class= "container">
-  <h2><%= @appointment.reason %></h2>
-  <p><%= @appointment.comments %></p>
-  <p><%= @appointment.pet.name %></p>
+  <div class="p-3">
+    <%= link_to "", appointments_path, class: "back fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
+  </div>
+  <div class="mt-3">
+    <h2><%= @appointment.reason %></h2>
+    <p><%= @appointment.comments %></p>
+    <p><%= @appointment.pet.name %></p>
+    <%= link_to "#{@appointment.service.veterinary.user.first_name} #{@appointment.service.veterinary.user.last_name}", veterinary_path(@appointment.service.veterinary) %>
+  </div>
 </div>
