@@ -5,7 +5,7 @@
   <div class="header">
     <div class="header-content">
       <div class="header-text">
-        <h1>Let's Find a Specialist Doctor for Your Pet!</h1>
+        <h1>Lets Find a Specialist Doctor for Your Pet!</h1>
       </div>
       <div class="header-image">
         <img src="https://villagesquarevet.com/wp-content/uploads/2023/05/Pet-Vaccinations.jpg" alt="Veterinary">
@@ -13,14 +13,12 @@
     </div>
   </div>
 
-    <%= form_with url: services_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "search-bar",
-            placeholder: "Search"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-    <% end %>
+  <%= form_with url: services_path, method: :get, class: "d-flex align-items-center" do %>
+    <%= text_field_tag :query, params[:query], class: "search-bar", placeholder: "Grooming, medical" %>
+    <button type="submit" class="btn-search">
+      <i class="fas fa-search"></i>
+    </button>
+  <% end %>
 
   <div class="services-section">
     <h2>Our Services</h2>

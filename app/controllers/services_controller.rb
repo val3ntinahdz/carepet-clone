@@ -7,7 +7,8 @@ class ServicesController < ApplicationController
       @markers = @veterinaries.map do |veterinary|
         {
           lat: veterinary.latitude,
-          lng: veterinary.longitude
+          lng: veterinary.longitude,
+          marker_html: render_to_string(partial: "marker")
         }
       end
     else
