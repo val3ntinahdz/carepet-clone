@@ -14,7 +14,7 @@
   </div>
 
   <%= form_with url: services_path, method: :get, class: "d-flex align-items-center" do %>
-    <%= text_field_tag :query, params[:query], class: "search-bar", placeholder: "Grooming, medical" %>
+    <%= text_field_tag :query, params[:query], class: "search-bar", placeholder: "Search" %>
     <button type="submit" class="btn-search">
       <i class="fas fa-search"></i>
     </button>
