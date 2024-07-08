@@ -2,8 +2,13 @@ class AppointmentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @service = Service.find(params[:service_id])
-    @appointments = @service.appointments
+    # @appointments = []
+    # current_user.pets.each do |pet|
+    #   pet.appointments.each do |appointment|
+    #     @appointments << appointment if appointment.status == 'Scheduled'
+    #   end
+    # end
+    @appointments = Appointment.joins(:pet).where(pets: { user_id: current_user.id }, status: 'Scheduled')
   end
 
   def show
@@ -41,10 +46,10 @@ class AppointmentsController < ApplicationController
     @appointment.destroy
     redirect_to root_path, notice: 'Appointment cancelled successfully!'
   end
-  
+
   private
 
   def appointment_params
-    params.require(:appointment).permit(:datetime, :reason, :comments, :fee, :pet_id)
+    params.require(:appointment).permit(:datetime, :reason, :comments, :fee, :status, :pet_id)
   end
 end

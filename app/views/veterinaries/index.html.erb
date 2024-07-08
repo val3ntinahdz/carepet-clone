@@ -13,7 +13,14 @@
     </div>
   </div>
 
-  <input type="text" placeholder="Search" class="search-bar">
+    <%= form_with url: services_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "search-bar",
+            placeholder: "Search"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
 
   <div class="services-section">
     <h2>Our Services</h2>

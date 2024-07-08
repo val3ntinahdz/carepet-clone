@@ -15,7 +15,7 @@ gem "sqlite3", "~> 1.4"
 gem "puma", ">= 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+gem "importmap-rails", "~> 1.2.3"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -87,3 +87,7 @@ gem "autoprefixer-rails"
 gem 'pg'
 
 gem "ruby-openai"
+
+gem "geocoder"
+
+gem "pg_search"

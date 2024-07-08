@@ -28,7 +28,7 @@ user2 = User.create!(
   last_name: 'León',
   email: 'valentina@gmail.com',
   phone_number: '5552345678',
-  address: 'Fracc. Residencial del Bosque, Aldama 142, 71233 Santa Cruz Xoxocotlán, Oax.',
+  address: 'América 103, Parque San Andrés, Coyoacán, 04040 Ciudad de México, CDMX',
   password: "password"
 )
 user3 = User.create!(
@@ -36,7 +36,7 @@ user3 = User.create!(
   last_name: 'Montiel',
   email: 'donovan@gmail.com',
   phone_number: '5553456789',
-  address: 'Fracc. Hacienda del Valle, Hacienda de Xalpa 130, Morelia, Mich.',
+  address: 'Berlín 3, Del Carmen, Coyoacán, 04100 Ciudad de México, CDMX',
   password: "password"
 )
 user4 = User.create!(
@@ -52,7 +52,7 @@ user5 = User.create!(
   last_name: 'López',
   email: 'andres@gmail.com',
   phone_number: '5555678901',
-  address: 'Ortografía 149, Col. Las Palmas, Cd. Nezahualcóyotl, Estado de México',
+  address: 'Heroes del 47 92, San Diego Churubusco, Coyoacán, 04120 Ciudad de México, CDMX',
   password: "password"
 )
 
@@ -79,7 +79,7 @@ vet1 = Veterinary.create!(
 )
 vet2 = Veterinary.create!(
   dni: '987654321',
-  specialization: 'Neurology',
+  specialization: 'General',
   user_id: user5.id
 )
 
@@ -121,10 +121,9 @@ pets = [
 ]
 
 pet_images_urls = [
-  "https://res.cloudinary.com/drlgwfwr5/image/upload/v1720291025/development/6stmx7y5cdl87v5tmlxa9zjwb9zg.png",
-  "https://res.cloudinary.com/drlgwfwr5/image/upload/v1720292773/development/yqeyp4ugaevoz493qb0p0mxw5mwd.png",
-  "https://res.cloudinary.com/drlgwfwr5/image/upload/v1720293878/development/n87ojag4v1drh2r1gobac1t1gfyz.png",
-  "https://res.cloudinary.com/drlgwfwr5/image/upload/v1720292749/development/9y7ocutql448185wp3t68yr1pc6n.png"
+  "https://res.cloudinary.com/drlgwfwr5/image/upload/v1720304632/development/wk1ikpnsswu2uq1mw5c2.png",
+  "https://res.cloudinary.com/drlgwfwr5/image/upload/v1720304632/development/nnlbnoh8suxtcowadzd4.png",
+  "https://res.cloudinary.com/drlgwfwr5/image/upload/v1720304632/development/tufpb2nbqsouqn5ds7xq.png",
 ]
 
 pets.each_with_index do |pet, i|
@@ -189,7 +188,7 @@ service_descriptions = {
 }
 
 # Categorías posibles para servicios
-service_categories = ["Medical", "Grooming"]
+service_categories = ["Medical"]
 
 # Generar servicios para cada veterinario con descripciones y categorías aleatorias
 services = []
@@ -205,17 +204,17 @@ service_descriptions.each do |name, description|
     fee: fee,
     veterinary_id: vet1.id
   )
-  service2 = Service.create!(
-    name: name,
-    description: description,
-    category: category,
-    fee: fee,
-    veterinary_id: vet2.id
-  )
 
   services << service1
-  services << service2
 end
+
+service2 = Service.create!(
+    name: "Haircuts for dogs",
+    description: "Very nice haircuts for your dogs and accesible price",
+    category: "Grooming",
+    fee: 100,
+    veterinary_id: vet2.id
+)
 
 # Crear citas con datos reales para cada servicio
 appointment_data = [
