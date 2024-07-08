@@ -1,5 +1,5 @@
 <div class="p-3">
-  <%= link_to "", veterinaries_path, class: "back fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
+  <%= link_to "", veterinaries_path, class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
 </div>
 <div class="container mt-1 p-5">
   <div class="row justify-content-center">
@@ -29,7 +29,7 @@
       </div>
       <hr>
       <div class="vet-services mt-4">
-        <h3>This vets services</h3>
+        <h3>This vet's services</h3>
         <% @veterinary.services.each do |service| %>
           <div class="service-list">
             <h4><%= link_to service.name, service_path(service) %></h4>
