@@ -5,5 +5,8 @@
   <div class="row">
     <h2><%= @service.name %></h2>
   </div>
+  <div class="row">
+    <p><%= @service.category %></h2>
+  </div>
   <%= link_to "Book an Appointment!", new_service_appointment_path(service_id: @service.id), class: "orange-btn" %>
 </div>

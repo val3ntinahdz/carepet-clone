@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 class="my-4">Your Scheduled appointments! 🐾</h1>
+  <% @appointments.each do |appointment| %>
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Appointment ID: <%= appointment.id %></h5>
+        <p class="card-text"><strong>Date & time:</strong> <%= appointment.datetime %></p>
+        <p class="card-text"><strong>Reason:</strong> <%= appointment.reason %></p>
+        <p class="card-text"><strong>Fee:</strong> $<%= appointment.fee %></p>
+        <p class="card-text"><strong>Status:</strong> <%= appointment.status %></p>
+        <p class="card-text"><strong>Pet:</strong> <%= appointment.pet.name %></p>
+        <p class="card-text"><strong>Service:</strong> <%= appointment.service.name %></p>
+        <%= link_to "Details", appointment_path(appointment) %>
+      </div>
+    </div>
+  <% end %>
+</div>
