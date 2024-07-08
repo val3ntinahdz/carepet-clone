@@ -31,7 +31,13 @@ class Pet < ApplicationRecord
     With a vibrant and dynamic natural background featuring greenery, trees, and a blue sky.
     PROMPT
     client = OpenAI::Client.new
-    response = client.images.generate(parameters: { prompt: prompt })
+    response = client.images.generate(parameters: {
+      model: "dall-e-3",
+      prompt: prompt,
+      n:1,
+      size: "1792x1024"
+      }
+    )
     url = response["data"][0]["url"]
     file =  URI.open(url)
     photo.attach(io: file, filename: "#{id}_#{name}_pet.jpg", content_type: "image/png")
