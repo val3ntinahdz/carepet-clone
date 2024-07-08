@@ -10,13 +10,16 @@
 
 .banner h1 {
   font-family: $headers-font;
-  font-weight: 600;
+  font-weight: 500;
   // margin-top: 15px;
   // margin-bottom: 70px;
   color: rgb(239, 239, 239);
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 40px;
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: -40px;
+  text-align: left;
 }
 
 .banner p {
@@ -24,6 +27,8 @@
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 280px;
   ;
 }
