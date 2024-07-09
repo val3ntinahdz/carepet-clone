@@ -44,7 +44,7 @@ class AppointmentsController < ApplicationController
 
   def destroy
     @appointment.destroy
-    redirect_to root_path, notice: 'Appointment cancelled successfully.'
+    redirect_to appointments_path, notice: 'Appointment cancelled successfully.'
   end
 
   private

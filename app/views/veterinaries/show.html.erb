@@ -1,20 +1,19 @@
-<div class="p-3">
-  <%= link_to "", veterinaries_path, class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
-</div>
-<div class="container mt-1 p-5">
+<div class="vet-profile-container mt-1 p-3">
+  <div class="p-3">
+    <%= link_to "", veterinaries_path, class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
+  </div>
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="vet-header text-center mb-4">
         <img src="<%= asset_path('https://static.vecteezy.com/system/resources/previews/008/957/222/original/male-doctor-avatar-occupation-clipart-icon-in-flat-design-vector.jpg') %>" alt="Dr. <%= @veterinary.user.first_name %>" class="vet-image">
         <div class="vet-info mt-3">
           <h2 class="mb-0">Dr. <%= @veterinary.user.first_name %> <%= @veterinary.user.last_name %></h2>
-          <p class="text-muted mb-1">Specialization: <%= @veterinary.specialization %></p>
-          <span class="text-warning"> ⭐ 4.9 (24 Reviews)</span>
-          <div class="card mt-3">
+          <p class="text-muted mb-1">Specialization: <%= @veterinary.specialization %></p> <span> ⭐ 4.9 (24 Reviews)</span>
+          <div class="info-card mt-3">
             <div class="card-body">
-              <i class="fa-solid fa-location-pin" style="color: #376cc8;"></i>
+              <i class="fa-solid fa-location-pin" style="color: #1EDD88;"></i>
               <p>Mexico City, Mx.</p>
-              <i class="fa-solid fa-user-tie" style="color: #376cc8;"></i>
+              <i class="fa-solid fa-user-tie" style="color: #1EDD88;"></i>
               <p><strong>6 years</strong> of experience</p>
             </div>
           </div>
@@ -27,16 +26,18 @@
           Specializing in <%= @veterinary.specialization %>... <a href="#" class="text-warning text-decoration-none">Read more</a>
         </p>
       </div>
-      <hr>
+
       <div class="vet-services mt-4">
         <h3>This vet's services</h3>
-        <% @veterinary.services.each do |service| %>
-          <div class="service-list">
-            <h4><%= link_to service.name, service_path(service) %></h4>
-            <p>Category: <%= service.category %></p>
-            <p>Fee: $<%= service.fee %></p>
-          </div>
-        <% end %>
+        <div class="vet-service-card">
+          <% @veterinary.services.each do |service| %>
+            <div class="service-list">
+              <h4><%= link_to service.name, service_path(service) %></h4>
+              <p>Category: <%= service.category %></p>
+              <p>Fee: $<%= service.fee %></p>
+            </div>
+          <% end %>
+        </div>
       </div>
       <hr>
       <div class="reviews">
