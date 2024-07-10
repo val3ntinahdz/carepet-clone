@@ -15,14 +15,15 @@ class NutritionsController < ApplicationController
   def create_prompt
     <<~PROMPT
       You are a seasoned veterinary with over 20 years of experience.
-      Generate a weekly nutritional plan for with the following characteristics: #{@pet} from #{Date.today}
+      Generate a weekly nutritional plan for with the following characteristics: #{@pet} from #{Date.today}.
+      Consider the #{@pet.vaccines}, #{@pet.diseases}, #{@pet.allergies} of the pet.
       Your response must be a json ordered by date. The structure of the json is:
       {
       "date":
         {
         "meal_plan":
           {
-            "breakfast": { "food_items": "value", "calories": "value", "notes": "value"},
+            "breakfast": { "food_items": "values in grams", "calories": "value", "notes": "value"},
             "lunch": { "food_items": "value", "calories": "value", "notes": "value"},
             "dinner": { "food_items": "value", "calories": "value", "notes": "value"}
           }
