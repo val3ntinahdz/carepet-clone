@@ -244,17 +244,17 @@ end
 pet1 = Pet.first
 Vaccination.create!(pet_id: pet1.id, date: Date.today, comments: 'comentario', vaccine_id: Vaccine.first.id)
 Allergy.create!(detected_on: '2021/02/04', severity: 'leve', reactions: 'ojos rojos', comments: 'comentario', pet_id: pet1.id, allergen_id: Allergen.first.id)
-Condition.create!(diagnosis_date: '2020/09/13', recovery_date: '2020/12/04', comments: 'comentario', pet_id: pet1.id, disease_id: Disease.first.id)
+Condition.create!(diagnosis_date: '2020/09/13', recovery_date: '2020/12/04', comments: 'Control his weigth, follow a trainning and nutritional plan', pet_id: pet1.id, disease_id: Disease.first.id)
 
 pet2 = Pet.second
 Vaccination.create!(pet_id: pet2.id, date: Date.today, comments: 'comentario', vaccine_id: Vaccine.second.id)
 Allergy.create!(detected_on: '2023/07/24', severity: 'fuerte', reactions: 'ronchas en la piel', comments: 'comentario', pet_id: pet2.id, allergen_id: Allergen.second.id)
-Condition.create!(diagnosis_date: '2023/01/22', recovery_date: Date.today, comments: 'comentario', pet_id: pet2.id, disease_id: Disease.second.id)
+Condition.create!(diagnosis_date: '2023/01/22', recovery_date: Date.today, comments: 'Walk your dog for 10 minutes everyday', pet_id: pet2.id, disease_id: Disease.second.id)
 
 pet3 = Pet.last
 Vaccination.create!(pet_id: pet3.id, date: '2024/03/15', comments: 'comentario', vaccine_id: Vaccine.last.id)
 Allergy.create!(detected_on: '2022/05/21', severity: 'media', reactions: 'estornudos', comments: 'comentario', pet_id: pet3.id, allergen_id: Allergen.last.id)
-Condition.create!(diagnosis_date: '2023/10/09', recovery_date: Date.today, comments: 'comentario', pet_id: pet3.id, disease_id: Disease.last.id)
+Condition.create!(diagnosis_date: '2023/10/09', recovery_date: Date.today, comments: 'Extrict diet and trainning plan', pet_id: pet3.id, disease_id: Disease.last.id)
 
 
 puts "Seed data generated successfully!"
