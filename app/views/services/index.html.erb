@@ -1,11 +1,21 @@
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  <%= @markers.to_json %>
+<div class="container">
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-<% if @services.empty? %>
-  <p>No services found</p>
-<% else %>
-  <%= render @services %>
-<% end %>
+  <div class="container mt-3">
+    <h2 class="mb-3">Your search results</h2>
+    <% if @services.empty? %>
+      <p>No services found</p>
+    <% else %>
+      <div class="search-results-card">
+        <% @services.each do |service| %>
+          <%= link_to service_path(service), class: 'text-decoration-none text-black' do %>
+            <%= render partial: 'service', locals: { service: service } %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

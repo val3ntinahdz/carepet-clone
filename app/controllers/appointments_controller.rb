@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_appointment, only: %i[show edit update destroy]
 
   def index
     # @appointments = []
@@ -8,12 +9,11 @@ class AppointmentsController < ApplicationController
     #     @appointments << appointment if appointment.status == 'Scheduled'
     #   end
     # end
-    @appointments = Appointment.joins(:pet).where(pets: { user_id: current_user.id }, status: 'Scheduled')
+    @upcoming_appointments = Appointment.joins(:pet).where(pets: { user_id: current_user.id }, status: 'Scheduled')
+    @past_appointments = Appointment.joins(:pet).where(pets: { user_id: current_user.id }, status: 'Completed')
   end
 
-  def show
-    @appointment = Appointment.find(params[:id])
-  end
+  def show; end
 
   def edit; end
 
@@ -44,10 +44,14 @@ class AppointmentsController < ApplicationController
 
   def destroy
     @appointment.destroy
-    redirect_to root_path, notice: 'Appointment cancelled successfully!'
+    redirect_to appointments_path, notice: 'Appointment cancelled successfully.'
   end
 
   private
+
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
 
   def appointment_params
     params.require(:appointment).permit(:datetime, :reason, :comments, :fee, :status, :pet_id)

@@ -1,11 +1,20 @@
-<div class= "container">
+<div class="appointment-container">
   <div class="p-3">
-    <%= link_to "", appointments_path, class: "back fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
+    <%= link_to "", appointments_path, class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
   </div>
-  <div class="mt-3">
+
+  <div class="appointment-details">
     <h2><%= @appointment.reason %></h2>
-    <p><%= @appointment.comments %></p>
-    <p><%= @appointment.pet.name %></p>
-    <%= link_to "#{@appointment.service.veterinary.user.first_name} #{@appointment.service.veterinary.user.last_name}", veterinary_path(@appointment.service.veterinary) %>
+    <p class="comments"><%= @appointment.comments %></p>
+    <p class="location">
+      <i class="fas fa-map-marker-alt"></i>
+      <%= @appointment.service.veterinary.user.address %>
+    </p>
+    <p class="veterinary">
+      <%= link_to "#{@appointment.service.veterinary.user.first_name} #{@appointment.service.veterinary.user.last_name}", veterinary_path(@appointment.service.veterinary), class: "text-decoration-none" %>
+    </p>
+    <p class="actions">
+      <%= link_to "Check my appointments", appointments_path, class: "btn btn-primary" %>
+    </p>
   </div>
 </div>

@@ -42,3 +42,39 @@
     background-color: #f0f0f0;
   }
 }
+
+
+.search-results-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+
+  .service-result {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid $orange;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-result:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .service-result h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+
+  .service-result p {
+    margin-bottom: 10px;
+  }
+
+  .service-result strong {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+}
