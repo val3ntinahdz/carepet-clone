@@ -1,1 +1,11 @@
-<h5>Dr. <%= veterinary.first_name %> <%= veterinary.last_name %></h5>
+<% if local_assigns[:veterinary] %>
+  <div>
+    <h6><%= veterinary.first_name %> <%= veterinary.last_name %></h6>
+    <p><%= veterinary.address %></p>
+  </div>
+<% elsif local_assigns[:user] %>
+  <div>
+    <h3>Your Location</h3>
+    <p><%= user.address %></p>
+  </div>
+<% end %>

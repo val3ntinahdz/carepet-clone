@@ -1,1 +1,5 @@
-<%= image_tag "orangepaw.png", height: 30, width: 30, alt: "paw" %>
+<% if type == :veterinary %>
+  <%= image_tag "orangepaw.png", height: 30, width: 30, alt: "paw" %>
+<% elsif type == :user %>
+  <%= image_tag "redmarker.png", height: 60, width: 60, alt: "location" %>
+<% end %>

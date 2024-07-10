@@ -10,11 +10,7 @@
       <p>No services found</p>
     <% else %>
       <div class="search-results-card">
-        <% @services.each do |service| %>
-          <%= link_to service_path(service), class: 'text-decoration-none text-black' do %>
-            <%= render partial: 'service', locals: { service: service } %>
-          <% end %>
-        <% end %>
+        <%= render @services %>
       </div>
     <% end %>
   </div>
