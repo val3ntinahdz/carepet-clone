@@ -1,4 +1,7 @@
 <div class="scheduled-appointments-container">
+  <div class="p-3">
+    <%= link_to "", request.referer, class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
+  </div>
   <h1 class="appointments-title">Your Appointments 🐾</h1>
 
   <div class="appointments-section">
@@ -9,7 +12,7 @@
           <div class="doctor-info">
             <img src="https://static.vecteezy.com/system/resources/previews/008/957/222/original/male-doctor-avatar-occupation-clipart-icon-in-flat-design-vector.jpg" alt="Doctor Profile Picture">
             <div class="appointment-details">
-              <p class="doctor-name">Dr. <%= appointment.service.veterinary.user.first_name %> <%= appointment.service.veterinary.user.last_name %></p>
+              <p class="reason"><%= appointment.reason %></p>
               <p class="datetime-location">
                 <span class="datetime">
                   <i class="fas fa-calendar-alt"></i>
@@ -40,7 +43,7 @@
           <div class="doctor-info">
             <img src="https://static.vecteezy.com/system/resources/previews/008/957/222/original/male-doctor-avatar-occupation-clipart-icon-in-flat-design-vector.jpg" alt="Doctor Profile Picture">
             <div class="appointment-details">
-              <p class="doctor-name"><%= appointment.service.veterinary.user.first_name %> <%= appointment.service.veterinary.user.last_name %></p>
+              <p class="reason"><%= appointment.reason %></p>
               <p class="datetime-location">
                 <span class="datetime"><%= appointment.datetime.strftime("%m.%d.%Y - %H:%M") %></span>
                 <span class="location">

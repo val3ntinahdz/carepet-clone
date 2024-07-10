@@ -34,6 +34,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @service = Service.find(params[:service_id])
     @appointment.service_id = @service.id
+    @appointment.status = "Scheduled"
 
     if @appointment.save
       redirect_to appointment_path(@appointment), notice: 'Appointment scheduled successfully!'

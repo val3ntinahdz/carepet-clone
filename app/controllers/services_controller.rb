@@ -9,11 +9,20 @@ class ServicesController < ApplicationController
           lat: veterinary.latitude,
           lng: veterinary.longitude,
           info_window_html: render_to_string(partial: "info_window", locals: {veterinary: veterinary}),
-          marker_html: render_to_string(partial: "marker")
+          marker_html: render_to_string(partial: "marker", locals: { type: :veterinary })
         }
       end
     else
       @services = Service.all
+    end
+
+    if current_user.latitude.present? && current_user.longitude.present?
+      @markers << {
+        lat: current_user.latitude,
+        lng: current_user.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { user: current_user }),
+        marker_html: render_to_string(partial: "marker", locals: { type: :user })
+      }
     end
   end
 

@@ -2,7 +2,7 @@
   <div class="rounded-3 p-3 text-bg-light shadow p-3 mb-5 bg-body-tertiary rounded" style="color: black">
     <div class="m-3 text-center", style="color: black"><h2>Book an appointment</h2></div>
     <%= simple_form_for [@service, @appointment] do |f| %>
-      <%= f.input :datetime, html5: true %>
+      <%= f.input :datetime, html5: true, input_html: { min: Time.now.strftime('%Y-%m-%dT%H:%M') }%>
       <%= f.input :reason %>
       <%= f.input :comments %>
       <%= f.input :pet_id, as: :select, collection: current_user.pets.map { |p| [p.name, p.id] }, include_blank: "Select a pet" %>
