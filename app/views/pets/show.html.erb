@@ -4,7 +4,7 @@
     <%= link_to '', edit_pet_path, class: 'navpet mx-1 fa-solid fa-pen-to-square fa-xl text-decoration-none' %>
   </div>
 
-    <%= cl_image_tag(@pet.photo.key, class: "petshow rounded-2", alt: "pet-avatar") %>
+    <%= cl_image_tag(@pet.photo.key, class: "petshow petimg", alt: "pet-avatar") %>
     <h2 class="mt-3 px-2 navpet"><%= @pet.name %></h2>
 
   <div class="rounded-top rounded-3 shadow mb-2">
@@ -34,48 +34,63 @@
       </div>
 
       <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-      <p>Applied vaccines</p>
-      <ul>
-        <% @applied_vaccines.each do |vaccine| %>
-          <li><%= vaccine.name %></li>
-        <% end %>
-      </ul>
-      <p>Non-applied vaccines</p>
-      <ul>
-        <% @non_applied_vaccines.each do |vaccine| %>
-          <li><%= vaccine.name %></li>
-        <% end %>
-      </ul>
+        <div class="d-flex justify-content-between p-2">
+            <p>Applied Vaccines</p>
+            <%= link_to '', edit_pet_path, class: 'navpet mx-1 fa-solid fa-plus fa-lg text-decoration-none mt-2 pt-1' %>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            <% @applied_vaccines.each do |vaccine| %>
+              <%= vaccine.name %>
+            <% end %>
+          </label>
+        </div>
+        <p class="pt-4 px-2">Missing Vaccines</p>
+        <ul>
+          <% @missing_vaccines.each do |vaccine| %>
+          <li>
+            <%= vaccine.name %>
+          </li>
+          <% end %>
+        </ul>
       </div>
 
       <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-      <ul>
+        <div class="d-flex justify-content-between p-2">
+          <p>¿Any condition?</p>
+          <%= link_to '', edit_pet_path, class: 'navpet mx-1 fa-solid fa-plus fa-lg text-decoration-none mt-2 pt-1' %>
+        </div>
         <% @conditions.each do |condition| %>
-          <li><%= condition.disease.name %></li>
-          <li>Diagnosis date: <%= condition.diagnosis_date %></li>
-          <li>Recovery date: <%= condition.recovery_date %></li>
-          <li>Comments: <%= condition.comments %></li>
-          <hr>
+        <div class="px-2">
+          <p class="fw-bold"><%= condition.disease.name %></p>
+          <p> - Diagnosis date: <%= condition.diagnosis_date %></p>
+          <p> - Recovery date: <%= condition.recovery_date %></p>
+          <p> - Comments: <%= condition.comments %></p>
+        </div>
+        <hr>
         <% end %>
-      </ul>
       </div>
 
       <div class="tab-pane fade" id="allergie-tab-pane" role="tabpanel" aria-labelledby="allergie-tab" tabindex="0">
-      <ul>
+        <div class="d-flex justify-content-between p-2">
+          <p>¿Any allergie?</p>
+          <%= link_to '', edit_pet_path, class: 'navpet mx-1 fa-solid fa-plus fa-lg text-decoration-none mt-2 pt-1' %>
+        </div>
         <% @allergies.each do |allergie| %>
-          <li><%= allergie.allergen.name %></li>
-          <li>Detected on: <%= allergie.detected_on %></li>
-          <li>Severity: <%= allergie.severity %></li>
-          <li>Reactions: <%= allergie.reactions %></li>
-          <li>Comments: <%= allergie.comments %></li>
-          <hr>
+        <div class="px-2">
+          <p class="fw-bold"><%= allergie.allergen.name %></p>
+          <p> - Detected on: <%= allergie.detected_on %></p>
+          <p> - Severity: <%= allergie.severity %></p>
+          <p> - Reactions: <%= allergie.reactions %></p>
+          <p> - Comments: <%= allergie.comments %></p>
+        </div>
+        <hr>
         <% end %>
-      </ul>
-      </div>
-
-      <div class="text-center align-text-bottom mt-5">
-        <%= link_to 'Delete', pet_path(@pet), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Do you want to proceed?"}, class: 'petbutton text-decoration-none ps-2' %>
       </div>
     </div>
+  </div>
+  <div class="text-center align-text-bottom mt-5">
+    <%= link_to 'Delete Pet', pet_path(@pet), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Do you want to proceed?"}, class: 'petdelete text-decoration-none ps-2' %>
   </div>
 </div>

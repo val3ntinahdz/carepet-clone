@@ -4,14 +4,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :pets do
-    resources :vaccinations, only: %i[new create]
-    resources :conditions, only: %i[new create]
+    resources :vaccinations, only: %i[edit update]
+    resources :conditions, only: %i[index new create edit update destroy]
     resources :allergies, only: %i[new create]
     resources :trainings, only: %i[new create]
     resources :nutritions, only: %i[index new create]
   end
 
-  resources :vaccinations, except: %i[new create]
   resources :conditions, except: %i[new create]
   resources :allergies, except: %i[new create]
   resources :trainings, except: %i[new create]
