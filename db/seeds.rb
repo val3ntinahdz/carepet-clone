@@ -83,6 +83,12 @@ vet2 = Veterinary.create!(
   user_id: user5.id
 )
 
+vet3 = Veterinary.create!(
+  dni: '135792468',
+  specialization: 'General',
+  user_id: user3.id
+)
+
 # Crear mascotas
 pets = [
   {
@@ -187,28 +193,44 @@ service_descriptions = {
   "Dermatology" => "Specialized dermatology services to diagnose and treat skin conditions, allergies, and other dermatological issues."
 }
 
-# Categorías posibles para servicios
-service_categories = ["Medical"]
+service_descriptions_array = service_descriptions.to_a
 
 # Generar servicios para cada veterinario con descripciones y categorías aleatorias
 services = []
 
-service_descriptions.each do |name, description|
-  category = service_categories.sample
-  fee = rand(50.0..300.0).round(2)
+# Categorías posibles para servicios
+service_categories = ["Medical"]
 
-  service1 = Service.create!(
-    name: name,
-    description: description,
-    category: category,
-    fee: fee,
-    veterinary_id: vet1.id
-  )
-
-  services << service1
+[vet1, vet2, vet3].each do |vet|
+  3.times do
+    serv = service_descriptions_array.shift
+    new_service = Service.create!(
+      name: serv[0],
+      description: serv[1],
+      category: "Medical",
+      fee: rand(50.0..300.0).round(2),
+      veterinary_id: vet.id
+    )
+    services << new_service
+  end
 end
 
-service2 = Service.create!(
+# service_descriptions.each do |name, description|
+#   category = service_categories.sample
+#   fee = rand(50.0..300.0).round(2)
+
+#   service1 = Service.create!(
+#     name: name,
+#     description: description,
+#     category: category,
+#     fee: fee,
+#     veterinary_id: vet1.id
+#   )
+
+#   services << service1
+# end
+
+Service.create!(
     name: "Haircuts for dogs",
     description: "Very nice haircuts for your dogs and accesible price",
     category: "Grooming",
