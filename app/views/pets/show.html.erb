@@ -34,26 +34,27 @@
       </div>
 
       <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-        <div class="d-flex justify-content-between p-2">
-            <p>Applied Vaccines</p>
-            <%= link_to '', edit_pet_path, class: 'navpet mx-1 fa-solid fa-plus fa-lg text-decoration-none mt-2 pt-1' %>
+        <div class="d-flex justify-content-between pt-2 px-2">
+          <p>Applied Vaccines</p>
+          <%= link_to '', new_pet_vaccination_path(@pet), class: 'navpet mx-1 fa-solid fa-plus fa-lg text-decoration-none mt-2 pt-1', data: {turbo_frame:"new_vaccine"} %>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            <% @applied_vaccines.each do |vaccine| %>
+        <%= turbo_frame_tag "new_vaccine" %>
+        <div class="form-check mx-3">
+          <% @applied_vaccines.each do |vaccine| %>
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+          <label class="form-check-label d-flex flex-column pb-1" for="flexCheckChecked">
               <%= vaccine.name %>
-            <% end %>
           </label>
+          <% end %>
         </div>
         <p class="pt-4 px-2">Missing Vaccines</p>
-        <ul>
+        <ol>
           <% @missing_vaccines.each do |vaccine| %>
           <li>
             <%= vaccine.name %>
           </li>
           <% end %>
-        </ul>
+        </ol>
       </div>
 
       <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
@@ -90,7 +91,7 @@
       </div>
     </div>
   </div>
-  <div class="text-center align-text-bottom mt-5">
+  <div class="text-center align-text-bottom my-5 pb-5">
     <%= link_to 'Delete Pet', pet_path(@pet), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Do you want to proceed?"}, class: 'petdelete text-decoration-none ps-2' %>
   </div>
 </div>
