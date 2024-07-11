@@ -1,8 +1,8 @@
 class PetsController < ApplicationController
-  before_action :set_pet, only: %i[show edit update destroy edit_vaccines update_vaccines]
+  before_action :set_pet, only: %i[show edit update destroy]
 
   def index
-    @pets = Pet.all
+    @pets = Pet.where(user: current_user)
   end
 
   def show
@@ -40,21 +40,6 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.destroy
     redirect_to pets_path, notice: 'Pet was successfully deleted.'
-  end
-
-  def edit_vaccines
-    @vaccines = Vaccine.all
-  end
-
-  def update_vaccines
-    @pet = Pet.find(params[:id])
-    @pet.vaccine_ids = params[:pet][:vaccine_ids]
-    if @pet.save
-      redirect_to @pet, notice: 'Vaccines were successfully updated.'
-    else
-      @vaccines = Vaccine.all
-      render :edit_vaccines
-    end
   end
 
   private
