@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     resources :appointments, only: %i[new create]
   end
 
-  resources :appointments, except: %i[new create]
+  resources :appointments, except: %i[new create] do
+    member do
+      patch 'update_status'
+    end
+  end
 
   get 'profile', to: 'users#profile', as: :profile
   post 'mark_meal_as_completed', to: 'nutritions#mark_meal_as_completed', as: :mark_meal_as_completed

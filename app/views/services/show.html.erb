@@ -8,5 +8,8 @@
   <div class="row">
     <p><%= @service.category %></h2>
   </div>
-  <%= link_to "Book an Appointment!", new_service_appointment_path(service_id: @service.id), class: "orange-btn" %>
+
+  <% unless current_user.veterinary.present? %>
+    <%= link_to "Book an Appointment!", new_service_appointment_path(service_id: @service.id), class: "orange-btn" %>
+  <% end %>
 </div>

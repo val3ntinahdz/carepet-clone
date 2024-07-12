@@ -3,67 +3,16 @@
     <%= link_to "", request.referer, class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
   </div>
   <h1 class="appointments-title">Your Appointments 🐾</h1>
+  <% if current_user.veterinary.present? %>
+    <%= render 'appointments_section', title: 'Scheduled Appointments', appointments: @veterinary_appointments, show_cancel_button: false %>
+  <% else %>
+    <%= render 'appointments_section', title: 'Upcoming', appointments: @upcoming_appointments, show_cancel_button: true %>
+    <%= render 'appointments_section', title: 'Past', appointments: @past_appointments.first(3), show_cancel_button: false %>
 
-  <div class="appointments-section">
-    <h2 class="section-title">Upcoming</h2>
-    <div class="appointments-grid">
-      <% @upcoming_appointments.each do |appointment| %>
-        <div class="appointment-card">
-          <div class="doctor-info">
-            <img src="https://static.vecteezy.com/system/resources/previews/008/957/222/original/male-doctor-avatar-occupation-clipart-icon-in-flat-design-vector.jpg" alt="Doctor Profile Picture">
-            <div class="appointment-details">
-              <p class="reason"><%= appointment.reason %></p>
-              <p class="datetime-location">
-                <span class="datetime">
-                  <i class="fas fa-calendar-alt"></i>
-                  <%= appointment.datetime.strftime("%m.%d.%Y - %H:%M") %>
-                </span>
-                <span class="location">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <%= appointment.service.veterinary.user.address %>
-                </span>
-              </p>
-            </div>
-          </div>
-          <div class="actions">
-            <%= link_to "Details", appointment_path(appointment), class: "btn btn-details" %>
-            <%= button_to "Cancel", appointment_path(appointment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-cancel" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-
-  <div class="appointments-section">
-    <h2 class="section-title">Past</h2>
-    <div class="appointments-grid">
-      <% @past_appointments.first(3).each do |appointment| %>
-        <div class="appointment-card">
-          <div class="doctor-info">
-            <img src="https://static.vecteezy.com/system/resources/previews/008/957/222/original/male-doctor-avatar-occupation-clipart-icon-in-flat-design-vector.jpg" alt="Doctor Profile Picture">
-            <div class="appointment-details">
-              <p class="reason"><%= appointment.reason %></p>
-              <p class="datetime-location">
-                <span class="datetime"><%= appointment.datetime.strftime("%m.%d.%Y - %H:%M") %></span>
-                <span class="location">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <%= appointment.service.veterinary.user.address %>
-                </span>
-              </p>
-            </div>
-          </div>
-          <div class="actions">
-            <%= link_to "Details", appointment_path(appointment), class: "btn btn-details" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <% if @past_appointments.size > 3 %>
-    <div class="see-all-link">
-      <%= link_to "See All", "#" %>
-    </div>
+    <% unless @past_appointments.size < 3 %>
+      <div class="see-all-link">
+        <%= link_to "See All", "#" %>
+      </div>
+    <% end %>
   <% end %>
 </div>
