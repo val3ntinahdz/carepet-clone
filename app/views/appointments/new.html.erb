@@ -6,7 +6,7 @@
       <%= f.input :reason %>
       <%= f.input :comments %>
       <%= f.input :pet_id, as: :select, collection: current_user.pets.map { |p| [p.name, p.id] }, include_blank: "Select a pet" %>
-      <%= f.submit "Accept", class: "orange-btn" %>
+      <%= f.submit "Book", class: "orange-btn" %>
     <% end %>
   </div>
 </div>

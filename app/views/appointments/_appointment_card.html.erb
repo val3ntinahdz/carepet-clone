@@ -1,0 +1,43 @@
+<div class="appointment-card">
+  <div class="doctor-info">
+    <img src="https://static.vecteezy.com/system/resources/previews/008/957/222/original/male-doctor-avatar-occupation-clipart-icon-in-flat-design-vector.jpg">
+    <div class="appointment-details">
+      <% if current_user.veterinary.present? %>
+        <p class="reason"><%= appointment.reason %></p>
+        <p class="pet-name"><%= appointment.pet.name %></p>
+        <p class="datetime-location">
+          <span class="datetime">
+            <i class="fas fa-calendar-alt"></i>
+            <%= appointment.datetime.strftime("%m.%d.%Y - %H:%M") %>
+          </span>
+        </p>
+      <% else %>
+        <p class="doctor-name">Dr. <%= appointment.service.veterinary.user.first_name %> <%= appointment.service.veterinary.user.last_name %></p>
+        <p class="datetime-location">
+          <span class="datetime">
+            <i class="fas fa-calendar-alt"></i>
+            <%= appointment.datetime.strftime("%m.%d.%Y - %H:%M") %>
+          </span>
+          <span class="location">
+            <i class="fas fa-map-marker-alt"></i>
+            <%= appointment.service.veterinary.user.address %>
+          </span>
+          <span><%= appointment.reason %></span>
+        </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="actions">
+    <% if current_user == appointment.pet.user && appointment.status == 'Scheduled' %>
+        <%= link_to "Reschedule", edit_appointment_path(appointment), class: "btn btn-cancel" %>
+    <% elsif current_user.veterinary.present? %>
+      <%= button_to "Mark as Completed", appointment_path(appointment), method: :patch, params: { appointment: { status: 'Completed' } }, class: "btn btn-details" %>
+    <% end %>
+
+    <%= link_to "Details", appointment_path(appointment), class: "btn btn-details" %>
+
+    <% if show_cancel_button %>
+      <%= button_to "Cancel", appointment_path(appointment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-cancel" %>
+    <% end %>
+  </div>
+</div>
