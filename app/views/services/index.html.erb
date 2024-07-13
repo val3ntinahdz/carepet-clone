@@ -1,17 +1,24 @@
 <div class="container">
-  <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-  <div class="container mt-3">
-    <h2 class="mb-3">Your search results</h2>
-    <% if @services.empty? %>
-      <p>No services found</p>
-    <% else %>
-      <div class="search-results-card">
-        <%= render @services %>
-      </div>
-    <% end %>
-  </div>
+  <% if current_user.veterinary.present? %>
+    <div class="container mt-3">
+      <h2 class="mb-3">Your services</h2>
+      <%= render current_user.veterinary.services %>
+      <%= link_to "Add a new service", new_veterinary_service_path(current_user.veterinary), class: 'orange-btn' %>
+    </div>
+  <% else %>
+    <div style="width: 100%; height: 600px;"
+         data-controller="map"
+         data-map-markers-value="<%= @markers.to_json %>"
+         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    <div class="container mt-3">
+      <h2 class="mb-3">Your search results</h2>
+      <% if @services.empty? %>
+        <p>No services found</p>
+      <% else %>
+        <div class="search-results-card">
+          <%= render @services %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
