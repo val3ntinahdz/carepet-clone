@@ -1,0 +1,14 @@
+<h1>Welcome, <%= current_user.first_name%> <%= current_user.last_name %></h1>
+<h3>Your personal info: </h3>
+<p>Email: <%= current_user.email %></p>
+<p>Phone: <%= current_user.phone_number %></p>
+<p>Address: <%= current_user.address %></p>
+<p><%= link_to "Edit my info", edit_user_registration_path %></p>
+<p><%= link_to "See my pets", "/pets"%></p>
+
+<% if @veterinary.present? %>
+<h3>Your professional info: </h3>
+<p>Your DNI: <%= @veterinary.dni %></p>
+<p>Specialization: <%= @veterinary.specialization %></p>
+<%= link_to "See my services", "/"%>
+<% end %>
