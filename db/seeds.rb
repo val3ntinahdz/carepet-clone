@@ -111,7 +111,7 @@ pets = [
     weight: 10,
     height: 25,
     color: 'White',
-    user_id: user2.id
+    user_id: user1.id
   },
   {
     name: 'Max',
@@ -122,7 +122,7 @@ pets = [
     weight: 20,
     height: 40,
     color: 'Brown',
-    user_id: user3.id
+    user_id: user2.id
   }
 ]
 
@@ -242,7 +242,7 @@ Service.create!(
 appointment_data = [
   { datetime: "2024-07-01 10:00:00", reason: "Routine Checkup", status: "Scheduled" },
   { datetime: "2024-07-02 11:00:00", reason: "Vaccination", status: "Completed" },
-  { datetime: "2024-07-03 12:00:00", reason: "Dental Cleaning", status: "Scheduled" },
+  { datetime: "2024-07-03 12:00:00", reason: "Dental Cleaning", status: "Scheduled" }
   { datetime: "2024-07-04 13:00:00", reason: "Skin Allergy", status: "Completed" },
   { datetime: "2024-07-05 14:00:00", reason: "Heartworm Test", status: "Cancelled" },
   { datetime: "2024-07-06 15:00:00", reason: "Behavioral Consultation", status: "Scheduled" }
