@@ -7,14 +7,14 @@ Rails.application.routes.draw do
     resources :vaccinations, only: %i[new create]
     resources :conditions, only: %i[new create]
     resources :allergies, only: %i[new create]
-    resources :trainings, only: %i[new create]
+    resources :trainings, only: %i[index new create]
     resources :nutritions, only: %i[index new create]
   end
 
   resources :vaccines, except: %i[new create]
   resources :conditions, except: %i[new create]
   resources :allergies, except: %i[new create]
-  resources :trainings, except: %i[new create]
+  resources :trainings, except: %i[index new create]
   resources :nutritions, except: %i[index new create]
 
   resources :veterinaries do
@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'users#profile', as: :profile
   post 'mark_meal_as_completed', to: 'nutritions#mark_meal_as_completed', as: :mark_meal_as_completed
+  post 'mark_training_as_completed', to: 'trainings#mark_training_as_completed', as: :mark_training_as_completed
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

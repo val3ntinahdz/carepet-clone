@@ -22,7 +22,7 @@ $(document).ready(function() {
   carouselInner.scrollLeft(offset);
 });
 
-
+// Drag to scroll horizontally
 $(document).ready(function() {
   var startX = 0;
   var isDragging = false;
@@ -100,17 +100,17 @@ $(document).ready(function() {
     align-items: center;
    }
 
-  .food-items-card {
+  .food-items {
     width: 38%;
    }
 
 
-   .notes-card {
+   .notes {
     width: 38%;
     margin: 0 10px;
    }
 
-  .calories-card {
+  .calories {
     width: 24%;
   }
 
@@ -199,9 +199,9 @@ $(document).ready(function() {
                   <% end %>
                 </div>
                   <div class="details-cards d-flex">
-                    <div class="details-card food-items-card"><i class="fa-solid fa-utensils"></i><p><%= meal.food_items.capitalize %></p></div>
-                    <div class="details-card notes-card"><i class="fa-regular fa-comment-dots"></i><p><%= meal.notes.capitalize %></p></div>
-                    <div class="details-card calories-card"><i class="fa-solid fa-fire-flame-simple"></i><p><%= meal.calories %> calories</p></div>
+                    <div class="details-card food-items"><i class="fa-solid fa-utensils"></i><p><%= meal.food_items.capitalize %></p></div>
+                    <div class="details-card notes"><i class="fa-regular fa-comment-dots"></i><p><%= meal.notes.capitalize %></p></div>
+                    <div class="details-card calories"><i class="fa-solid fa-fire-flame-simple"></i><p><%= meal.calories %> calories</p></div>
                   </div>
 
                 </div>
@@ -213,14 +213,7 @@ $(document).ready(function() {
   </div>
 </div>
 
-<hr>
-
-
-
-
-<hr>
-
-
+<!--
 
 <% @nutrition_data.each do |meal| %>
   <div class="meal-card">
@@ -237,3 +230,5 @@ $(document).ready(function() {
     <% end %>
   </div>
 <% end %>
+
+-->
