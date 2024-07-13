@@ -9,7 +9,7 @@
     <p class="fw-semibold" style="display:inline;">Phone:</p> <p><%= current_user.phone_number %></p>
     <p class="fw-semibold" style="display:inline;">Address:</p> <p><%= current_user.address %></p>
     <div class="d-flex justify-content-evenly mb-4 mt-4">
-      <%= link_to "Edit my info", edit_user_registration_path, class: "orange-btn"%>
+      <%= link_to "Edit", edit_user_registration_path, class: "orange-btn"%>
       <%= link_to "See my pets", "/pets", class: "orange-btn"%>
     </div>
 
@@ -19,6 +19,7 @@
     <p class="fw-semibold" style="display:inline;">DNI</p> <p><%= @veterinary.dni %></p>
     <p class="fw-semibold" style="display:inline;">Specialization</p> <p><%= @veterinary.specialization %></p>
     <div class="d-flex justify-content-evenly mb-4 mt-4">
+    <%= link_to "Edit", edit_veterinary_path(@veterinary), class: "orange-btn"%>
       <%= link_to "See my services", "/", class: "orange-btn"%>
     </div>
     <% end %>
