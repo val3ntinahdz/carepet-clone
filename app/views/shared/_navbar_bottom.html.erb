@@ -1,10 +1,10 @@
 <nav class="navbar-bottom">
-  <%= link_to "/", class: 'nav-link-bottom' do %>
+  <% if user_signed_in?%>
+    <%= link_to "/dashboard", class: 'nav-link-bottom' do %>
     <i class="fas fa-home"></i>
     <span class="nav-text-bottom">Home</span>
-  <% end %>
+    <% end %>
 
-  <% if user_signed_in?%>
     <a href="/veterinaries" class="nav-link-bottom">
     <i class="fas fa-search"></i>
     <span class="nav-text-bottom">Search</span>
@@ -20,6 +20,10 @@
       <span class="nav-text-bottom">Profile</span>
     <% end %>
   <% else %>
+    <%= link_to "/", class: 'nav-link-bottom' do %>
+    <i class="fas fa-home"></i>
+    <span class="nav-text-bottom">Home</span>
+    <% end %>
     <%= link_to "/users/sign_in", class: 'nav-link-bottom' do %>
       <i class="fas fa-sign-in-alt"></i>
       <span class="nav-text-bottom">Login</span>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
-
+  get 'dashboard', to: 'dashboard#dashboard', as: :dashboard
   resources :pets do
     resources :vaccinations, only: %i[new create]
     resources :conditions, only: %i[new create]
