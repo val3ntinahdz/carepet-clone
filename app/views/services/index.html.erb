@@ -11,7 +11,7 @@
          data-map-markers-value="<%= @markers.to_json %>"
          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     <div class="container mt-3">
-      <h2 class="mb-3">Your search results</h2>
+      <h2 class="mb-3">Veterinaries found (<%= @services.count %>)</h2>
       <% if @services.empty? %>
         <p>No services found</p>
       <% else %>

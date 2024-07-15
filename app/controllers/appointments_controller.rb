@@ -7,7 +7,7 @@ class AppointmentsController < ApplicationController
       @veterinary_appointments = fetch_veterinary_appointments
     else
       @upcoming_appointments = fetch_user_appointments('Scheduled')
-      @past_appointments = fetch_user_appointments('Completed')
+      @completed_appointments = fetch_user_appointments('Completed')
     end
   end
 

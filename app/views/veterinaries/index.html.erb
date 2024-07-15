@@ -5,7 +5,7 @@
   <div class="header">
     <div class="header-content">
       <div class="header-text">
-        <h1>Let's Find a Specialist Doctor for Your Pet!</h1>
+        <h1>Lets Find a Specialist Doctor for Your Pet!</h1>
       </div>
       <div class="header-image">
         <img src="https://villagesquarevet.com/wp-content/uploads/2023/05/Pet-Vaccinations.jpg" alt="Veterinary">
@@ -44,7 +44,7 @@
 
   <div class="specialists-section">
     <h2>Best Specialists Nearby</h2>
-    <% @veterinaries.each do |veterinary| %>
+    <% @nearby_veterinaries.each do |veterinary| %>
       <%= link_to veterinary_path(veterinary), class: "specialist-card" do %>
         <img src="https://static.vecteezy.com/system/resources/previews/008/957/222/original/male-doctor-avatar-occupation-clipart-icon-in-flat-design-vector.jpg">
         <div class="specialist-info">
@@ -52,7 +52,7 @@
           <p>Veterinary Behavioral</p>
           <div class="rating-distance">
             <span>⭐ 4.9</span>
-            <span>2 km</span>
+            <span>📍 <%= veterinary.user.distance.round(2) %> km</span>
           </div>
         </div>
       <% end %>
