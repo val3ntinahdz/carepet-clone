@@ -35,63 +35,39 @@
 
       <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
         <div class="d-flex justify-content-between pt-2 px-2">
-          <p>Applied Vaccines</p>
-          <%= link_to '', new_pet_vaccination_path(@pet), class: 'navpet mx-1 fa-solid fa-plus fa-lg text-decoration-none mt-2 pt-1', data: {turbo_frame:"new_vaccine"} %>
+          <p>Vaccines Schedule 💉</p>
+          <%= link_to '', new_pet_vaccination_path(@pet), class: 'navpet mx-1 fa-solid fa-plus fa-lg text-decoration-none mt-2 pt-1', data: {turbo_frame:"new_vaccination"} %>
         </div>
-        <%= turbo_frame_tag "new_vaccine" %>
-        <div class="form-check mx-3">
-          <% @applied_vaccines.each do |vaccine| %>
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-          <label class="form-check-label d-flex flex-column pb-1" for="flexCheckChecked">
-              <%= vaccine.name %>
-          </label>
-          <% end %>
-        </div>
-        <p class="pt-4 px-2">Missing Vaccines</p>
-        <ol>
-          <% @missing_vaccines.each do |vaccine| %>
-          <li>
-            <%= vaccine.name %>
-          </li>
-          <% end %>
-        </ol>
+        <%= turbo_frame_tag "new_vaccination" %>
+
+        <%= turbo_frame_tag "vaccinations" do %>
+          <%= render @vaccinations %>
+        <% end %>
       </div>
 
       <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
         <div class="d-flex justify-content-between p-2">
-          <p>¿Any condition?</p>
-          <%= link_to '', edit_pet_path, class: 'navpet mx-1 fa-solid fa-plus fa-lg text-decoration-none mt-2 pt-1' %>
+          <p>¿Any condition? 🩺</p>
+          <%= link_to '', new_pet_condition_path(@pet), class: 'navpet mx-1 fa-solid fa-plus fa-lg text-decoration-none mt-2 pt-1', data: {turbo_frame:"new_condition"} %>
         </div>
-        <% @conditions.each do |condition| %>
-        <div class="px-2">
-          <p class="fw-bold"><%= condition.disease.name %></p>
-          <p> - Diagnosis date: <%= condition.diagnosis_date %></p>
-          <p> - Recovery date: <%= condition.recovery_date %></p>
-          <p> - Comments: <%= condition.comments %></p>
-        </div>
-        <hr>
+        <%= turbo_frame_tag "new_condition" %>
+
+        <%= turbo_frame_tag "conditions" do %>
+          <%= render @conditions %>
         <% end %>
       </div>
 
       <div class="tab-pane fade" id="allergie-tab-pane" role="tabpanel" aria-labelledby="allergie-tab" tabindex="0">
         <div class="d-flex justify-content-between p-2">
-          <p>¿Any allergie?</p>
-          <%= link_to '', edit_pet_path, class: 'navpet mx-1 fa-solid fa-plus fa-lg text-decoration-none mt-2 pt-1' %>
+          <p>¿Any allergy? 😷</p>
+          <%= link_to '', new_pet_allergy_path(@pet), class: 'navpet mx-1 fa-solid fa-plus fa-lg text-decoration-none mt-2 pt-1', data: {turbo_frame:"new_allergy"} %>
         </div>
-        <% @allergies.each do |allergie| %>
-        <div class="px-2">
-          <p class="fw-bold"><%= allergie.allergen.name %></p>
-          <p> - Detected on: <%= allergie.detected_on %></p>
-          <p> - Severity: <%= allergie.severity %></p>
-          <p> - Reactions: <%= allergie.reactions %></p>
-          <p> - Comments: <%= allergie.comments %></p>
-        </div>
-        <hr>
+        <%= turbo_frame_tag "new_allergy" %>
+
+        <%= turbo_frame_tag "allergies" do %>
+          <%= render @allergies %>
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="text-center align-text-bottom my-5 pb-5">
-    <%= link_to 'Delete Pet', pet_path(@pet), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Do you want to proceed?"}, class: 'petdelete text-decoration-none ps-2' %>
   </div>
 </div>

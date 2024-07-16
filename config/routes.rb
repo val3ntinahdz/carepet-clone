@@ -11,9 +11,13 @@ Rails.application.routes.draw do
     resources :nutritions, only: %i[index new create]
   end
 
+  resources :vaccinations, only: %i[show edit update destroy]
+  resources :conditions, only: %i[show edit update destroy]
+  resources :allergies, only: %i[show edit update destroy]
+
   resources :vaccines, except: %i[new create]
   resources :conditions, except: %i[new create]
-  resources :allergies, except: %i[new create]
+  resources :allergens, except: %i[new create]
   resources :trainings, except: %i[new create]
   resources :nutritions, except: %i[index new create]
 

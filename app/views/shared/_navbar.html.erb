@@ -12,22 +12,23 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "/", class: "nav-link text" %>
+            <%= link_to "Home", "/", class: "nav-link text-white" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Profile", "/pets", class: "nav-link text" %>
+            <%= link_to "Profile", "/pets", class: "nav-link text-white" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Pets", "/pets", class: "nav-link text" %>
+            <%= link_to "Pets", "/pets", class: "nav-link text-white" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Professionals", "/veterinaries", class: "nav-link text" %>
+            <%= link_to "Professionals", "/veterinaries", class: "nav-link text-white" %>
           </li>
           <li class="nav-item">
-            <%= link_to "About", "/services", class: "nav-link text" %>
+            <%= link_to "About", "/services", class: "nav-link text-white" %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            XYZ
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>

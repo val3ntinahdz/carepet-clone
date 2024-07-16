@@ -10,8 +10,9 @@
         <%= cl_image_tag(pet.photo.key, class: "petimg", alt: "pet-avatar") %>
         <h5 class="card-title px-3 pt-1"><%= pet.name %></h5>
         <p id="breed"><%= pet.breed %></p>
-        <div class="pb-3 px-3">
+        <div class="d-flex justify-content-between pb-3 px-2">
           <%= link_to "Details", pet_path(pet), class: "petbutton text-decoration-none" %>
+          <%= link_to '', pets_path(@pets), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Do you want to proceed?"}, class: 'fa-solid fa-trash navpet text-decoration-none pt-2' %>
         </div>
       </div>
     </div>
