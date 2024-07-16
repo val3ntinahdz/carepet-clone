@@ -1,8 +1,9 @@
 <div class="container">
   <div class="d-flex justify-content-between mx-3">
     <h1 class="pt-3">Pet's House </h1>
-    <%= link_to '', new_pet_path, class: "pls fa-solid fa-circle-plus fa-xl text-decoration-none" %>
+    <%= link_to '', new_pet_path, class: "pls fa-solid fa-circle-plus fa-xl text-decoration-none", data: { turbo_frame: 'new_pet' } %>
   </div>
+  <%= turbo_frame_tag 'new_pet' %>
   <div class="row">
     <% @pets.each do |pet| %>
     <div class="col-6 mb-3 rounded-2">

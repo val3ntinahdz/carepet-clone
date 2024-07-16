@@ -1,5 +1,7 @@
-<div class="service-result">
-  <h3><%= service.name %></h3>
-  <p><strong>Category:</strong> <%= service.category %></p>
-</div>
-
+<%= link_to service_path(service), class: 'text-decoration-none text-black' do %>
+  <div class="service-result">
+    <h3><%= service.name %></h3>
+    <p><strong>Category:</strong> <%= service.category %></p>
+    <p><strong>Veterinary:</strong> <%= service.veterinary.user.first_name %> <%= service.veterinary.user.last_name %></p>
+  </div>
+<% end %>

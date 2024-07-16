@@ -44,17 +44,6 @@
 
   <div class="specialists-section">
     <h2>Best Specialists Nearby</h2>
-    <div class="specialist-card">
-      <img src="https://static.vecteezy.com/system/resources/thumbnails/008/957/225/small/female-doctor-avatar-clipart-icon-in-flat-design-vector.jpg" alt="Dr. Anna Johanson">
-      <div class="specialist-info">
-        <h3>Dra. Patricia Rodríguez</h3>
-        <p>Veterinary Behavioral</p>
-        <div class="rating-distance">
-          <span>⭐ 4.8</span>
-          <span>1 km</span>
-        </div>
-      </div>
-    </div>
     <% @veterinaries.each do |veterinary| %>
       <%= link_to veterinary_path(veterinary), class: "specialist-card" do %>
         <img src="https://static.vecteezy.com/system/resources/previews/008/957/222/original/male-doctor-avatar-occupation-clipart-icon-in-flat-design-vector.jpg">

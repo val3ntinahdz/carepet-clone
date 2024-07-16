@@ -1,16 +1,14 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_appointment, only: %i[show edit update destroy]
+  before_action :set_appointment, only: %i[show edit update destroy update_status]
 
   def index
-    # @appointments = []
-    # current_user.pets.each do |pet|
-    #   pet.appointments.each do |appointment|
-    #     @appointments << appointment if appointment.status == 'Scheduled'
-    #   end
-    # end
-    @upcoming_appointments = Appointment.joins(:pet).where(pets: { user_id: current_user.id }, status: 'Scheduled')
-    @past_appointments = Appointment.joins(:pet).where(pets: { user_id: current_user.id }, status: 'Completed')
+    if current_user.veterinary.present?
+      @veterinary_appointments = fetch_veterinary_appointments
+    else
+      @upcoming_appointments = fetch_user_appointments('Scheduled')
+      @past_appointments = fetch_user_appointments('Completed')
+    end
   end
 
   def show; end
@@ -19,10 +17,15 @@ class AppointmentsController < ApplicationController
 
   def update
     if @appointment.update(appointment_params)
-      redirect_to root_path, notice: 'Appointment updated successfully!'
+      redirect_to appointments_path, notice: 'Appointment updated successfully!'
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def update_status
+    @appointment.update(status: params[:status])
+    redirect_to appointments_path, notice: 'Appointment status updated sucessfully'
   end
 
   def new
@@ -34,6 +37,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @service = Service.find(params[:service_id])
     @appointment.service_id = @service.id
+    @appointment.status = "Scheduled"
 
     if @appointment.save
       redirect_to appointment_path(@appointment), notice: 'Appointment scheduled successfully!'
@@ -55,5 +59,13 @@ class AppointmentsController < ApplicationController
 
   def appointment_params
     params.require(:appointment).permit(:datetime, :reason, :comments, :fee, :status, :pet_id)
+  end
+
+  def fetch_veterinary_appointments
+    Appointment.joins(service: :veterinary).where(services: { veterinary: current_user.veterinary }).where(status: 'Scheduled')
+  end
+
+  def fetch_user_appointments(status)
+    Appointment.joins(:pet).where(pets: { user_id: current_user.id }).where(status: status)
   end
 end

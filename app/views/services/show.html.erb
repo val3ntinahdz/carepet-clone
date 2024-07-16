@@ -1,6 +1,6 @@
 <div class= "container">
   <div class="p-3">
-    <%= link_to "", veterinary_path(@veterinary), class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
+    <%= link_to "", request.referer, class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
   </div>
   <div class="row">
     <h2><%= @service.name %></h2>
@@ -8,5 +8,8 @@
   <div class="row">
     <p><%= @service.category %></h2>
   </div>
-  <%= link_to "Book an Appointment!", new_service_appointment_path(service_id: @service.id), class: "orange-btn" %>
+
+  <% unless current_user.veterinary.present? %>
+    <%= link_to "Book an Appointment!", new_service_appointment_path(service_id: @service.id), class: "orange-btn" %>
+  <% end %>
 </div>
