@@ -1,0 +1,4 @@
+<%#= turbo_stream.remove @allergy %>
+<%= turbo_stream.remove :_top do %>
+  <%= render partial: "allergy", locals: { allergy: @allergy } %>
+<% end %>

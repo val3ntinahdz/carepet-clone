@@ -71,6 +71,7 @@ end
 gem "devise"
 
 gem "bootstrap", "~> 5.2"
+# gem "bootstrap"
 
 gem "simple_form"
 
