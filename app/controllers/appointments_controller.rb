@@ -31,6 +31,7 @@ class AppointmentsController < ApplicationController
   def new
     @service = Service.find(params[:service_id])
     @appointment = Appointment.new
+    @appointments = Appointment.joins(service: :veterinary).where(services: { veterinary_id: @service.veterinary_id })
   end
 
   def create
