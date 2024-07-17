@@ -1,43 +1,53 @@
-<%unless current_user.pets.empty? %>
-    <div class="paw" style="width:400px; height:400px; margin-top: 30%;">
-      <div class="pad">
-        <%= link_to pet_trainings_path(current_user.pets.first) do%>
+<div data-controller="dashboard">
+  <div class="swiper-container dashboard">
+    <div class="swiper-wrapper">
+    <%unless @pets.empty? %>
+    <% @pets.each do |pet| %>
+      <div class="swiper-slide">
+        <div class="paw" style="width:400px; height:400px; margin-top: 30%;">
+          <div class="pad">
+            <%= link_to pet_trainings_path(pet) do%>
+              <div class="toe toe-1">
+                <i class="fa-solid fa-dumbbell paw-icon"></i>
+              </div>
+            <% end %>
+            <%= link_to pet_nutritions_path(pet) do %>
+              <div class="toe toe-2">
+                <i class="fa-solid fa-bowl-food paw-icon"></i>
+              </div>
+            <% end %>
+            <%= link_to appointments_path(pet) do %>
+              <div class="toe toe-3">
+                <i class="fa-solid fa-calendar-check paw-icon"></i>
+              </div>
+            <% end %>
+            <%= link_to pet_path(pet) do%>
+              <%= cl_image_tag(pet.photo.key, class: "pad-img", alt: "pet-avatar") %>
+            <% end %>
+          </div>
+          <p class="pet-data"><%= pet.name %></p>
+        </div>
+      </div>
+        <% end %>
+    </div>
+  </div>
+    <% else %>
+      <div class="paw" style="width:400px; height:400px; margin-top: 30%;">
+        <div class="pad">
+          <!-- <img src="pet_1.png" class="pad-img"> -->
           <div class="toe toe-1">
-            <i class="fa-solid fa-dumbbell paw-icon"></i>
           </div>
-        <% end %>
-        <%= link_to pet_nutritions_path(current_user.pets.first) do %>
           <div class="toe toe-2">
-            <i class="fa-solid fa-bowl-food paw-icon"></i>
           </div>
-        <% end %>
-        <%= link_to appointments_path do %>
           <div class="toe toe-3">
-            <i class="fa-solid fa-calendar-check paw-icon"></i>
           </div>
-        <% end %>
-        <%= link_to pet_path(current_user.pets.first) do%>
-          <%= cl_image_tag(current_user.pets.first.photo.key, class: "pad-img", alt: "pet-avatar") %>
-        <% end %>
+          <a href="/pets/new" style="text-decoration: none;">
+            <div class="empty-pad">
+                <i class="fa-solid fa-plus" style="color: white; font-size: 300%;"></i>
+            </div>
+          </a>
+        </div>
+        <p class="pet-data">Add your first pet!</p>
       </div>
-      <p class="pet-data"><%= current_user.pets.first.name %></p>
-    </div>
-  <% else %>
-    <div class="paw" style="width:400px; height:400px; margin-top: 30%;">
-      <div class="pad">
-        <!-- <img src="pet_1.png" class="pad-img"> -->
-        <div class="toe toe-1">
-        </div>
-        <div class="toe toe-2">
-        </div>
-        <div class="toe toe-3">
-        </div>
-        <a href="/pets/new" style="text-decoration: none;">
-          <div class="empty-pad">
-              <i class="fa-solid fa-plus" style="color: white; font-size: 300%;"></i>
-          </div>
-        </a>
-      </div>
-      <p class="pet-data">Add your first pet!</p>
-    </div>
-  <%end%>
+    <%end%>
+  </div>
