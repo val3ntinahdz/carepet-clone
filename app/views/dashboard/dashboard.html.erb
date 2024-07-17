@@ -1,3 +1,4 @@
+<% unless current_user.veterinary.present? %>
 <div data-controller="dashboard">
   <div class="swiper-container dashboard">
     <div class="swiper-wrapper">
@@ -51,3 +52,18 @@
       </div>
     <%end%>
   </div>
+<% else %>
+<h1 class="display-6 p-3 bg-light sticky-top">Upcoming appointments</h1>
+<div class="container bg-light" style="padding-bottom: 100px">
+  <% @appointments.each do |appointment|%>
+    <div class="card text-bg-light mb-3" style="max-width: 18rem; margin: 0 auto;">
+      <div class="card-header"><%= appointment.datetime %></div>
+        <div class="card-body">
+          <h5 class="card-title"><%= appointment.reason %></h5>
+          <p class="card-text">For <%= appointment.pet.name %> (Owner is <%= appointment.pet.user.first_name %>)</p>
+          <%= link_to "Go to", appointment_path(appointment), class: "orange-btn" %>
+        </div>
+    </div>
+  <% end %>
+</div>
+<% end %>
