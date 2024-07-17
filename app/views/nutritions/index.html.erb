@@ -115,7 +115,7 @@
     <% breakfast = @nutrition_data.where(date: Date.today).first %>
       <% today_index = @nutrition_data.index(breakfast) %>
 		    <% @nutrition_data.rotate(today_index).each_slice(3) do |meals_slice| %>
-      <div class="swiper-slide<%= ' active' if meals_slice.first.date == Date.today %>">
+      <div class="swiper-slide">
         <div class="d-flex flex-column align-items-center">
           <p><strong><%= meals_slice.first.date.strftime("%A, %B %e, %Y") %></strong></p>
             <% meals_slice.each_with_index do |meal, index| %>
