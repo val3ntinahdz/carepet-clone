@@ -1,0 +1,88 @@
+.paw {
+  position: relative;
+  margin: auto auto;
+}
+
+.pad {
+  position: absolute;
+  left: 25%;
+  top: 35%;
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+}
+
+.toe {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FE8D36;
+  box-shadow: 0 0 15px #FE8D36;
+}
+
+.toe:hover {
+  background-color: #d46d1f;
+  transition: background-color 0.3s ease;
+}
+
+.pad-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #FE8D36;
+  box-shadow: 0 0 15px #FE8D36;
+}
+
+.pad-img:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.paw-icon {
+  font-size: 200%;
+  color: white;
+}
+
+.toe-1 {
+  /* transform: translateX(-50px) translateY(-80px); */
+  transform: translateX(-50%) translateY(-80%);
+  /* outline-offset: -10px; */
+}
+
+.toe-2 {
+  transform: translateX(75%) translateY(-130%);
+}
+
+.toe-3 {
+  transform: translateX(200%) translateY(-80%);
+}
+
+.pet-data {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.empty-pad {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FE8D36;
+  border: 3px solid #FE8D36;
+  box-shadow: 0 0 15px #FE8D36;
+}
+
+.empty-pad:hover {
+  background-color: #d46d1f;
+  transition: background-color 0.3s ease;
+}

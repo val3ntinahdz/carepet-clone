@@ -1,0 +1,9 @@
+<%= simple_form_for @allergy, url: allergy_path(@allergy), method: :patch do |f| %>
+  <%= f.association :allergen %>
+  <%= f.input :detected_on, html5: true %>
+  <%= f.input :severity, collection: ["Low", "Mid", "High"] %>
+  <%= f.input :reactions, class: "text-dark" %>
+  <%= f.input :comments, class: "text-dark" %>
+  <%= f.submit "Add", class: 'petbutton' %>
+<% end %>
+<br>

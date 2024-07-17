@@ -1,0 +1,7 @@
+<%= simple_form_for @vaccination, url: vaccination_path(@vaccination), method: :patch do |f| %>
+  <%= f.association :vaccine %>
+  <%= f.input :date, html5: true %>
+  <%= f.input :comments %>
+  <%= f.submit "Add", class:'petbutton' %>
+<% end %>
+<br>

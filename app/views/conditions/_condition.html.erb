@@ -1,0 +1,15 @@
+<div id="_top">
+  <div class="px-2">
+    <p class="fw-bold"><%= condition.disease.name %></p>
+    <p> - Diagnosis date: <%= condition.diagnosis_date %></p>
+    <p> - Recovery date: <%= condition.recovery_date %></p>
+    <p> - Comments: <%= condition.comments %></p>
+  </div>
+
+  <%= turbo_frame_tag :edit_condition %>
+  <div class="d-flex justify-content-center">
+    <%= link_to "Edit", edit_condition_path(condition), class: "petbutton text-decoration-none mx-2 px-3", data: {turbo_frame: :edit_condition} %>
+    <%= link_to "Delete", condition_path(condition), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "petbutton text-decoration-none" %>
+  </div>
+  <hr>
+</div>

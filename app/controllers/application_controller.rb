@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :address, :phone_number])
   end
+
+  def after_sign_in_path_for(resource)
+    # Define the path you want to redirect to. For example:
+    dashboard_path # or any other path
+  end
 end

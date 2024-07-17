@@ -6,10 +6,9 @@ class PetsController < ApplicationController
   end
 
   def show
-    @applied_vaccines = @pet.vaccines
-    @missing_vaccines = Vaccine.all - @applied_vaccines
+    @vaccinations = @pet.vaccinations
     @conditions = @pet.conditions
-    @allergies = @pet.allergies
+    @allergies = @pet.allergies.order(:id)
   end
 
   def new
