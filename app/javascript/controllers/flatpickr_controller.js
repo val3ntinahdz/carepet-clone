@@ -3,14 +3,9 @@ import flatpickr from "flatpickr";
 
 // Connects to data-controller="flatpickr"
 export default class extends Controller {
-  static targets = [ "dateTime" ];
+  static targets = ['date']
 
   connect() {
-    flatpickr(this.dateTimeTarget, {
-      enableTime: true,
-      altInput: true,
-      altFormat: "F j, Y h:i K",
-      dateFormat: "Y-m-d H:i",
-    });
+    flatpickr(this.dateTarget, {})
   }
 }

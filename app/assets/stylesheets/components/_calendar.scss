@@ -22,20 +22,14 @@
   }
 }
 
-.booking {
-  color: white;
-  padding: 3px;
-  border-radius: 50%;
-  height: 25px;
-  background: #1EDD88;
-  transition: background 0.3s ease;
-  margin: 5px 0;
-  font-size: 10px;
+.available {
+  color: rgb(86, 171, 86);
+  font-size: 1rem;
 }
 
-.booking:hover {
-  background: #1BCB7F;
-  color: white;
+.unavailable {
+  color: rgb(193, 113, 0);
+  font-size: 1rem;
 }
 
 .calendar-heading {

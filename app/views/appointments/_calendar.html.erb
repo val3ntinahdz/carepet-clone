@@ -1,9 +1,9 @@
 <%= month_calendar(events: @appointments, attribute: :datetime, end_attribute: :end_time) do |date, appointments| %>
-  <div class="day">
+  <div class="day <%= 'today' if date == Date.today %>">
     <%= date %>
-    <% appointments.each do |appointment| %>
-      <div class="booking">
-        <i class="fas fa-paw"></i>
+    <% unless appointments.empty? %>
+      <div class="unavailable">
+        <i class="fas fa-paw mt-2"></i>
       </div>
     <% end %>
   </div>
