@@ -1,10 +1,25 @@
+<div class="dashboard-banner">
+    <div class="d-flex justify-content-between">
+      <div class="d-flex align-items-center m-2 py-4">
+        <% if current_user.photo.nil? %>
+        <%= cl_image_tag(current_user.photo.key, class: "user-avatar" )%>
+        <% else %>
+        <%= image_tag("user-default-avatar.webp", class: "user-avatar" ) %>
+        <% end %>
+        <h1 style= "font-size: 20px; margin: 0px 15px">Welcome, <%= current_user.first_name %></h1>
+      </div>
+     <i class="fa-regular fa-bell"></i>
+    </div>
+  </div>
+
 <div data-controller="dashboard">
-  <div class="swiper-container dashboard">
+  <div class="swiper-container dashboard" style="margin-top:-40px; background: white; border-radius: 30px">
     <div class="swiper-wrapper">
-    <%unless @pets.empty? %>
+    <% unless @pets.empty? %>
     <% @pets.each do |pet| %>
       <div class="swiper-slide">
-        <div class="paw" style="width:400px; height:400px; margin-top: 30%;">
+        <div class="paw">
+          <h3 class="pet-data"><%= pet.name %></h3>
           <div class="pad">
             <%= link_to pet_trainings_path(pet) do%>
               <div class="toe toe-1">
@@ -25,16 +40,34 @@
               <%= cl_image_tag(pet.photo.key, class: "pad-img", alt: "pet-avatar") %>
             <% end %>
           </div>
-          <p class="pet-data"><%= pet.name %></p>
         </div>
+           <div class="reminders-container">
+            <div class="reminders">
+              <h2>Reminders</h2>
+              <div class="reminder">
+                <i class="fa-solid fa-dumbbell"></i>
+                <p>Training session with Max</p>
+                <p>Today at 3:00 PM</p>
+              </div>
+              <div class="reminder">
+                <i class="fa-solid fa-bowl-food"></i>
+                <p>Feed Max</p>
+                <p>Today at 6:00 PM</p>
+              </div>
+              <div class="reminder">
+                <i class="fa-solid fa-calendar-check"></i>
+                <p>Appointment with Dr. Smith</p>
+                <p>Tomorrow at 10:00 AM</p>
+              </div>
+            </div>
+          </div>
       </div>
-        <% end %>
+      <% end %>
     </div>
   </div>
     <% else %>
-      <div class="paw" style="width:400px; height:400px; margin-top: 30%;">
+      <div class="paw">
         <div class="pad">
-          <!-- <img src="pet_1.png" class="pad-img"> -->
           <div class="toe toe-1">
           </div>
           <div class="toe toe-2">
