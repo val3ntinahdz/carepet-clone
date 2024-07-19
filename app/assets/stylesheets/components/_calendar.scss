@@ -6,7 +6,7 @@
     margin: 0 auto;
   }
   th, td {
-    width: 10.28%;
+    width: 14.28%;
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
@@ -22,10 +22,10 @@
   }
 }
 
-.available {
-  color: rgb(86, 171, 86);
-  font-size: 1rem;
-}
+// .available {
+//   color: rgb(86, 171, 86);
+//   font-size: 1rem;
+// }
 
 .unavailable {
   color: rgb(193, 113, 0);
@@ -41,4 +41,18 @@
   .btn {
     margin: 0 5px;
   }
+}
+
+.flatpickr-calendar {
+  width: 100%;
+  max-width: 400px;
+}
+
+.flatpickr-time {
+  width: 100%;
+}
+
+#calendar {
+  cursor: pointer;
+  width: 100%;
 }

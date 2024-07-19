@@ -1,5 +1,5 @@
-<%= month_calendar(events: @appointments, attribute: :datetime, end_attribute: :end_time) do |date, appointments| %>
-  <div class="day <%= 'today' if date == Date.today %>">
+<%= month_calendar(events: @appointments, attribute: :datetime) do |date, appointments| %>
+  <div class="day">
     <%= date %>
     <% unless appointments.empty? %>
       <div class="unavailable">
