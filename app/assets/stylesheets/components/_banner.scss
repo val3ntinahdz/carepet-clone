@@ -50,6 +50,20 @@
   padding-top: 500px;
 }
 
+.nutrition-banner,
+.training-banner,
+.dashboard-banner {
+  background: radial-gradient(circle at 0% 10%, rgb(244, 127, 46), rgb(252, 103, 28));
+  padding: 30px 20px;
+  height: 300px;
+  color: white;
+
+  .weight-text {
+  font-size: 40px;
+  font-weight: bold;
+  }
+}
+
 .banner .logo {
   max-width: 90%;
   margin-top: 220px;
@@ -58,12 +72,18 @@
 }
 
 
+
 // // Small devices (landscape phones, 576px and up)
 // @media (min-width: 576px) {
 //   .cards {
 //     grid-template-columns: 1fr;
 //   }
 // }
+
+
+.dashboard-banner {
+  height: 200px;
+}
 
 // .gradient-overlay {
 //   position: absolute;
@@ -89,3 +109,4 @@
 // .carousel-container {
 //   position: relative;
 // }
+

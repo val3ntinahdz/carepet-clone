@@ -1,9 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="nutrition"
+// Connects to data-controller="training"
 export default class extends Controller {
   connect() {
-    new Swiper( '.swiper-container.nutrition', {
+    new Swiper( '.swiper-container.training', {
       effect: 'coverflow',
       grabCursor: true,
       loop: true,
