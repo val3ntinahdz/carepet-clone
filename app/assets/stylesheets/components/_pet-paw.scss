@@ -34,8 +34,9 @@
 
 .pad-img {
   width: 100%;
-  height: 100%;
+  height: 200px;
   border-radius: 50%;
+  background-position: center;
   border: 3px solid #FE8D36;
   box-shadow: 0 0 15px #FE8D36;
   object-fit: cover;
