@@ -1,28 +1,38 @@
-<div class="petnew container d-flex justify-content-center py-5">
-  <div class="rounded-3 p-3 text-bg-light shadow p-3 mb-5 bg-body-tertiary rounded" style="color: black">
-    <div class="m-3 text-center", style="color: black"><h2>Sign up 🐾</h2></div>
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
+<div class="text-center form3">
+  <h1>Sign Up</h1>
+  <p>We will be glad to have you in our community!</p>
+</div>
+<div class="container form2">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs pt-2">
+      <%= f.input :first_name,
+                  required: true,
+                  placeholder: "John" %>
+      <%= f.input :last_name,
+                  required: true,
+                  placeholder: "Snow" %>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" },
+                  placeholder: "email@something.com"%>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" },
+                  placeholder: "******"%>
+      <%= f.input :confirm_password,
+                  required: true,
+                  input_html: { autocomplete: "new-password" },
+                  placeholder: "******" %>
+    </div>
 
-      <div class="form-inputs">
-        <%= f.input :email,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" }%>
-        <%= f.input :password,
-                    required: true,
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation,
-                    required: true,
-                    input_html: { autocomplete: "new-password" } %>
-      </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Sign up", class: "orange-btn" %>
-      </div>
-    <% end %>
-
-    <%= render "devise/shared/links" %>
+    <div class="d-flex justify-content-center py-3">
+      <%= f.button :submit, "Sign up", class: "btn-sign", data: { controller: "redirect-refresh" } %>
+    </div>
+  <% end %>
+  <div class="form-actions d-flex justify-content-center pb-4 pt-2">
+    Already have an account? <%= link_to "Sign in", new_session_path(resource_name), class: "text-decoration-none text-reset fw-bold ps-2", data: { controller: "redirect-refresh" } %>
   </div>
 </div>

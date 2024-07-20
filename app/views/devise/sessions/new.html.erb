@@ -1,23 +1,41 @@
-<div class="petnew container d-flex justify-content-center py-5">
+<%# <div class="petnew container d-flex justify-content-center py-5">
   <div class="rounded-3 p-3 text-bg-light shadow p-3 mb-5 bg-body-tertiary rounded" style="color: black">
     <div class="m-3 text-center", style="color: black"><h2>Log in 🐾</h2></div>
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-inputs">
-        <%= f.input :email,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" } %>
-        <%= f.input :password,
-                    required: false,
-                    input_html: { autocomplete: "current-password" } %>
+  </div>
+</div> %>
+<div class="pb-4 d-flex justify-content-center">
+  <%= image_tag("banner-log", class: "background-img") %>
+</div>
+<div class="container form">
+  <div class="py-3 d-flex justify-content-center text-center">
+    <h3>
+      Welcome Back
+      <br>
+      Let's get you signed in!
+    </h3>
+  </div>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  placeholder: "email@something.com",
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: false,
+                  placeholder: "******",
+                  input_html: { autocomplete: "current-password" } %>
+      <div class="d-flex justify-content-between pt-2">
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <%= link_to "Forgot password?", new_password_path(resource_name), class: "text-decoration-none text-reset fw-bold" %>
       </div>
+    </div>
 
-      <div class="form-actions">
-        <%= f.button :submit, "Log in", class: "orange-btn" %>
-      </div>
-    <% end %>
-
-    <%= render "devise/shared/links" %>
+    <div class="d-flex justify-content-center py-3">
+      <%= f.button :submit, "Sign in", class: "btn-sign", data: { controller: "redirect-refresh" } %>
+    </div>
+  <% end %>
+  <div class="d-flex justify-content-center py-4">
+    Don't have an account? <%= link_to "Sign up", new_registration_path(resource_name), class: "text-decoration-none text-reset fw-bold ps-2", data: { controller: "redirect-refresh" } %>
   </div>
 </div>

@@ -1,11 +1,12 @@
-<div class="container">
+<div class="container mb-5">
   <div class="d-flex justify-content-between m-2 py-4">
     <%= link_to "", pets_path(@pets), class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
-    <%= link_to '', edit_pet_path, class: 'navpet mx-1 fa-solid fa-pen-to-square fa-xl text-decoration-none' %>
+    <%= link_to '', pets_path(@pets), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Do you want to proceed?"}, class: 'fa-solid fa-trash fa-lg navpet text-decoration-none' %>
   </div>
 
-    <%= cl_image_tag(@pet.photo.key, class: "petshow petimg", alt: "pet-avatar") %>
+    <%= cl_image_tag(@pet.photo.key, class: "petshow", alt: "pet-avatar") %>
     <h2 class="mt-3 px-2 navpet"><%= @pet.name %></h2>
+    <p class="px-2"><%= @pet.breed %></p>
 
   <div class="rounded-top rounded-3 shadow mb-2">
     <ul class="nav nav-underline px-3" id="myTab" role="tablist">
@@ -25,12 +26,15 @@
 
     <div class="tab-content p-3" id="myTabContent">
       <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-        <div class="p-2">Breed: <%= @pet.breed %></div>
         <div class="p-2">Birth date: <%= @pet.birthday_date %></div>
+        <div class="p-2">Color: <%= @pet.color %></div>
         <div class="p-2">Gender: <%= @pet.gender %></div>
         <div class="p-2">Weight: <%= @pet.weight %> kg</div>
         <div class="p-2">Height: <%= @pet.height %> cm</div>
-        <div class="p-2">Color: <%= @pet.color %></div>
+
+        <div class="d-flex justify-content-center">
+          <%= link_to 'Edit', edit_pet_path, class: 'petbutton text-decoration-none px-3' %>
+        </div>
       </div>
 
       <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
