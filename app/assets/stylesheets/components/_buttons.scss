@@ -8,14 +8,13 @@
   font-size: 16px;
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease-in-out, transform 0.2s ease-out;
+  transition: 0.3s ease-in-out, transform 0.2s ease-out;
 }
 
 .orange-btn:hover {
   background: linear-gradient(to right, #f07735, $orange);
   transform: translateY(-2px);
 }
-
 
 .btn-search {
   margin-top: 20px;
@@ -32,7 +31,6 @@
     color: darken($orange, 10%);
   }
 }
-
 
 .switch-btn {
   display: flex;

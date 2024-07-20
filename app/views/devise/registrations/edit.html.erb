@@ -10,7 +10,7 @@
         <%= f.input :last_name, required: false %>
         <%= f.input :phone_number, required: false %>
         <%= f.input :address, required: false %>
-
+        <%= f.input :photo, as: :file, required: false %>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
