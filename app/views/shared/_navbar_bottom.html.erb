@@ -5,10 +5,12 @@
     <span class="nav-text-bottom">Home</span>
     <% end %>
 
-    <a href="/veterinaries" class="nav-link-bottom">
-    <i class="fas fa-search"></i>
-    <span class="nav-text-bottom">Search</span>
-    </a>
+    <%unless current_user.veterinary.present? %>
+      <a href="/veterinaries" class="nav-link-bottom">
+      <i class="fas fa-search"></i>
+      <span class="nav-text-bottom">Search</span>
+      </a>
+    <% end %>
 
     <%= link_to "/pets", class: 'nav-link-bottom' do %>
       <i class="fa-solid fa-paw"></i>

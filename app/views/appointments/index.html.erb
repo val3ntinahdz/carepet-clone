@@ -1,8 +1,7 @@
 <div class="scheduled-appointments-container">
-  <div class="p-3">
-    <%= link_to "", request.referer, class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
+  <div class="appointments-banner">
+    <h1 class="appointments-title text-white text-center mt-3">Appointments</h1>
   </div>
-  <h1 class="appointments-title">Appointments</h1>
   <% if current_user.veterinary.present? %>
     <%= render 'appointments_section', title: 'Scheduled Appointments', appointments: @veterinary_appointments %>
   <% else %>
