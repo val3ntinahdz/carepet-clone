@@ -1,367 +1,42 @@
-<h1 class="mb-5"><%= @pet.name.capitalize %>'s Training Plan</h1>
+<div class="training-banner">
+    <div class="d-flex align-items-center m-2 py-4">
+      <%= link_to "", pets_path(@pets), class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none", style: "color: white" %>
+      <h1 style= "font-size: 20px; margin: 0px 15px"><%= @pet.name.capitalize %>'s Training Plans</h1>
+  </div>
+  <i class="fa-solid fa-weight-scale"></i> Current Weight:
+  <p class= "weight-text"><%= @pet.weight %> Kg</p>
+</div>
 
-<style>
-
-.carousel {
-  cursor: grab;
- }
-
-.carousel-item {
-  width: 90%;
-  height: 100%;
-  display: flex;
-  margin: 0px 50px;
-  padding: 20px;
-  border: solid 1px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-}
-
-  .training-card {
-    background-color: #FFF5EC;
-    width: 600px;
-    margin: 10px auto;
-    padding: 30px;
-    border: none;
-    border-radius: 20px;
-  }
-
-   .details-card {
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.07);
-    border-radius: 20px;
-    align-items: center;
-   }
-
-  .nutrition {
-    width: 38%;
-   }
-
-
-   .duration {
-    width: 38%;
-    margin: 0 10px;
-   }
-
-  .calories-burned {
-    width: 24%;
-  }
-
-  i {
-  font-size: 1em;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-}
-
-  .btn-switch {
-    display: flex;
-    margin-top: -5px;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.07);
-    border-radius: 20px;
-  }
-
- .form-check input, .form-check label {
-    cursor: pointer;
-  }
-
-   .btn-switch:hover {
-    display: flex;
-    justify-content: center;
-    border: solid 1px rgba(0, 0, 0, 0.2);
-  }
-
-   .checkbox {
-    height: 20px;
-  }
-
-  .checkbox:checked {
-    background-color: green;
-  }
-
- .form-switch .form-check-input:focus {
-    border: none;
-    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.07);;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
-}
-
-@media (max-width: 576px) {
-
-  .carousel-item {
-    margin: 0px 4px;
-  }
-
- .details-cards {
-    flex-direction: column;
-  }
-
-  .details-card {
-    width: 100%;
-    margin: 10px 0;
-  }
-}
-
-
-</style>
-
-<div class="carousel">
-  <div class="carousel-inner d-flex">
-    <% @training_data.each do |training| %>
-      <div class="carousel-item <%= 'active' if training.date == Date.today %>">
-        <div class="d-flex flex-column align-items-center">
+<div data-controller="training">
+	<div class="swiper-container training" style="margin-top:-40px; background: white; border-radius: 30px">
+		<div class="swiper-wrapper">
+      <% today_training = @training_data.where(date: Date.today).first %>
+      <% today_index = @training_data.index(today_training) %>
+      <% @training_data.rotate(today_index).each do |training| %>
+      <div class="swiper-slide">
+        <div class="training-slide d-flex flex-column align-items-center p-4" style="border-radius: 20px;">
           <p><strong><%= training.date.strftime("%A, %B %e, %Y") %></strong></p>
-              <div class="card training-card mx-2">
-                <div class="training-card-body">
-                <div class="d-flex justify-content-between mb-3">
-                    <p style="font-size: 22px"><strong><%= training.title.capitalize %></strong></p>
-                    <%= button_to mark_training_as_completed_path(pet_id: @pet.id, training_id: training.id), class: "btn btn-switch" do %>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input checkbox" type="checkbox" role="switch" id="flexSwitchCheck<%= training.id %>" <%= training.completed? ? "checked" : "" %> >
-                      <label class="form-check-label" for="flexSwitchCheck<%= training.id %>">Done</label>
-                    </div>
-                  <% end %>
+          <div class="training-card mx-2">
+            <div class="training-card-body">
+              <div class="d-flex justify-content-between mb-3">
+                <p style="font-size: 22px"><strong><%= training.title.capitalize %></strong></p>
+                <%= button_to mark_training_as_completed_path(pet_id: @pet.id, training_id: training.id), class: "btn switch-btn" do %>
+                <div class="form-check form-switch">
+                  <input class="form-check-input checkbox" type="checkbox" role="switch" id="flexSwitchCheck<%= training.id %>" <%= training.completed? ? "checked" : "" %> >
+                  <label class="form-check-label" for="flexSwitchCheck<%= training.id %>">Done</label>
                 </div>
-                  <div class="details-cards d-flex">
-                    <div class="details-card description"><i class="fa-solid fa-dumbbell"></i></i><p><%= training.description.capitalize %></p></div>
-                    <div class="details-card duration"><i class="fa-solid fa-clock"></i></i><p><%= training.duration %> minutes</p></div>
-                    <div class="details-card calories-burned"><i class="fa-solid fa-fire-flame-simple"></i><p><%= training.calories_burned %> calories burned</p></div>
-                  </div>
-                </div>
+                <% end %>
               </div>
+              <div class="details-cards d-flex">
+                <div class="details-card description"><i class="fa-solid fa-dumbbell"></i></i><p><%= training.description.capitalize %></p></div>
+                <div class="details-card duration"><i class="fa-solid fa-clock"></i></i><p><%= training.duration %> minutes</p></div>
+                <div class="details-card calories-burned"><i class="fa-solid fa-fire-flame-simple"></i><p><%= training.calories_burned %> calories burned</p></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
-
-
-<hr>
-
-<script>
-    window.addEventListener('load', function() {
-        document.querySelector('.loader').classList.add('d-none');
-    });
-</script>
-
-<style>
-
-.loader {
-  z-index: 9999;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-/* create the paw prints */
-.pad {
-    width: 25px;
-    height: 27px;
-    background-color: #654321;
-    -webkit-border-radius: 63px 63px 63px 63px / 108px     108px 72px 72px;
-    border-radius: 50%  50%  50%  50%  / 60%   60%         40%  40%;
-    display: block;
-    position: absolute;
-}
-.large {
-   width: 70px;
-   height: 80px;
-   transform: rotate(80deg);
-   left: 100px;
-   top: 50px;
-}
-.small-1 {
-   transform: rotate(50deg);
-   left: 145px;
-   top: 28px;
-}
-.small-2 {
-   transform: rotate(65deg);
-   left: 174px;
-   top: 50px;
-}
-.small-3 {
-   transform: rotate(98deg);
-   position: absolute;
-   left: 178px;
-   top: 87px;
-}
-.small-4 {
-   transform: rotate(140deg);
-   position: absolute;
-   left: 158px;
-   top: 117px;
-}
-
-/* position and animate */
-
-.paw-print-1 {
-  opacity: 0;
-  position: absolute;
-  left: 75px;
-  top: 300px;
-  transform: rotate(-40deg);
-  -webkit-animation: walk 3s linear infinite;
-  animation: /*keyframe*/walk /*duration*/3s /*transition*/linear /*repeat*/infinite;
-}
-.paw-print-2 {
-  opacity: 0;
-  position: absolute;
-  left: 275px;
-  top: 280px;
-  transform: rotate(-5deg);
-  -webkit-animation: walk 3s linear infinite 0.25s;
-  animation: walk 3s linear infinite /*delay*/0.25s;
-}
-.paw-print-3 {
-  opacity: 0;
-  position: absolute;
-  left: 375px;
-  top: 130px;
-  transform: rotate(-10deg);
-  -webkit-animation: walk 3s linear infinite 0.5s;
-  animation: walk 3s linear infinite 0.5s;
-}
-.paw-print-4 {
-  opacity: 0;
-  position: absolute;
-  left: 575px;
-  top: 280px;
-  transform: rotate(-20deg);
-  -webkit-animation: walk 3s linear infinite 0.75s;
-  animation: walk 3s linear infinite 0.75s;
-}
-.paw-print-5 {
-  opacity: 0;
-  position: absolute;
-  left: 725px;
-  top: 50px;
-  transform: rotate(10deg);
-  -webkit-animation: walk 3s linear infinite 1s;
-  animation: walk 3s linear infinite 1s;
-}
-.paw-print-6 {
-  opacity: 0;
-  position: absolute;
-  left: 875px;
-  top: 200px;
-  transform: rotate(10deg);
-  -webkit-animation: walk 3s linear infinite 1.25s;
-  animation: walk 3s linear infinite 1.25s;
-}
-.paw-print-7 {
-  opacity: 0;
-  position: absolute;
-  left: 1075px;
-  top: 50px;
-  transform: rotate(20deg);
-  -webkit-animation: walk 3s linear infinite 1.5s;
-  animation: walk 3s linear infinite 1.5s;
-}
-.paw-print-8 {
-  opacity: 0;
-  position: absolute;
-  left: 1150px;
-  top: 250px;
-  transform: rotate(10deg);
-  -webkit-animation: walk 3s linear infinite 1.75s;
-  animation: walk 3s linear infinite 1.75s;
-}
-
-/* walking effect animation keyframes */
-
-@-webkit-keyframes walk {
-  25%  {opacity: 1;}
-  100% {opacity: 0;}
-}
-
-@keyframes walk {
-  /* appear */
-  25%  {opacity: 1;}
-  /* disappear */
-  100% {opacity: 0;}
-}
-</style>
-
-<div class="loader">
-  <div class="paw-print-1">
-      <div class="pad large"></div>
-      <div class="pad small-1"></div>
-      <div class="pad small-2"></div>
-      <div class="pad small-3"></div>
-      <div class="pad small-4"></div>
-  </div>
-
-  <div class="paw-print-2">
-      <div class="pad large"></div>
-      <div class="pad small-1"></div>
-      <div class="pad small-2"></div>
-      <div class="pad small-3"></div>
-      <div class="pad small-4"></div>
-  </div>
-
-  <div class="paw-print-3">
-      <div class="pad large"></div>
-      <div class="pad small-1"></div>
-      <div class="pad small-2"></div>
-      <div class="pad small-3"></div>
-      <div class="pad small-4"></div>
-  </div>
-
-  <div class="paw-print-4">
-      <div class="pad large"></div>
-      <div class="pad small-1"></div>
-      <div class="pad small-2"></div>
-      <div class="pad small-3"></div>
-      <div class="pad small-4"></div>
-  </div>
-
-  <div class="paw-print-5">
-      <div class="pad large"></div>
-      <div class="pad small-1"></div>
-      <div class="pad small-2"></div>
-      <div class="pad small-3"></div>
-      <div class="pad small-4"></div>
-  </div>
-
-  <div class="paw-print-6">
-      <div class="pad large"></div>
-      <div class="pad small-1"></div>
-      <div class="pad small-2"></div>
-      <div class="pad small-3"></div>
-      <div class="pad small-4"></div>
-  </div>
-
-  <div class="paw-print-7">
-      <div class="pad large"></div>
-      <div class="pad small-1"></div>
-      <div class="pad small-2"></div>
-      <div class="pad small-3"></div>
-      <div class="pad small-4"></div>
-  </div>
-
-  <div class="paw-print-8">
-      <div class="pad large"></div>
-      <div class="pad small-1"></div>
-      <div class="pad small-2"></div>
-      <div class="pad small-3"></div>
-      <div class="pad small-4"></div>
-  </div>
-</div>
-
-<!--
-
-<% @training_data.each do |training| %>
-  <div class="training-card">
-    <p><%= training.date.strftime("%A, %B %e, %Y") %></p>
-    <p><%= training.title.capitalize %></p>
-    <p>Description: <%= training.description %></p>
-    <p>Duration: <%= training.duration %></p>
-    <p>Calories Burned: <%= training.calories_burned %></p>
-    <%= button_to mark_training_as_completed_path(pet_id: @pet.id, training_id: training.id), class: "" do %>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <%= training.completed? ? "checked" : "" %> >
-              <label class="form-check-label" for="flexSwitchCheckDefault">Mark as Completed</label>
-            </div>
-    <% end %>
-  </div>
-<% end %>
-
--->

@@ -2,7 +2,7 @@
   <h2 class="section-title"><%= title %></h2>
   <div class="appointments-grid">
     <% appointments.each do |appointment| %>
-      <%= render 'appointment_card', appointment: appointment, show_cancel_button: show_cancel_button %>
+      <%= render 'appointment_card', appointment: appointment %>
     <% end %>
   </div>
 </div>

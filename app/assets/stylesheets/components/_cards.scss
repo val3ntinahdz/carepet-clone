@@ -78,3 +78,94 @@
     margin-right: 5px;
   }
 }
+
+.meal-card-0,
+.meal-card-1,
+.meal-card-2 {
+  margin: 10px auto;
+  padding: 30px;
+  border: none;
+  border-radius: 20px;
+}
+
+ .meal-card-0 {
+  background-color: #FFF5EC;
+ }
+
+ .meal-card-1 {
+  background-color: #C5DDDA;
+ }
+
+ .meal-card-2 {
+  background-color: rgba(0, 0, 255, 0.1);
+ }
+
+ .details-card {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.07);
+  border-radius: 20px;
+  align-items: center;
+ }
+
+.details-card i {
+font-size: 1em;
+padding: 10px;
+margin-bottom: 10px;
+background-color: rgba(0, 0, 0, 0.1);
+border-radius: 50%;
+}
+
+.food-items {
+  width: 38%;
+ }
+
+ .notes {
+  width: 38%;
+  margin: 0 10px;
+ }
+
+.calories {
+  width: 24%;
+}
+
+.training-card {
+  background-color: #FFF5EC;
+  margin: 10px auto;
+  padding: 30px;
+  border: none;
+  border-radius: 20px;
+}
+
+
+.nutrition {
+  width: 38%;
+ }
+
+
+ .duration {
+  width: 38%;
+  margin: 0 10px;
+ }
+
+.calories-burned {
+  width: 24%;
+}
+
+
+@media (max-width: 576px) {
+
+  .details-cards {
+     flex-direction: column;
+   }
+
+   .details-card {
+     width: 100%;
+     margin: 10px 0;
+   }
+
+   .meal-card-0,
+   .meal-card-1,
+   .meal-card-2 {
+     width: 105%;
+   }
+ }

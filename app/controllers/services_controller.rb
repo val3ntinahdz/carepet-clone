@@ -1,5 +1,4 @@
 class ServicesController < ApplicationController
-
   def index
     if current_user.veterinary.present?
       @services = current_user.veterinary.services
@@ -33,7 +32,7 @@ class ServicesController < ApplicationController
 
   def render_map_and_search_results
     @veterinaries = []
-    
+
     if params[:query].present?
       @services = Service.search_by(params[:query])
       @veterinaries = @services.map { |service| service.veterinary.user }

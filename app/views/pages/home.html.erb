@@ -1,28 +1,8 @@
-<div class="carousel-container">
-  <h1>The app supported with AI that helps you take care of your pets.</h1>
-
-  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="gradient-overlay"></div>
-        <%= image_tag "img1.jpg", class:"d-block w-100" %>
-      </div>
-      <div class="carousel-item">
-        <div class="gradient-overlay"></div>
-        <%= image_tag "img2.jpg", class:"d-block w-100" %>
-      </div>
-      <div class="carousel-item">
-        <div class="gradient-overlay"></div>
-        <%= image_tag "img3.jpg", class:"d-block w-100" %>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="banner">
-  <p>Select an option and join our comunity to give our furry friends the best.</p>
+  <div class="logo"><%= image_tag("carepet-logo.png") %></div>
+  <p>Get started</p>
+
   <div class="box">
     <div class="btn"><%= link_to "Pet Owner", pets_path(@pets), class: "orange-btn" %></div>
     <div class="btn"><%= link_to "Veterinary", pets_path(@pets), class: "orange-btn" %></div>
   </div>
-</div>

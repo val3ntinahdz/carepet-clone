@@ -1,4 +1,4 @@
-<div class="appointment-container">
+<div class="appointment-container mt-5">
   <div class="appointment-details">
     <h2><%= @appointment.reason %></h2>
     <p class="comments"><%= @appointment.comments %></p>
@@ -6,11 +6,28 @@
       <i class="fas fa-map-marker-alt"></i>
       <%= @appointment.service.veterinary.user.address %>
     </p>
-    <p class="veterinary">
-      <%= link_to "#{@appointment.service.veterinary.user.first_name} #{@appointment.service.veterinary.user.last_name}", veterinary_path(@appointment.service.veterinary), class: "text-decoration-none" %>
-    </p>
-    <p class="actions">
-      <%= link_to "Check my appointments", appointments_path, class: "orange-btn" %>
-    </p>
+    <% if current_user == @appointment.pet.user %>
+      <p class="veterinary">
+        <%= link_to "Dr. #{@appointment.service.veterinary.user.first_name} #{@appointment.service.veterinary.user.last_name}", veterinary_path(@appointment.service.veterinary), class: "text-decoration-none" %>
+      </p>
+    <% end%>
+    <p><strong>Date and Time</strong></p>
+    <span class="appointment-date">
+      <i class="fas fa-calendar-alt" style="color: #FE8D36;"></i>
+      <%= @appointment.datetime.strftime("%m.%d.%Y") %>
+    </span>
+    <span class="appointment-time">
+      <i class="far fa-clock" style="color: #FE8D36; margin-left: 8px;"></i>
+      <%= @appointment.datetime.strftime("%H:%M") %>
+    </span>
+    <hr class="mt-4">
+    <div class="actions mt-4 d-flex justify-content-center">
+      <% if current_user == @appointment.pet.user && @appointment.status == 'Scheduled' %>
+        <%= link_to "Reschedule", edit_appointment_path(@appointment), class: "orange-btn mx-3" %>
+        <%= button_to "Cancel", appointment_path(@appointment), method: :delete, data: { confirm: "Are you sure?" }, class: "orange-btn mx-3" %>
+      <% elsif current_user.veterinary.present? %>
+        <%= button_to "Mark as Completed", appointment_path(@appointment), method: :patch, params: { appointment: { status: 'Completed' } }, class: "orange-btn mx-2" %>
+      <% end %>
+    </div>
   </div>
 </div>

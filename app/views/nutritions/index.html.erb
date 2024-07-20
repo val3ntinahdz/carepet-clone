@@ -1,197 +1,27 @@
-<h1 class="mb-5"><%= @pet.name.capitalize %>'s Nutrition Plan</h1>
+<div class="nutrition-banner">
+    <div class="d-flex align-items-center m-2 py-4">
+      <%= link_to "", pets_path(@pets), class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none", style: "color: white" %>
+      <h1 style= "font-size: 20px; margin: 0px 15px"><%= @pet.name.capitalize %>'s Nutrition Plans</h1>
+  </div>
+  <i class="fa-solid fa-weight-scale"></i> Current Weight:
+  <p class= "weight-text"><%= @pet.weight %> Kg</p>
+</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<script>
-
-$(document).ready(function() {
-  // Find the active item and calculate its position
-  var activeItem = $('.carousel-item.active');
-  var carouselInner = $('.carousel-inner');
-  var carouselWidth = carouselInner.outerWidth();
-  var position = activeItem.position();
-
-  // Calculate the offset to center it in the viewport
-  var offset = position.left - (carouselWidth - activeItem.outerWidth()) / 2;
-
-  // Ensure the offset is within bounds to prevent cutting off the carousel
-  offset = Math.max(offset, 0); // Prevent negative scrollLeft
-  offset = Math.min(offset, carouselInner[0].scrollWidth - carouselWidth); // Prevent excessive scrollRight
-
-  // Set the scrollLeft property to center the active item
-  carouselInner.scrollLeft(offset);
-});
-
-// Drag to scroll horizontally
-$(document).ready(function() {
-  var startX = 0;
-  var isDragging = false;
-
-  $('.carousel-inner').on('mousedown touchstart', function(e) {
-    e.preventDefault(); // Prevent text selection
-    isDragging = true;
-    startX = e.pageX || e.originalEvent.touches[0].pageX;
-  });
-
-  $(document).on('mouseup touchend', function() {
-    isDragging = false;
-  });
-
-  $('.carousel-inner').on('mousemove touchmove', function(e) {
-    if (!isDragging) return;
-
-    e.preventDefault(); // Prevent text selection
-
-    var currentX = e.pageX || e.originalEvent.touches[0].pageX;
-    var distance = startX - currentX;
-
-    // Scroll horizontally based on the distance
-    this.scrollLeft += distance / 2;
-
-    startX = currentX;
-  });
-});
-
-</script>
-
-
-<style>
-
-.carousel {
-  cursor: grab;
- }
-
-.carousel-item {
-  width: 90%;
-  height: 100%;
-  display: flex;
-  margin: 0px 50px;
-  padding: 20px;
-  border: solid 1px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-}
-
-  .meal-card-0,
-  .meal-card-1,
-  .meal-card-2 {
-    width: 600px;
-    margin: 10px auto;
-    padding: 30px;
-    border: none;
-    border-radius: 20px;
-  }
-
-   .meal-card-0 {
-    background-color: #FFF5EC;
-   }
-
-   .meal-card-1 {
-    background-color: #C5DDDA;
-   }
-
-   .meal-card-2 {
-    background-color: rgba(0, 0, 255, 0.1);
-   }
-
-   .details-card {
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.07);
-    border-radius: 20px;
-    align-items: center;
-   }
-
-  .food-items {
-    width: 38%;
-   }
-
-
-   .notes {
-    width: 38%;
-    margin: 0 10px;
-   }
-
-  .calories {
-    width: 24%;
-  }
-
-  i {
-  font-size: 1em;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-}
-
-  .btn-switch {
-    display: flex;
-    margin-top: -5px;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.07);
-    border-radius: 20px;
-  }
-
- .form-check input, .form-check label {
-    cursor: pointer;
-  }
-
-   .btn-switch:hover {
-    display: flex;
-    justify-content: center;
-    border: solid 1px rgba(0, 0, 0, 0.2);
-  }
-
-   .checkbox {
-    height: 20px;
-  }
-
-  .checkbox:checked {
-    background-color: green;
-  }
-
- .form-switch .form-check-input:focus {
-    border: none;
-    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.07);;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
-}
-
-@media (max-width: 576px) {
-
-  .carousel-item {
-    margin: 0px 4px;
-  }
-
- .details-cards {
-    flex-direction: column;
-  }
-
-  .details-card {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .meal-card-0,
-  .meal-card-1,
-  .meal-card-2 {
-    width: 105%;
-  }
-}
-
-
-</style>
-
-
-<div class="carousel">
-  <div class="carousel-inner d-flex">
-    <% @nutrition_data.each_slice(3) do |meals_slice| %>
-      <div class="carousel-item <%= 'active' if meals_slice.first.date == Date.today %>">
-        <div class="d-flex flex-column align-items-center">
+<div data-controller="nutrition">
+	<div class="swiper-container nutrition", style="margin-top:-40px; background: white; border-radius: 30px">
+		<div class="swiper-wrapper">
+      <% today_meal = @nutrition_data.where(date: Date.today).first %>
+      <% today_index = @nutrition_data.index(today_meal) %>
+      <% @nutrition_data.rotate(today_index).each_slice(3) do |meals_slice| %>
+      <div class="swiper-slide">
+        <div class="meal-slide d-flex flex-column align-items-center p-4", style="border-radius: 20px;">
           <p><strong><%= meals_slice.first.date.strftime("%A, %B %e, %Y") %></strong></p>
-            <% meals_slice.each_with_index do |meal, index| %>
-              <div class="card meal-card-<%= index %> mx-2">
-                <div class="meal-card-body">
+          <% meals_slice.each_with_index do |meal, index| %>
+            <div class="meal-card-<%= index %> mx-2">
+              <div class="meal-card-body">
                 <div class="d-flex justify-content-between mb-3">
-                    <p style="font-size: 22px"><strong><%= meal.meal_type.capitalize %></strong></p>
-                    <%= button_to mark_meal_as_completed_path(pet_id: @pet.id, nutrition_id: meal.id), class: "btn btn-switch" do %>
+                  <p style="font-size: 22px"><strong><%= meal.meal_type.capitalize %></strong></p>
+                  <%= button_to mark_meal_as_completed_path(pet_id: @pet.id, nutrition_id: meal.id), class: "btn switch-btn" do %>
                     <div class="form-check form-switch">
                       <input class="form-check-input checkbox" type="checkbox" role="switch" id="flexSwitchCheck<%= meal.id %>" <%= meal.completed? ? "checked" : "" %> >
                       <label class="form-check-label" for="flexSwitchCheck<%= meal.id %>">Done</label>
@@ -199,36 +29,16 @@ $(document).ready(function() {
                   <% end %>
                 </div>
                   <div class="details-cards d-flex">
-                    <div class="details-card food-items"><i class="fa-solid fa-utensils"></i><p><%= meal.food_items.capitalize %></p></div>
-                    <div class="details-card notes"><i class="fa-regular fa-comment-dots"></i><p><%= meal.notes.capitalize %></p></div>
-                    <div class="details-card calories"><i class="fa-solid fa-fire-flame-simple"></i><p><%= meal.calories %> calories</p></div>
+                      <div class="details-card food-items"><i class="fa-solid fa-utensils"></i><p><%= meal.food_items.capitalize %></p></div>
+                      <div class="details-card notes"><i class="fa-regular fa-comment-dots"></i><p><%= meal.notes.capitalize %></p></div>
+                      <div class="details-card calories"><i class="fa-solid fa-fire-flame-simple"></i><p><%= meal.calories %> calories</p></div>
                   </div>
-
-                </div>
               </div>
+            </div>
             <% end %>
         </div>
       </div>
-    <% end %>
-  </div>
+      <% end %>
+		</div>
+	</div>
 </div>
-
-<!--
-
-<% @nutrition_data.each do |meal| %>
-  <div class="meal-card">
-    <p><%= meal.date.strftime("%A, %B %e, %Y") %></p>
-    <p><%= meal.meal_type.capitalize %></p>
-    <p>Meal: <%= meal.food_items %></p>
-    <p>Calories: <%= meal.calories %></p>
-    <p>Notes: <%= meal.notes %></p>
-    <%= button_to mark_meal_as_completed_path(pet_id: @pet.id, nutrition_id: meal.id), class: "" do %>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <%= meal.completed? ? "checked" : "" %> >
-              <label class="form-check-label" for="flexSwitchCheckDefault">Mark as Completed</label>
-            </div>
-    <% end %>
-  </div>
-<% end %>
-
--->

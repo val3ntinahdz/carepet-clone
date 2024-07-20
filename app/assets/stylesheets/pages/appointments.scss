@@ -103,15 +103,31 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px;
+      position: relative;
 
       &:hover {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         border: 1.5px solid $orange;
       }
 
+      .appointment-status {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgba(255, 255, 255, 0.687);
+        background-color: rgba(255, 124, 24, 0.874);
+        border-radius: 15px;
+        font-size: small;
+        padding: 5px 10px;
+      }
+
       .doctor-info {
         display: flex;
         align-items: center;
+        margin: 10px;
 
         img {
           border-radius: 50%;
@@ -133,9 +149,15 @@
             margin-bottom: 5px;
           }
 
-          .datetime, .location {
+          .location {
             font-size: 14px;
             color: #666;
+            margin-right: 10px;
+          }
+
+          .datetime {
+            font-size: 16px;
+            color:#333;
             margin-right: 10px;
           }
 
@@ -144,43 +166,45 @@
           }
         }
       }
-
-      .actions {
-        display: flex;
-        align-items: center;
-
-        .btn-details {
-          color: $orange;
-          border: none;
-          border-radius: 5px;
-          padding: 8px 16px;
-          text-decoration: none;
-          cursor: pointer;
-          transition: background-color 0.3s;
-          margin-right: 10px;
-
-          &:hover {
-            background-color: $orange;
-            color: white;
-          }
-        }
-
-        .btn-cancel {
-          color: $orange;
-          border-radius: 5px;
-          padding: 8px 16px;
-          text-decoration: none;
-          cursor: pointer;
-          border: 1px solid $orange;
-
-          &:hover {
-            background-color: lighten(rgb(252, 146, 17), 10%);
-            color: #fff;
-          }
-        }
-      }
     }
   }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+
+  .btn-details {
+    color: $orange;
+    border: 1px solid $orange;
+    border-radius: 5px;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    &:hover {
+      background-color: lighten(rgb(252, 146, 17), 10%);
+      color: white;
+    }
+  }
+
+  // .btn-cancel {
+  //   color: $orange;
+  //   border-radius: 5px;
+  //   padding: 8px 16px;
+  //   text-decoration: none;
+  //   cursor: pointer;
+  //   border: 1px solid $orange;
+
+  //   &:hover {
+  //     background-color: lighten(rgb(252, 146, 17), 10%);
+  //     color: #fff;
+  //   }
+  // }
 }
 
 @media (max-width: 768px) {
@@ -190,12 +214,13 @@
     padding: 10px;
 
     .doctor-info {
-      flex-direction: column;
+      flex-direction: row;
       align-items: flex-start;
+      width: 100%;
 
       img {
-        margin-right: 0;
-        margin-bottom: 10px;
+        margin-right: 10px;
+        margin-bottom: 0;
       }
 
       .appointment-details {
@@ -213,7 +238,16 @@
       .btn-details, .btn-cancel {
         width: 100%;
         text-align: center;
+        margin-bottom: 5px;
       }
     }
   }
+}
+
+.appointment-date, .appointment-time {
+  background-color: white;
+  border: 1px solid rgb(255, 123, 0);
+  border-radius: 7px;
+  padding: 8px 10px;
+  margin: 10px;
 }

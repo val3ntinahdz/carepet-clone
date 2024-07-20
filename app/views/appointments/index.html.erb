@@ -2,14 +2,14 @@
   <div class="p-3">
     <%= link_to "", request.referer, class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
   </div>
-  <h1 class="appointments-title">Your Appointments 🐾</h1>
+  <h1 class="appointments-title">Appointments</h1>
   <% if current_user.veterinary.present? %>
-    <%= render 'appointments_section', title: 'Scheduled Appointments', appointments: @veterinary_appointments, show_cancel_button: false %>
+    <%= render 'appointments_section', title: 'Scheduled Appointments', appointments: @veterinary_appointments %>
   <% else %>
-    <%= render 'appointments_section', title: 'Upcoming', appointments: @upcoming_appointments, show_cancel_button: true %>
-    <%= render 'appointments_section', title: 'Past', appointments: @past_appointments.first(3), show_cancel_button: false %>
+    <%= render 'appointments_section', title: 'Upcoming', appointments: @upcoming_appointments %>
+    <%= render 'appointments_section', title: 'Past', appointments: @completed_appointments.first(3) %>
 
-    <% unless @past_appointments.size < 3 %>
+    <% unless @completed_appointments.size < 3 %>
       <div class="see-all-link">
         <%= link_to "See All", "#" %>
       </div>

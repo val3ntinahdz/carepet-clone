@@ -1,12 +1,15 @@
 .paw {
   position: relative;
   margin: auto auto;
+  width: 400px;
+  height: 400px;
+  margin-top: 30px;
 }
 
 .pad {
   position: absolute;
   left: 25%;
-  top: 35%;
+  top: 15%;
   border-radius: 50%;
   width: 50%;
   height: 50%;
@@ -51,21 +54,19 @@
 
 .toe-1 {
   /* transform: translateX(-50px) translateY(-80px); */
-  transform: translateX(-50%) translateY(-80%);
+  transform: translateX(-50%) translateY(240%);
   /* outline-offset: -10px; */
 }
 
 .toe-2 {
-  transform: translateX(75%) translateY(-130%);
+  transform: translateX(75%) translateY(280%);
 }
 
 .toe-3 {
-  transform: translateX(200%) translateY(-80%);
+  transform: translateX(200%) translateY(240%);
 }
 
 .pet-data {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   text-align: center;
 }

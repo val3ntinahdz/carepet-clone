@@ -13,13 +13,15 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </head>
 
   <body>
     <%= yield %>
-    <%= render "shared/navbar_bottom" %>
+    <% if user_signed_in? %>
+      <%= render "shared/navbar_bottom" %>
+    <% end %>
     <%= render "shared/flashes" %>
   </body>
 </html>
