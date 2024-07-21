@@ -6,7 +6,8 @@
         <i class="fas fa-paw mt-2"></i>
       </div>
     <% end %>
-    <div class="d-none" data-calendar-target="form" data-action="mouseleave->calendar#closeModal">
+    <div id="triggerElement" data-action="mouseenter->calendar#openModal"></div>
+    <div class="d-none" data-calendar-target="form" data-action="mouseleave->calendar#startCloseModalTimer mouseenter->calendar#cancelCloseModalTimer">
       <%= simple_form_for [@service, @appointment], data: { controller: 'flatpickr', booked_dates: @booked_dates.to_json } do |f| %>
         <% month = Date.today.month%>
         <% month += 1 if Date.today.day > date.to_i %>
