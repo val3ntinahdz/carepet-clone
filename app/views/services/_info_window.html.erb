@@ -1,7 +1,8 @@
 <% if local_assigns[:veterinary] %>
   <div>
-    <h6><%= veterinary.first_name %> <%= veterinary.last_name %></h6>
-    <p><%= veterinary.address %></p>
+    <h6><%= veterinary.user.first_name %> <%= veterinary.user.last_name %></h6>
+    <p><%= veterinary.user.address %></p>
+    <%= link_to "View Profile", veterinary_path(veterinary.id), class: "orange-btn" %>
   </div>
 <% elsif local_assigns[:user] %>
   <div>
