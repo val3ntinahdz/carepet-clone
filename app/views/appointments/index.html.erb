@@ -1,13 +1,18 @@
 <div class="scheduled-appointments-container">
   <div class="appointments-banner">
-    <h1 class="appointments-title text-white text-center mt-3">Appointments</h1>
+    <h1 class="appointments-title text-center mt-3">Appointments</h1>
   </div>
   <% if current_user.veterinary.present? %>
-    <%= render 'appointments_section', title: 'Scheduled Appointments', appointments: @veterinary_appointments %>
+    <div class="veterinary-appointments">
+      <%= render 'appointments_section', title: 'Scheduled Appointments', appointments: @veterinary_appointments %>
+    </div>
   <% else %>
-    <%= render 'appointments_section', title: 'Upcoming', appointments: @upcoming_appointments %>
-    <%= render 'appointments_section', title: 'Past', appointments: @completed_appointments.first(3) %>
-
+    <div class="upcoming-appointments">
+      <%= render 'appointments_section', title: 'Upcoming', appointments: @upcoming_appointments %>
+    </div>
+    <div class="past-appointments">
+      <%= render 'appointments_section', title: 'Past', appointments: @completed_appointments.first(3) %>
+    </div>
     <% unless @completed_appointments.size < 3 %>
       <div class="see-all-link">
         <%= link_to "See All", "#" %>

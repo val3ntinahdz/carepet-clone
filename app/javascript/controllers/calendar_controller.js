@@ -25,11 +25,10 @@ export default class extends Controller {
     const fecha = event.currentTarget.dataset.fecha
     const selectedTimeElement = document.getElementById("selected_time")
     const month = parseInt(event.currentTarget.dataset.month) - 1
-    const selectedDate = new Date (2024, month, fecha, tiempo, 0, 0)
-    const selectedDateString = selectedDate.toLocaleString()
+    const selectedDate = new Date (2024, month, fecha, tiempo, 0, 0).toString()
     console.log(selectedDate)
 
-    this.savedDateTarget.innerText = selectedDateString
+    this.savedDateTarget.innerText = selectedDate
     this.inputTarget.value = selectedDate
     console.log(this.inputTarget.value)
   }
