@@ -21,6 +21,7 @@
   height: 40%;
   border-radius: 50%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #FE8D36;
@@ -48,13 +49,14 @@
 }
 
 .paw-icon {
+  margin-top: 10px;
   font-size: 200%;
   color: white;
 }
 
 .toe-1 {
   /* transform: translateX(-50px) translateY(-80px); */
-  transform: translateX(-50%) translateY(240%);
+  transform: translateX(-70%) translateY(240%);
   /* outline-offset: -10px; */
 }
 
@@ -63,7 +65,7 @@
 }
 
 .toe-3 {
-  transform: translateX(200%) translateY(240%);
+  transform: translateX(220%) translateY(240%);
 }
 
 .pet-data {

@@ -24,17 +24,20 @@
                 <div class="pad">
                   <%= link_to pet_trainings_path(pet) do %>
                     <div class="toe toe-1">
-                      <i class="fa-solid fa-dumbbell paw-icon"></i>
+                      <i class="fa-solid fa-dumbbell paw-icon" style="margin-top: 80px;"></i>
+                      <p style="margin-top: 40px; color: black">Training</p>
                     </div>
                   <% end %>
                   <%= link_to pet_nutritions_path(pet) do %>
                     <div class="toe toe-2">
-                      <i class="fa-solid fa-utensils paw-icon"></i>
+                      <i class="fa-solid fa-utensils paw-icon" style="margin-top: 80px;"></i>
+                      <p style="margin-top: 40px; color: black">Nutrition</p>
                     </div>
                   <% end %>
                   <%= link_to appointments_path(pet) do %>
                     <div class="toe toe-3">
-                      <i class="fa-solid fa-calendar-check paw-icon"></i>
+                      <i class="fa-solid fa-calendar-check paw-icon" style="margin-top: 80px;"></i>
+                      <p style="margin-top: 40px; color: black">Appointments</p>
                     </div>
                   <% end %>
                   <%= link_to pet_path(pet) do %>
@@ -42,7 +45,7 @@
                   <% end %>
                 </div>
               </div>
-              <div class="reminders-container p-3">
+              <div class="reminders-container m-4 p-3">
                 <div class="reminders">
                   <h2>Reminders</h2>
                   <% unless trainings_for_today?(pet)%>
@@ -53,11 +56,12 @@
                     </div>
                   <% else %>
                     <% unless all_daily_trainings_completed?(pet) %>
-                      <div class="specialist-card reminder-card">
-                        <i class="fa-solid fa-dumbbell"></i>
-                        <p>You still have to complete your training today!</p>
-                        <%= link_to "Details", pet_trainings_path(pet), class: "orange-btn" %>
-                      </div>
+                      <div class="reminder-card">
+                      <i class="fa-solid fa-dumbbell"></i>
+                        <div class="d-flex">
+                          <p>You still have to complete your training today!</p>
+                          <%= link_to "Details", pet_trainings_path(pet), class: "white-btn" %>
+                        </div>
                     <% else %>
                       <div class="specialist-card reminder-card">
                         <i class="fa-solid fa-dumbbell"></i>
@@ -73,11 +77,13 @@
                       </div>
                   <% else %>
                     <% unless all_daily_meals_completed?(pet) %>
-                      <div class="specialist-card reminder-card">
-                        <i class="fa-solid fa-utensils"></i>
+                      <div class="reminder-card">
+                      <i class="fa-solid fa-utensils"></i>
+                      <div class="d-flex">
                         <p>You still have to complete your meals today!</p>
-                        <%= link_to "Details", pet_nutritions_path(pet), class: "orange-btn" %>
+                        <%= link_to "Details", pet_nutritions_path(pet), class: "white-btn" %>
                       </div>
+                    </div>
                     <% else %>
                       <div class="specialist-card reminder-card">
                         <i class="fa-solid fa-utensils"></i>
@@ -87,13 +93,15 @@
                   <% end %>
 
                   <% if weekly_appointments_upcoming?(pet) %>
-                    <div class="specialist-card reminder-card">
+                    <div class="reminder-card">
                       <i class="fa-solid fa-calendar-check"></i>
-                      <p>You have some upcoming appointments</p>
-                      <%= link_to "Details", appointments_path(pet), class: "orange-btn" %>
+                      <div class="d-flex">
+                        <p>You have some upcoming appointments</p>
+                        <%= link_to "Details", appointments_path(pet), class: "white-btn" %>
+                      </div>
                     </div>
                   <% else %>
-                    <div class="specialist-card reminder-card">
+                    <div class="reminder-card">
                       <i class="fa-solid fa-calendar-check"></i>
                       <p>You don't have any upcoming appointments</p>
                     </div>
