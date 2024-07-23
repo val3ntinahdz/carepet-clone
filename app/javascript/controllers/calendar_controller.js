@@ -21,30 +21,25 @@ export default class extends Controller {
     });
 
     event.currentTarget.classList.add("btn-primary")
-    const tiempo = event.currentTarget.dataset.tiempo
-    const fecha = event.currentTarget.dataset.fecha
-    const selectedTimeElement = document.getElementById("selected_time")
+    const hour = parseInt(event.currentTarget.dataset.tiempo) - 6
+    const day = parseInt(event.currentTarget.dataset.fecha)
     const month = parseInt(event.currentTarget.dataset.month) - 1
-    const selectedDate = new Date (2024, month, fecha, tiempo, 0, 0).toString()
-    console.log(selectedDate)
+    const year = new Date().getFullYear()
+    const selectedDate = new Date(year, month, day, hour, 0, 0)
 
-    this.savedDateTarget.innerText = selectedDate
-    this.inputTarget.value = selectedDate
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }
+    const formattedDate = selectedDate.toLocaleDateString('en-US', options)
+    console.log(formattedDate)
+
+    this.savedDateTarget.innerText = formattedDate;
+    this.inputTarget.value = selectedDate.toISOString();
     console.log(this.inputTarget.value)
   }
 
-  startCloseModalTimer() {
-    this.closeTimeout = setTimeout(() => {
-      this.closeModal()
-    }, 7000)
-  }
-
-  cancelCloseModalTimer() {
-    clearTimeout(this.closeTimeout)
-  }
-
-  closeModal() {
-    this.formTarget.classList.add("d-none")
-    this.formTarget.classList.remove("calendar-modal")
-  }
+  // closeModal() {
+  //   if (this.formTarget) {
+  //     this.formTarget.classList.add("d-none")
+  //     this.formTarget.classList.remove("calendar-modal")
+  //   }
+  // }
 }
