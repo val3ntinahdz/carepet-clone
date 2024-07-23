@@ -12,11 +12,11 @@
   </div>
 </div>
 
-<% unless current_user.veterinary.present? %>
+<% unless current_user.veterinary.present? %> <!-- if it's a normal user -->
   <div data-controller="dashboard">
     <div class="swiper-container dashboard" style="margin-top:-40px; background: white; border-radius: 30px">
       <div class="swiper-wrapper">
-        <% unless @pets.empty? %>
+        <% unless @pets.empty? %> <!-- if he has at least one pet -->
           <% @pets.each do |pet| %>
             <div class="swiper-slide">
               <div class="paw">
@@ -45,72 +45,72 @@
                   <% end %>
                 </div>
               </div>
-              <div class="reminders-container m-4 p-3">
-                <div class="reminders">
-                  <h2>Reminders</h2>
-                  <% unless trainings_for_today?(pet)%>
-                    <div class="specialist-card reminder-card">
+            <div class="reminders-container m-4 p-3">
+              <div class="reminders">
+                <h2>Reminders</h2>
+                <% unless trainings_for_today?(pet)%> <!-- Training reminders -->
+                  <div class="reminder-card">
+                    <i class="fa-solid fa-dumbbell"></i>
+                    <p>No trainings found!</p>
+                    <%= link_to "Generate", pet_trainings_path(pet), class: "orange-btn" %>
+                  </div>
+                <% else %>
+                  <% unless all_daily_trainings_completed?(pet) %>
+                    <div class="reminder-card">
+                    <i class="fa-solid fa-dumbbell"></i>
+                      <div class="d-flex align-items-center">
+                        <p>You still have to complete your training today!</p>
+                        <%= link_to "Details", pet_trainings_path(pet), class: "white-btn" %>
+                      </div>
+                      </div>
+                  <% else %>
+                    <div class="reminder-card">
                       <i class="fa-solid fa-dumbbell"></i>
-                      <p>No trainings found!</p>
-                      <%= link_to "Generate", pet_trainings_path(pet), class: "orange-btn" %>
+                      <p>Congrats! You already completed your training today</p>
                     </div>
-                  <% else %>
-                    <% unless all_daily_trainings_completed?(pet) %>
-                      <div class="reminder-card">
-                      <i class="fa-solid fa-dumbbell"></i>
-                        <div class="d-flex">
-                          <p>You still have to complete your training today!</p>
-                          <%= link_to "Details", pet_trainings_path(pet), class: "white-btn" %>
-                        </div>
-                    <% else %>
-                      <div class="specialist-card reminder-card">
-                        <i class="fa-solid fa-dumbbell"></i>
-                        <p>Congrats! You already completed your training today</p>
-                      </div>
-                    <% end %>
                   <% end %>
-                  <% unless meals_for_today?(pet) %>
-                    <div class="specialist-card reminder-card">
-                        <i class="fa-solid fa-utensils"></i>
-                        <p>Nutrition plan not found!</p>
-                        <%= link_to "Generate", pet_nutritions_path(pet), class: "orange-btn" %>
-                      </div>
-                  <% else %>
-                    <% unless all_daily_meals_completed?(pet) %>
-                      <div class="reminder-card">
+                <% end %>
+                <% unless meals_for_today?(pet) %> <!-- Nutrition reminders -->
+                  <div class="specialist-card reminder-card">
                       <i class="fa-solid fa-utensils"></i>
-                      <div class="d-flex">
-                        <p>You still have to complete your meals today!</p>
-                        <%= link_to "Details", pet_nutritions_path(pet), class: "white-btn" %>
-                      </div>
+                      <p>Nutrition plan not found!</p>
+                      <%= link_to "Generate", pet_nutritions_path(pet), class: "orange-btn" %>
                     </div>
-                    <% else %>
-                      <div class="specialist-card reminder-card">
-                        <i class="fa-solid fa-utensils"></i>
-                        <p>Congrats! You already completed your meals today</p>
-                      </div>
-                    <% end %>
-                  <% end %>
-
-                  <% if weekly_appointments_upcoming?(pet) %>
+                <% else %>
+                  <% unless all_daily_meals_completed?(pet) %>
                     <div class="reminder-card">
-                      <i class="fa-solid fa-calendar-check"></i>
-                      <div class="d-flex">
-                        <p>You have some upcoming appointments</p>
-                        <%= link_to "Details", appointments_path(pet), class: "white-btn" %>
-                      </div>
+                    <i class="fa-solid fa-utensils"></i>
+                    <div class="d-flex align-items-center">
+                      <p>You still have to complete your meals today!</p>
+                      <%= link_to "Details", pet_nutritions_path(pet), class: "white-btn" %>
                     </div>
+                  </div>
                   <% else %>
                     <div class="reminder-card">
-                      <i class="fa-solid fa-calendar-check"></i>
-                      <p>You don't have any upcoming appointments</p>
+                      <i class="fa-solid fa-utensils"></i>
+                      <p>Congrats! You already completed your meals today</p>
                     </div>
                   <% end %>
+                <% end %>
+                <% if weekly_appointments_upcoming?(pet) %> <!-- Appointments reminders -->
+                  <div class="reminder-card">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <div class="d-flex">
+                      <p>You have some upcoming appointments</p>
+                      <%= link_to "Details", appointments_path(pet), class: "white-btn" %>
+                    </div>
+                  </div>
+                <% else %>
+                  <div class="reminder-card">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <p>You don't have any upcoming appointments</p>
+                  </div>
+                <% end %>
                 </div>
               </div>
             </div>
           <% end %>
-        <% else %>
+        <% else %> <!-- if he doesn't have any pet -->
           <div class="paw">
             <div class="pad">
               <div class="toe toe-1"></div>
@@ -128,7 +128,7 @@
       </div>
     </div>
   </div>
-<% else %>
+<% else %> <!-- if it's veterinary -->
   <div class="veterinary-dashboard" style="margin-top:-40px; background: white; border-radius: 30px">
     <h1 style="font-size: 16px; padding: 40px 30px 0px 40px">Upcoming appointments</h1>
     <div class="container bg-light" style="padding-bottom: 100px">
