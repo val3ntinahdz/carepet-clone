@@ -10,6 +10,7 @@ class ServicesController < ApplicationController
   def show
     @service = Service.find(params[:id])
     @veterinary = @service.veterinary
+    @appointments = Appointment.where(service_id: @service.id).where("datetime >= ?", DateTime.now).order(:datetime)
   end
 
   def new
