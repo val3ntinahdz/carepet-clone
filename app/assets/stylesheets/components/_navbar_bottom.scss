@@ -65,7 +65,7 @@
   top: -40%;
   width: 70px;
   height: 70px;
-  background: #EA732B;
+  background: radial-gradient(circle at 0% 10%, rgb(244, 127, 46), rgb(252, 103, 28));
   border-radius: 50%;
   border: 6px solid #F5F5F5;
   left: 9.5%;
@@ -96,21 +96,33 @@
   transition: transform 1.5s ease;
 }
 
-.navigation ul li:nth-child(1).active ~ .indicator
-{
+.navigation ul li.active i {
+  color: white;
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator {
+ display: block;
  transform: translateX(calc(80px * 0));
 }
-.navigation ul li:nth-child(2).active ~ .indicator
-{
+
+.navigation ul li:nth-child(2).active ~ .indicator {
+ display: block;
  transform: translateX(calc(80px * 1));
 }
-.navigation ul li:nth-child(3).active ~ .indicator
-{
+
+.navigation ul li:nth-child(3).active ~ .indicator {
+ display: block;
  transform: translateX(calc(80px * 2));
 }
-.navigation ul li:nth-child(4).active ~ .indicator
-{
+
+.navigation ul li:nth-child(4).active ~ .indicator {
+ display: block;
  transform: translateX(calc(80px * 3));
+}
+
+.navigation ul li ~ .indicator {
+  transform: translateX(calc(80px * 0));
+  display: none; /* Hide by default */
 }
 
 /* Responsive Design */

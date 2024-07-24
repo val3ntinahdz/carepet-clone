@@ -249,7 +249,7 @@ appointment_data = [
 ]
 
 Pet.all.each do |pet|
-  services.each do |service|
+  pet.services.each do |service|
     appointment_data.each do |data|
       Appointment.create!(
         datetime: data[:datetime],
@@ -262,6 +262,7 @@ Pet.all.each do |pet|
     end
   end
 end
+
 
 pet1 = Pet.first
 Vaccination.create!(pet_id: pet1.id, date: Date.today, comments: 'comentario', vaccine_id: Vaccine.first.id)
