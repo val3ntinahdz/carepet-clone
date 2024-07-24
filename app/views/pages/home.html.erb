@@ -1,8 +1,16 @@
-<div class="banner">
-  <div class="logo"><%= image_tag("carepet-logo.png") %></div>
-  <p>Get started!</p>
+<style>
+ body {
+    background: radial-gradient(circle at 0% 10%, rgb(244, 127, 46), rgb(252, 103, 28));
+  }
+</style>
 
-  <div class="btn-box">
-    <%= link_to "Pet Owner", dashboard_path, class: "orange-btn" %>
-    <%= link_to "Veterinary", dashboard_path, class: "orange-btn" %>
+<div class="banner">
+    <%= image_tag("carepet-logo.png", class: "logo") %>
+  <div class="d-flex flex-column align-items-center">
+    <p>Get started</p>
+    <div class="box">
+      <%= link_to "Pet Owner", dashboard_path, class: "orange-btn" %>
+      <%= link_to "Veterinary", dashboard_path, class: "orange-btn" %>
+    </div>
   </div>
+</div>

@@ -1,5 +1,4 @@
 class NutritionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index mark_meal_as_completed] ## to be removed
   before_action :select_pet, only: %i[index create_prompt save_nutrition mark_meal_as_completed]
 
   def index

@@ -1,5 +1,4 @@
 class TrainingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index mark_training_as_completed] ## to be removed
   before_action :select_pet, only: %i[index create_prompt save_training mark_training_as_completed]
 
   def index
