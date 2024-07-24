@@ -20,10 +20,11 @@
   </head>
 
   <body>
+      <%= render "shared/flashes" %>
     <%= yield %>
     <% if user_signed_in? %>
       <%= render "shared/navbar_bottom" %>
     <% end %>
-    <%= render "shared/flashes" %>
+
   </body>
 </html>

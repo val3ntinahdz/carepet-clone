@@ -110,7 +110,7 @@
 .details-card i {
 font-size: 1em;
 padding: 10px;
-margin-bottom: 10px;
+margin-bottom: 20px;
 background-color: rgba(0, 0, 0, 0.1);
 border-radius: 50%;
 }
@@ -135,7 +135,6 @@ border-radius: 50%;
   border: none;
   border-radius: 20px;
 }
-
 
 .nutrition {
   width: 38%;
@@ -168,4 +167,22 @@ border-radius: 50%;
    .meal-card-2 {
      width: 105%;
    }
+ }
+
+ .reminder-card {
+  background: radial-gradient(circle at 0% 10%, rgb(244, 127, 46), rgb(252, 103, 28));
+  color: white;
+  margin: 20px auto;
+  padding: 30px;
+  border: none;
+  border-radius: 20px;
+
+  i {
+    font-size: 1em;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+    color: $orange;
+    border-radius: 50%;
+  }
  }

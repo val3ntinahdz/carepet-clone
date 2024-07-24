@@ -8,7 +8,7 @@
   font-size: 16px;
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease-in-out, transform 0.2s ease-out;
+  transition: 0.3s ease-in-out, transform 0.2s ease-out;
 }
 
 .orange-btn:hover {
@@ -16,6 +16,42 @@
   transform: translateY(-2px);
 }
 
+.white-btn {
+  background: white;
+  height: 40px;
+  color: $orange;
+  border-radius: 15px;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease-in-out, transform 0.2s ease-out;
+}
+
+.btn-sign {
+  background: linear-gradient(to right, $orange, #f07735);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 150px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 2px 4px 6px rgba(245, 120, 17, 0.452);
+  transition: background 0.3s ease-in-out, transform 0.2s ease-out;
+}
+
+.btn-sign:hover {
+  background: linear-gradient(to right, #f07735, $orange);
+  transform: translateY(-2px);
+}
+.line {
+  background: orange;
+  height: 1px;
+  border: none;
+  opacity: 1;
+}
 
 .btn-search {
   margin-top: 20px;
@@ -32,7 +68,6 @@
     color: darken($orange, 10%);
   }
 }
-
 
 .switch-btn {
   display: flex;

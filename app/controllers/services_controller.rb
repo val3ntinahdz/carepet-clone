@@ -36,15 +36,15 @@ class ServicesController < ApplicationController
 
     if params[:query].present?
       @services = Service.search_by(params[:query])
-      @veterinaries = @services.map { |service| service.veterinary.user }
+      @veterinaries = @services.map { |service| service.veterinary }
     else
       @services = Service.all
     end
 
     @markers = @veterinaries.map do |veterinary|
       {
-        lat: veterinary.latitude,
-        lng: veterinary.longitude,
+        lat: veterinary.user.latitude,
+        lng: veterinary.user.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: {veterinary: veterinary}),
         marker_html: render_to_string(partial: "marker", locals: { type: :veterinary })
       }

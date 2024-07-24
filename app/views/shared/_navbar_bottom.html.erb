@@ -1,10 +1,9 @@
-<nav class="navbar-bottom">
-  <% if user_signed_in?%>
-    <%= link_to "/dashboard", class: 'nav-link-bottom' do %>
-    <i class="fas fa-home"></i>
-    <span class="nav-text-bottom">Home</span>
-    <% end %>
-
+<%# <nav class="navbar-bottom"> %>
+  <%# <% if user_signed_in?%>
+    <%# <%= link_to "/dashboard", class: 'nav-link-bottom' do %>
+    <%# <i class="fas fa-home icon"></i> %>
+    <%# <span class="label">Home</span> %>
+    <%# <% end %>
     <%unless current_user.veterinary.present? %>
       <a href="/veterinaries" class="nav-link-bottom">
       <i class="fas fa-search"></i>
@@ -12,23 +11,59 @@
       </a>
     <% end %>
 
-    <%= link_to "/pets", class: 'nav-link-bottom' do %>
-      <i class="fa-solid fa-paw"></i>
-      <span class="nav-text-bottom">Pets</span>
-    <% end %>
+    <%# <%= link_to "/pets", class: 'nav-link-bottom' do %>
+      <%# <i class="fa-solid fa-paw icon"></i> %>
+      <%# <span class="label">Pets</span> %>
+    <%# <% end %>
 
-    <%= link_to "/profile", class: 'nav-link-bottom' do %>
-      <i class="fas fa-user"></i>
-      <span class="nav-text-bottom">Profile</span>
-    <% end %>
-  <% else %>
-    <%= link_to "/", class: 'nav-link-bottom' do %>
-    <i class="fas fa-home"></i>
-    <span class="nav-text-bottom">Home</span>
-    <% end %>
-    <%= link_to "/users/sign_in", class: 'nav-link-bottom' do %>
-      <i class="fas fa-sign-in-alt"></i>
-      <span class="nav-text-bottom">Login</span>
-    <% end %>
-  <% end %>
-</nav>
+    <%# <%= link_to "/profile", class: 'nav-link-bottom' do %>
+      <%# <i class="fas fa-user icon"></i> %>
+      <%# <span class="label">Profile</span> %>
+    <%# <% end %>
+  <%# <% else %>
+    <%# <%= link_to "/", class: 'nav-link-bottom' do %>
+    <%# <i class="fas fa-home icon"></i> %>
+    <%# <span class="label">Home</span> %>
+    <%# <% end %>
+    <%# <%= link_to "/users/sign_in icon", class: 'nav-link-bottom' do %>
+      <%# <i class="fas fa-sign-in-alt"></i> %>
+      <%# <span class="label">Login</span> %>
+    <%# <% end %>
+  <%# <% end %>
+<%# </nav> %>
+
+<% if user_signed_in?%>
+  <div class="navigation" data-controller="navbar">
+    <ul>
+      <li class="list <%= 'active' if params[:controller] == 'dashboard'  %>" data-navbar-target="item">
+        <%= link_to dashboard_path, data: { action: "navbar#activeLink" } do %>
+          <span class="icon"><i class="fa-solid fa-house"></i></span>
+          <span class="text">Home</span>
+        <% end %>
+      </li>
+
+      <li class="list <%= 'active' if params[:controller] == 'veterinaries'  %>" data-navbar-target="item">
+        <%= link_to veterinaries_path, data: { action: "navbar#activeLink" } do %>
+          <span class="icon"><i class="fa-solid fa-stethoscope"></i></span>
+          <span class="text">Services</span>
+        <% end %>
+      </li>
+
+      <li class="list <%= 'active' if params[:controller] == 'pets'  %>" data-navbar-target="item">
+        <%= link_to pets_path, data: { action: "navbar#activeLink" } do %>
+          <span class="icon"><i class="fa-solid fa-paw"></i></span>
+          <span class="text">Pets</span>
+        <% end %>
+      </li>
+
+      <li class="list <%= 'active' if params[:controller] == 'users'  %>" data-navbar-target="item">
+        <%= link_to profile_path, data: { action: "navbar#activeLink" } do %>
+          <span class="icon"><i class="fas fa-user"></i></span>
+          <span class="text">Profile</span>
+        <% end %>
+      </li>
+      <div class="indicator"></div>
+    </ul>
+  </div>
+<% else %>
+<% end %>
