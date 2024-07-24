@@ -203,6 +203,7 @@ vaccines = [
   "Canine Influenza",
   "Corona Virus"
 ]
+
 allergens = [
   "Pollen",
   "Dust Mites",
@@ -214,6 +215,7 @@ allergens = [
   "Plant Allergens",
   "Animal Dander"
 ]
+
 diseases = [
   "Arthritis",
   "Diabetes",
@@ -264,22 +266,36 @@ end
 # Crear citas con datos reales para cada servicio
 
 appointment_data = [
-  { datetime: "2024-07-22 10:00:00", reason: "Routine Checkup", status: "Scheduled" },
-  { datetime: "2024-07-23 11:00:00", reason: "Vaccination", status: "Completed" },
-  { datetime: "2024-07-24 12:00:00", reason: "Dental Cleaning", status: "Scheduled" },
+  { datetime: "2024-07-27 10:00:00", reason: "Routine Checkup", status: "Scheduled" },
+  { datetime: "2024-07-28 11:00:00", reason: "Vaccination", status: "Completed" },
+  { datetime: "2024-07-29 12:00:00", reason: "Dental Cleaning", status: "Scheduled" },
 ]
 
 Pet.all.each do |pet|
-  Service.all.sample do |service|
-    appointment_data.each do |data|
+  puts "Processing Pet: #{pet.id} - #{pet.name}"
+
+  service = Service.all.sample
+  if service.nil?
+    puts "No services found!"
+    next
+  end
+
+  puts "Selected Service: #{service.id} - #{service.name}"
+
+  appointment_data.each do |data|
+    puts "Creating appointment for Pet #{pet.id} with Service #{service.id} at #{data[:datetime]}"
+    begin
       Appointment.create!(
         datetime: data[:datetime],
         reason: data[:reason],
         status: data[:status],
-        pet: pet,
-        service: service,
+        pet_id: pet.id,
+        service_id: service.id,
         fee: service.fee
       )
+      puts "Appointment created successfully"
+    rescue => e
+      puts "Failed to create appointment: #{e.message}"
     end
   end
 end

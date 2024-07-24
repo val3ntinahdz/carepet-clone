@@ -14,7 +14,7 @@ class DashboardController < ApplicationController
   end
 
   def meals_for_today?(pet)
-    pet.nutritions.where(date: Date.today).size == 3
+    pet.nutritions.where(date: Date.today).size > 3 ## to be changed!
   end
 
   def all_daily_trainings_completed?(pet)
