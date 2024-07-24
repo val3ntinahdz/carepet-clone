@@ -1,6 +1,11 @@
-.petnew{
-  background: radial-gradient(circle at 10% 20%, rgb(255, 131, 61) 0%, rgb(249, 183, 23) 90%);
+.petnew {
+  background: radial-gradient(circle at 0% 10%, rgb(244, 127, 46), rgb(252, 103, 28));
 }
+
+.petnew div {
+  border-radius: 30px!important;
+}
+
 .petbutton {
   background-color: rgb(255, 135, 37);
   color: white;

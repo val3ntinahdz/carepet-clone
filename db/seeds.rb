@@ -284,6 +284,7 @@ Pet.all.each do |pet|
   end
 end
 
+
 pet1 = Pet.first
 Vaccination.create!(pet_id: pet1.id, date: Date.today, comments: 'comentario', vaccine_id: Vaccine.first.id)
 Allergy.create!(detected_on: '2021/02/04', severity: 'leve', reactions: 'ojos rojos', comments: 'comentario', pet_id: pet1.id, allergen_id: Allergen.first.id)

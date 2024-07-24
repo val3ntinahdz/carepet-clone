@@ -8,7 +8,7 @@
 }
 
 .header {
-  background-color: $orange;
+  background: radial-gradient(circle at 0% 10%, rgb(244, 127, 46), rgb(252, 103, 28));
   padding: 15px;
   border-radius: 22px;
   display: flex;
@@ -48,7 +48,7 @@
       flex: 3;
 
       h1 {
-        font-size: 23px;
+        font-size: 20px;
       }
     }
   }

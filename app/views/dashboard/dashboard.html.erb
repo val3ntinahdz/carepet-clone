@@ -51,8 +51,10 @@
                 <% unless trainings_for_today?(pet)%> <!-- Training reminders -->
                   <div class="reminder-card">
                     <i class="fa-solid fa-dumbbell"></i>
-                    <p>No trainings found!</p>
-                    <%= link_to "Generate", pet_trainings_path(pet), class: "white-btn" %>
+                    <div class="d-flex align-items-center">
+                      <p>No trainings found!</p>
+                      <%= link_to "Generate", pet_trainings_path(pet), class: "white-btn" %>
+                    </div>
                   </div>
                 <% else %>
                   <% unless all_daily_trainings_completed?(pet) %>
@@ -73,8 +75,10 @@
                 <% unless meals_for_today?(pet) %> <!-- Nutrition reminders -->
                   <div class="reminder-card">
                       <i class="fa-solid fa-utensils"></i>
-                      <p>Nutrition plan not found!</p>
-                      <%= link_to "Generate", pet_nutritions_path(pet), class: "white-btn" %>
+                      <div class="d-flex align-items-center">
+                        <p>Nutrition plan not found!</p>
+                        <%= link_to "Generate", pet_nutritions_path(pet), class: "white-btn" %>
+                      </div>
                     </div>
                 <% else %>
                   <% unless all_daily_meals_completed?(pet) %>
