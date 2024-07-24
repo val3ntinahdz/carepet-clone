@@ -1,8 +1,10 @@
 <div class="appointments-section">
-  <h2 class="section-title"><%= title %></h2>
-  <div class="appointments-grid">
-    <% appointments.each do |appointment| %>
-      <%= render 'appointment_card', appointment: appointment %>
-    <% end %>
+  <div class="swiper-container py-4 px-4" style="background: white; border-radius: 30px">
+    <h2 class="section-title"><%= title %></h2>
+    <div class="appointments-grid">
+      <% appointments.each do |appointment| %>
+        <%= render 'appointment_card', appointment: appointment %>
+      <% end %>
+    </div>
   </div>
 </div>

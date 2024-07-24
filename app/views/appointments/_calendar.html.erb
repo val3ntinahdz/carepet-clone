@@ -1,0 +1,33 @@
+<%= month_calendar(events: @appointments, attribute: :datetime) do |date, appointments| %>
+  <div data-controller="calendar" data-calendar-day-number-value="<%= date %>" data-action="click->calendar#openModal">
+    <%= date %>
+    <% unless appointments.empty? %>
+      <div class="unavailable">
+        <i class="fas fa-paw mt-2"></i>
+      </div>
+    <% end %>
+    <div class="appointment-calendar d-none" data-calendar-target="form">
+      <div class="close-icon" data-action="click->calendar#closeModal">
+        <i class="fas fa-times"></i>
+      </div>
+      <%= simple_form_for [@service, @appointment], data: { controller: 'flatpickr', booked_dates: @booked_dates.to_json } do |f| %>
+        <% month = Date.today.month %>
+        <% month += 1 if Date.today.day > date.to_i %>
+        <% start_date = DateTime.new(2024, month, date.to_i, 9, 0, 0) %>
+        <% booked_hours = Service.find(params[:service_id]).veterinary.user.appointments.where(datetime: start_date..start_date.end_of_day).pluck(:datetime).map(&:hour) %>
+        <% available_hours = (9..18).to_a - booked_hours %>
+        <div class="hours-grid">
+          <% available_hours.each do |hour| %>
+            <%= link_to "#{hour}:00", nil, class: "btn hour-btn", data: { action: "calendar#select", calendar_target: "hour", tiempo: hour, fecha: date, month: month } %>
+          <% end %>
+        </div>
+        <%= f.hidden_field :datetime, data: { calendar_target: 'input' }, autocomplete: "off", value: "" %>
+        <p data-calendar-target="savedDate"></p>
+        <%= f.input :reason %>
+        <%= f.input :comments %>
+        <%= f.input :pet_id, as: :select, collection: current_user.pets.map { |p| [p.name, p.id] }, include_blank: "Select a pet", class: 'form-select' %>
+        <%= f.submit "Book", class: 'orange-btn w-100' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

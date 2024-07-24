@@ -54,7 +54,8 @@
 
 .nutrition-banner,
 .training-banner,
-.dashboard-banner {
+.dashboard-banner,
+.appointments-banner {
   background: radial-gradient(circle at 0% 10%, rgb(244, 127, 46), rgb(252, 103, 28));
   padding: 30px 20px;
   height: 300px;
@@ -79,7 +80,6 @@
 .dashboard-banner {
   height: 200px;
 }
-
 // .gradient-overlay {
 //   position: absolute;
 //   top: 0;
@@ -102,4 +102,3 @@
 // .carousel-container {
 //   position: relative;
 // }
-

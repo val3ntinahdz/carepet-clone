@@ -31,6 +31,9 @@ class AppointmentsController < ApplicationController
   def new
     @service = Service.find(params[:service_id])
     @appointment = Appointment.new
+    @appointments = @service.veterinary.user.appointments
+    # @appointments = Appointment.joins(service: :veterinary).where(services: { veterinary_id: @service.veterinary_id })
+    @booked_dates = @appointments.pluck(:datetime).map { |datetime| datetime.strftime("%Y-%m-%dT%H:%M:%S")}
   end
 
   def create
@@ -42,6 +45,8 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       redirect_to appointment_path(@appointment), notice: 'Appointment scheduled successfully!'
     else
+      @booked_dates = Appointment.pluck(:datetime).map { |datetime| datetime.strftime("%Y-%m-%dT%H:%M:%S")}
+      @appointments = @service.veterinary.user.appointments
       render :new, status: :unprocessable_entity
     end
   end
