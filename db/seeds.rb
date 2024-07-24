@@ -56,22 +56,46 @@ user5 = User.create!(
   password: "password"
 )
 
-# Adjuntar fotos de perfil
-# [user1, user2, user3, user4, user5].each_with_index do |user, index|
-# file_url = [
-#   "https://example.com/user1_profile_pic.jpg",
-#   "https://example.com/user2_profile_pic.jpg",
-#   "https://example.com/user3_profile_pic.jpg",
-#   "https://example.com/user4_profile_pic.jpg",
-#   "https://example.com/user5_profile_pic.jpg"
-# ][index]
+# Creacion de usuarios extras para veterinarios
 
-# file = URI.open(file_url)
-# user.photo.attach(io: file, filename: "#{user.first_name.downcase}_profile_pic.jpg", content_type: "image/jpg")
-# user.save!
-# end
+user6 = User.create!(
+  first_name: 'Dana',
+  last_name: 'Bocaranda',
+  email: 'dana@gmail.com',
+  phone_number: '5533906542',
+  address: 'Calle Gral. Antonio León 31, San Miguel Chapultepec I Secc, Miguel Hidalgo, 11850 Ciudad de México, CDMX',
+  password: 'password'
+)
+
+user7 = User.create!(
+  first_name: 'Elisa',
+  last_name: 'Herrera',
+  email: 'elisa@gmail.com',
+  phone_number: '5577841201',
+  address: 'C. Cádiz Nte. 38, Extremadura Insurgentes, Benito Juárez, 03740 Ciudad de México, CDMX',
+  password: "password"
+)
+
+user8 = User.create!(
+  first_name: 'Luisa',
+  last_name: 'Casas',
+  email: 'luisa@gmail.com',
+  phone_number: '5559874500',
+  address: 'C. 12 31, San Pedro de los Pinos, Benito Juárez, 03800 Ciudad de México, CDMX',
+  password: "password"
+)
+
+user9 = User.create!(
+  first_name: 'Roberto',
+  last_name: 'Dionisious',
+  email: 'roberto@gmail.com',
+  phone_number: '5587559832',
+  address: 'C. Nueva York 304, Nápoles, Benito Juárez, 03810 Ciudad de México, CDMX',
+  password: "password"
+)
 
 # Crear veterinarios
+
 vet1 = Veterinary.create!(
   dni: '123456789',
   specialization: 'Cardiology',
@@ -89,7 +113,32 @@ vet3 = Veterinary.create!(
   user_id: user3.id
 )
 
+vet4 = Veterinary.create!(
+  dni: '98639002',
+  specialization: 'General',
+  user_id: user6.id
+)
+
+vet5 = Veterinary.create!(
+  dni: '475920874',
+  specialization: 'Surgery',
+  user_id: user7.id
+)
+
+vet6 = Veterinary.create!(
+  dni: '0388492039',
+  specialization: 'Dermatology',
+  user_id: user8.id
+)
+
+vet7 = Veterinary.create!(
+  dni: '475920874',
+  specialization: 'Surgery',
+  user_id: user9.id
+)
+
 # Crear mascotas
+
 pets = [
   {
     name: 'Buddy',
@@ -142,6 +191,7 @@ pets.each_with_index do |pet, i|
 end
 
 # Crear vacunas, alérgenos y enfermedades
+
 vaccines = [
   "Rabies",
   "Distemper",
@@ -181,6 +231,7 @@ allergens.each { |name| Allergen.create!(name: name) }
 diseases.each { |name| Disease.create!(name: name) }
 
 # Descripciones reales para los servicios
+
 service_descriptions = {
   "Surgery" => "Comprehensive surgical care including pre-operative assessments, anesthesia, and post-operative care to ensure the best outcomes for your pet.",
   "Consultation" => "Professional veterinary consultations to address any health concerns, perform physical exams, and provide expert advice on your pet's well-being.",
@@ -193,63 +244,33 @@ service_descriptions = {
   "Dermatology" => "Specialized dermatology services to diagnose and treat skin conditions, allergies, and other dermatological issues."
 }
 
-service_descriptions_array = service_descriptions.to_a
+# Crear un servicio para cada veterinario
 
-# Generar servicios para cada veterinario con descripciones y categorías aleatorias
-services = []
+veterinaries = Veterinary.all
 
-# Categorías posibles para servicios
-service_categories = ["Medical"]
-
-[vet1, vet2, vet3].each do |vet|
-  3.times do
-    serv = service_descriptions_array.shift
-    new_service = Service.create!(
-      name: serv[0],
-      description: serv[1],
-      category: "Medical",
-      fee: rand(50.0..300.0).round(2),
-      veterinary_id: vet.id
-    )
-    services << new_service
+veterinaries.each do |veterinary|
+  2.times do
+  value = service_descriptions.keys.sample
+  Service.create!(
+    name: value,
+    category: value,
+    description: service_descriptions[value],
+    fee: rand(50.0..300.0).round(2),
+    veterinary: veterinary
+  )
   end
 end
 
-# service_descriptions.each do |name, description|
-#   category = service_categories.sample
-#   fee = rand(50.0..300.0).round(2)
-
-#   service1 = Service.create!(
-#     name: name,
-#     description: description,
-#     category: category,
-#     fee: fee,
-#     veterinary_id: vet1.id
-#   )
-
-#   services << service1
-# end
-
-Service.create!(
-    name: "Haircuts for dogs",
-    description: "Very nice haircuts for your dogs and accesible price",
-    category: "Grooming",
-    fee: 100,
-    veterinary_id: vet2.id
-)
-
 # Crear citas con datos reales para cada servicio
+
 appointment_data = [
-  { datetime: "2024-07-01 10:00:00", reason: "Routine Checkup", status: "Scheduled" },
-  { datetime: "2024-07-02 11:00:00", reason: "Vaccination", status: "Completed" },
-  { datetime: "2024-07-03 12:00:00", reason: "Dental Cleaning", status: "Scheduled" },
-  { datetime: "2024-07-04 13:00:00", reason: "Skin Allergy", status: "Completed" },
-  { datetime: "2024-07-05 14:00:00", reason: "Heartworm Test", status: "Cancelled" },
-  { datetime: "2024-07-06 15:00:00", reason: "Behavioral Consultation", status: "Scheduled" }
+  { datetime: "2024-07-22 10:00:00", reason: "Routine Checkup", status: "Scheduled" },
+  { datetime: "2024-07-23 11:00:00", reason: "Vaccination", status: "Completed" },
+  { datetime: "2024-07-24 12:00:00", reason: "Dental Cleaning", status: "Scheduled" },
 ]
 
 Pet.all.each do |pet|
-  services.each do |service|
+  Service.all.sample do |service|
     appointment_data.each do |data|
       Appointment.create!(
         datetime: data[:datetime],
