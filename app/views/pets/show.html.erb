@@ -1,7 +1,7 @@
 <div class="container mb-5">
   <div class="d-flex justify-content-between m-2 py-4">
     <%= link_to "", pets_path(@pets), class: "navpet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
-    <%= link_to '', pets_path(@pets), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Do you want to proceed?"}, class: 'fa-solid fa-trash fa-lg navpet text-decoration-none' %>
+    <%= link_to "", pets_path(@pets), method: :delete,  data: { turbo_method: :delete, turbo_confirm: "Do you want to proceed?"}, class: 'fa-solid fa-trash fa-lg navpet text-decoration-none' %>
   </div>
 
     <%= cl_image_tag(@pet.photo.key, class: "petshow", alt: "pet-avatar") %>
