@@ -52,7 +52,7 @@
                   <div class="reminder-card">
                     <i class="fa-solid fa-dumbbell"></i>
                     <p>No trainings found!</p>
-                    <%= link_to "Generate", pet_trainings_path(pet), class: "orange-btn" %>
+                    <%= link_to "Generate", pet_trainings_path(pet), class: "white-btn" %>
                   </div>
                 <% else %>
                   <% unless all_daily_trainings_completed?(pet) %>
@@ -71,10 +71,10 @@
                   <% end %>
                 <% end %>
                 <% unless meals_for_today?(pet) %> <!-- Nutrition reminders -->
-                  <div class="specialist-card reminder-card">
+                  <div class="reminder-card">
                       <i class="fa-solid fa-utensils"></i>
                       <p>Nutrition plan not found!</p>
-                      <%= link_to "Generate", pet_nutritions_path(pet), class: "orange-btn" %>
+                      <%= link_to "Generate", pet_nutritions_path(pet), class: "white-btn" %>
                     </div>
                 <% else %>
                   <% unless all_daily_meals_completed?(pet) %>
