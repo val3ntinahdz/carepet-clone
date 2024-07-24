@@ -16,9 +16,11 @@
         <% start_date = DateTime.new(2024, month, date.to_i, 9, 0, 0) %>
         <% booked_hours = Service.find(params[:service_id]).veterinary.user.appointments.where(datetime: start_date..start_date.end_of_day).pluck(:datetime).map(&:hour) %>
         <% available_hours = (9..18).to_a - booked_hours %>
-        <% available_hours.each do |hour| %>
-          <%= link_to "#{hour}:00", nil, class: "btn hour-btn", data: { action: "calendar#select", calendar_target: "hour", tiempo: hour, fecha: date, month: month } %>
-        <% end %>
+        <div class="hours-grid">
+          <% available_hours.each do |hour| %>
+            <%= link_to "#{hour}:00", nil, class: "btn hour-btn", data: { action: "calendar#select", calendar_target: "hour", tiempo: hour, fecha: date, month: month } %>
+          <% end %>
+        </div>
         <%= f.hidden_field :datetime, data: { calendar_target: 'input' }, autocomplete: "off", value: "" %>
         <p data-calendar-target="savedDate"></p>
         <%= f.input :reason %>

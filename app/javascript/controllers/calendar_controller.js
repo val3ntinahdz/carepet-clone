@@ -31,15 +31,12 @@ export default class extends Controller {
     const formattedDate = selectedDate.toLocaleDateString('en-US', options)
     console.log(formattedDate)
 
-    this.savedDateTarget.innerText = formattedDate;
+    // this.savedDateTarget.innerText = formattedDate;
     this.inputTarget.value = selectedDate.toISOString();
     console.log(this.inputTarget.value)
   }
 
-  // closeModal() {
-  //   if (this.formTarget) {
-  //     this.formTarget.classList.add("d-none")
-  //     this.formTarget.classList.remove("calendar-modal")
-  //   }
-  // }
+  closeModal(event) {
+    event.currentTarget.parentElement.remove()
+  }
 }

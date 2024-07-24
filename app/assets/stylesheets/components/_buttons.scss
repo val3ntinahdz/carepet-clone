@@ -89,3 +89,8 @@
     color: darken(rgb(118, 115, 115), 10%);
   }
 }
+
+.hours-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
