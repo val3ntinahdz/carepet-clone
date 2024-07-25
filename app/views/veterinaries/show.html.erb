@@ -8,7 +8,7 @@
         <img src="<%= asset_path('https://static.vecteezy.com/system/resources/previews/008/957/222/original/male-doctor-avatar-occupation-clipart-icon-in-flat-design-vector.jpg') %>" alt="Dr. <%= @veterinary.user.first_name %>" class="vet-image">
         <div class="vet-info mt-3">
           <h2 class="mb-0">Dr. <%= @veterinary.user.first_name %> <%= @veterinary.user.last_name %></h2>
-          <p class="text-muted mb-1">Specialization: <%= @veterinary.specialization %></p> <span> ⭐ 4.9 (24 Reviews)</span>
+          <p class="text-muted mb-1">Specialization: <%= @veterinary.specialization %></p>
           <div class="info-card mt-3">
             <div class="card-body">
               <i class="fa-solid fa-location-pin" style="color: #1EDD88;"></i>
@@ -19,29 +19,16 @@
           </div>
         </div>
       </div>
-      <div class="about">
-        <strong>About</strong>
-        <p class="text-muted">
-          Dr. <%= @veterinary.user.first_name %> is a dedicated and compassionate veterinarian with over 6 years of experience.
-          Specializing in <%= @veterinary.specialization %>... <a href="#" class="text-warning text-decoration-none">Read more</a>
-        </p>
-      </div>
-
       <div class="vet-services mt-4">
         <h3>Services</h3>
-        <div class="vet-service-card">
+        <div class="services-scroll">
           <% @veterinary.services.each do |service| %>
             <div class="service-list">
               <h4><%= link_to service.name, service_path(service) %></h4>
-              <p>Category: <%= service.category %></p>
-              <p>Fee: $<%= service.fee %></p>
+              <span><strong>Fee: $<%= service.fee %></strong></span>
             </div>
           <% end %>
         </div>
-      </div>
-      <hr>
-      <div class="reviews">
-        <h3>Reviews</h3>
       </div>
     </div>
   </div>

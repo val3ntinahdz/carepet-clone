@@ -11,6 +11,15 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
     @veterinary = @service.veterinary
     @appointments = Appointment.where(service_id: @service.id).where("datetime >= ?", DateTime.now).order(:datetime)
+    # @user_location = [{
+    #   lat: current_user.latitude,
+    #   lng: current_user.longitude,
+    # }]
+
+    # @veterinary_location = [{
+    #   lat: @veterinary.user.latitude,
+    #   lng: @veterinary.user.longitude,
+    # }]
   end
 
   def new
