@@ -7,8 +7,8 @@
 
   <%= turbo_frame_tag :edit_vaccination %>
   <div class="d-flex justify-content-center">
-    <%= link_to "Edit", edit_vaccination_path(vaccination), class: "petbutton text-decoration-none mx-2 px-3", data: {turbo_frame: :edit_vaccination} %>
-    <%= link_to "Delete", vaccination_path(vaccination), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "petbutton text-decoration-none" %>
+    <%= link_to "Edit", edit_vaccination_path(vaccination), class: "pet-button text-decoration-none mx-2 px-3", data: {turbo_frame: :edit_vaccination} %>
+    <%= link_to "Delete", vaccination_path(vaccination), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "pet-button text-decoration-none" %>
   </div>
   <hr>
 </div>

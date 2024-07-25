@@ -20,7 +20,7 @@
           <% @pets.each do |pet| %>
             <div class="swiper-slide">
               <div class="paw">
-                <h3 class="pet-data"><%= pet.name %></h3>
+                <h3 class="pet-data"><%= pet.name.capitalize %></h3>
                 <div class="pad">
                   <%= link_to pet_trainings_path(pet) do %>
                     <div class="toe toe-1">
@@ -52,7 +52,7 @@
                   <div class="reminder-card">
                     <i class="fa-solid fa-dumbbell"></i>
                     <div class="d-flex align-items-center">
-                      <p>This pet doesn't have any training plan yet!</p>
+                      <p><%= pet.name.capitalize %> hasn't any training plan yet</p>
                       <%= link_to "Generate", pet_trainings_path(pet), class: "white-btn" %>
                     </div>
                   </div>
@@ -76,7 +76,7 @@
                   <div class="reminder-card">
                       <i class="fa-solid fa-utensils"></i>
                       <div class="d-flex align-items-center">
-                        <p>This pet doesn't have any nutrition plan yet!</p>
+                        <p><%= pet.name.capitalize %> hasn't any nutrition plan yet</p>
                         <%= link_to "Generate", pet_nutritions_path(pet), class: "white-btn" %>
                       </div>
                     </div>
@@ -100,7 +100,7 @@
                   <div class="reminder-card">
                     <i class="fa-solid fa-calendar-check"></i>
                     <div class="d-flex">
-                      <p>You have some upcoming appointments</p>
+                      <p><%= pet.name.capitalize %> has some appointments soon</p>
                       <%= link_to "Details", appointments_path(pet), class: "white-btn" %>
                     </div>
                   </div>
@@ -117,9 +117,6 @@
         <% else %> <!-- if he doesn't have any pet -->
           <div class="paw">
             <div class="pad">
-              <div class="toe toe-1"></div>
-              <div class="toe toe-2"></div>
-              <div class="toe toe-3"></div>
               <a href="/pets/new" style="text-decoration: none;">
                 <div class="empty-pad">
                   <i class="fa-solid fa-plus" style="color: white; font-size: 300%;"></i>
