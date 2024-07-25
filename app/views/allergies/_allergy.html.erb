@@ -12,8 +12,8 @@
     <%#= turbo_frame_tag :edit_allergy, src: edit_allergy_path(allergy) %>
   <%= turbo_frame_tag :edit_allergy %>
   <div class="d-flex justify-content-center">
-    <%= link_to "Edit", edit_allergy_path(allergy), class: "petbutton text-decoration-none mx-2 px-3", data: {turbo_frame: :edit_allergy} %>
-    <%= link_to "Delete", allergy_path(allergy), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "petbutton text-decoration-none" %>
+    <%= link_to "Edit", edit_allergy_path(allergy), class: "pet-button text-decoration-none mx-2 px-3", data: {turbo_frame: :edit_allergy} %>
+    <%= link_to "Delete", allergy_path(allergy), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "pet-button text-decoration-none" %>
   </div>
   <hr>
 </div>
