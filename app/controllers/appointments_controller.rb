@@ -30,7 +30,7 @@ class AppointmentsController < ApplicationController
 
   def new
     @service = Service.find(params[:service_id])
-    @appointment = Appointment.new(service_id: @service.id, reason: "Appointment for #{@service.name}")
+    @appointment = Appointment.new
     @appointments = @service.veterinary.user.appointments
     @booked_dates = @appointments.pluck(:datetime).map { |datetime| datetime.strftime("%Y-%m-%dT%H:%M:%S")}
   end
