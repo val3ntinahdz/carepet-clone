@@ -1,4 +1,3 @@
-<!-- app/views/appointments/_calendar.html.erb -->
 <%= month_calendar(events: @appointments, attribute: :datetime) do |date, appointments| %>
   <div data-controller="calendar" data-calendar-day-number-value="<%= date %>" data-action="click->calendar#openModal">
     <%= date %>
@@ -11,7 +10,7 @@
       <div class="close-icon" data-action="click->calendar#closeModal">
         <i class="fas fa-times"></i>
       </div>
-      <%= simple_form_for @appointment, url: appointments_path, method: :post, data: { controller: 'flatpickr', booked_dates: @booked_dates.to_json } do |f| %>
+      <%= simple_form_for [@service, @appointment], data: { controller: 'flatpickr', booked_dates: @booked_dates.to_json } do |f| %>
         <% month = Date.today.month %>
         <% month += 1 if Date.today.day > date.to_i %>
         <% start_date = DateTime.new(2024, month, date.to_i, 9, 0, 0) %>

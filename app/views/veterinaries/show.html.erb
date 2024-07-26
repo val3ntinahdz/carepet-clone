@@ -8,7 +8,7 @@
         <img src="<%= asset_path('https://static.vecteezy.com/system/resources/previews/008/957/222/original/male-doctor-avatar-occupation-clipart-icon-in-flat-design-vector.jpg') %>" alt="Dr. <%= @veterinary.user.first_name %>" class="vet-image">
         <div class="vet-info mt-3">
           <h2 class="mb-0">Dr. <%= @veterinary.user.first_name %> <%= @veterinary.user.last_name %></h2>
-          <p class="text-muted mb-1">Specialization: <%= @veterinary.specialization %></p>
+          <p class="text-muted mb-1">Specialization: <%= @veterinary.specialization %></p><span> ⭐ 4.9</span>
           <div class="info-card mt-3">
             <div class="card-body">
               <i class="fa-solid fa-location-pin" style="color: #1EDD88;"></i>
@@ -17,7 +17,15 @@
               <p><strong>6 years</strong> of experience</p>
             </div>
           </div>
+            <div class="about">
+              <strong>About</strong>
+              <p class="text-muted">Dr. <%= @veterinary.user.first_name %> is a dedicated and compassionate veterinarian with over 6 years of experience.
+                Specializing in <%= @veterinary.specialization %>... <a href="#" class="text-warning text-decoration-none">Read more</a>
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
       </div>
       <div class="vet-services mt-4">
         <h3>Services</h3>
