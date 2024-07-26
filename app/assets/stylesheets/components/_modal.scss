@@ -1,0 +1,12 @@
+.calendar-modal {
+  position: fixed;
+  z-index: 1;
+  padding: 2rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0, 0, 10px, 0, rgba(88, 87, 87, 0.2);
+  background: white;
+  border: 1px solid $orange;
+  border-radius: 10px;
+}

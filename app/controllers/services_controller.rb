@@ -10,6 +10,16 @@ class ServicesController < ApplicationController
   def show
     @service = Service.find(params[:id])
     @veterinary = @service.veterinary
+    @appointments = Appointment.where(service_id: @service.id).where("datetime >= ?", DateTime.now).order(:datetime)
+    # @user_location = [{
+    #   lat: current_user.latitude,
+    #   lng: current_user.longitude,
+    # }]
+
+    # @veterinary_location = [{
+    #   lat: @veterinary.user.latitude,
+    #   lng: @veterinary.user.longitude,
+    # }]
   end
 
   def new
@@ -35,15 +45,15 @@ class ServicesController < ApplicationController
 
     if params[:query].present?
       @services = Service.search_by(params[:query])
-      @veterinaries = @services.map { |service| service.veterinary.user }
+      @veterinaries = @services.map { |service| service.veterinary }
     else
       @services = Service.all
     end
 
     @markers = @veterinaries.map do |veterinary|
       {
-        lat: veterinary.latitude,
-        lng: veterinary.longitude,
+        lat: veterinary.user.latitude,
+        lng: veterinary.user.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: {veterinary: veterinary}),
         marker_html: render_to_string(partial: "marker", locals: { type: :veterinary })
       }

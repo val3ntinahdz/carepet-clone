@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  helper_method %i[all_daily_meals_completed? all_daily_trainings_completed? weekly_appointments_upcoming?]
+  helper_method %i[trainings_for_today? meals_for_today? all_daily_meals_completed? all_daily_trainings_completed? weekly_appointments_upcoming?]
 
   def dashboard
     if current_user.veterinary.present?
@@ -7,6 +7,14 @@ class DashboardController < ApplicationController
     else
       @pets = current_user.pets
     end
+  end
+
+  def trainings_for_today?(pet)
+    !pet.trainings.where(date: Date.today).empty?
+  end
+
+  def meals_for_today?(pet)
+    pet.nutritions.where(date: Date.today).size >= 3 ## to be changed!
   end
 
   def all_daily_trainings_completed?(pet)

@@ -1,0 +1,24 @@
+.form {
+  border-radius: 40px;
+  background-color: #F8F9FA;
+  transform: translateY(-170px);
+  box-shadow: rgba(45, 35, 66, 0.2) 0 -2px 4px
+}
+.form2 {
+  border-radius: 40px;
+  background-color: #F8F9FA;
+  transform: translateY(-70px);
+  box-shadow: rgba(45, 35, 66, 0.2) 0 -2px 4px
+}
+.form3 {
+  background: linear-gradient(to top, $orange, #f07735);
+  height: 200px;
+  color: white;
+  h1 {
+    padding-top: 30px;
+  }
+  p {
+    font-size: small;
+    padding-top: 5px;
+  }
+}

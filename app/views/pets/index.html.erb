@@ -6,9 +6,9 @@
   <div class="row">
     <% @pets.each do |pet| %>
     <div class="col-6 mb-3 rounded-2">
-      <div class="petcard shadow">
+      <div class="pet-card shadow">
         <%= link_to pet_path(pet) do %>
-          <%= cl_image_tag(pet.photo.key, class: "petimg", alt: "pet-avatar") %>
+          <%= cl_image_tag(pet.photo.key, class: "pet-img", alt: "pet-avatar") %>
         <% end %>
         <h5 class="card-title px-3 pt-1"><%= pet.name %></h5>
         <p id="breed" class="pb-3"><%= pet.breed %></p>

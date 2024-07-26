@@ -70,14 +70,13 @@
 
 
 .scheduled-appointments-container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 20px;
 
   .appointments-title {
-    font-size: 30px;
+    font-size: 25px;
     margin-bottom: 20px;
-    color: #333;
+    color: #fcf1f1;
   }
 
   .appointments-section {
@@ -112,8 +111,8 @@
 
       .appointment-status {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: -15px;
+        right: -5px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -250,4 +249,12 @@
   border-radius: 7px;
   padding: 8px 10px;
   margin: 10px;
+}
+
+.upcoming-appointments, .veterinary-appointments {
+  margin-top: -180px;
+}
+
+.past-appointments {
+  margin-top: 0;
 }

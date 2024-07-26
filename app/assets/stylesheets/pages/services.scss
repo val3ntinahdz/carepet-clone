@@ -8,7 +8,7 @@
 }
 
 .header {
-  background-color: $orange;
+  background: radial-gradient(circle at 0% 10%, rgb(244, 127, 46), rgb(252, 103, 28));
   padding: 15px;
   border-radius: 22px;
   display: flex;
@@ -48,7 +48,7 @@
       flex: 3;
 
       h1 {
-        font-size: 23px;
+        font-size: 20px;
       }
     }
   }
@@ -106,4 +106,35 @@
       }
     }
   }
+}
+
+.service-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px auto;
+  position: relative;
+}
+
+.banner-image {
+  background-position: cover;
+  position: absolute;
+  top: -50px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: auto;
+}
+
+
+.show-card {
+  background: white;
+  border-radius: 30px;
+  color: black;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: relative;
+  top: -180px;
 }

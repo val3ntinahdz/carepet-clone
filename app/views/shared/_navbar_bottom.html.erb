@@ -1,37 +1,4 @@
-<%# <nav class="navbar-bottom"> %>
-  <%# <% if user_signed_in?%>
-    <%# <%= link_to "/dashboard", class: 'nav-link-bottom' do %>
-    <%# <i class="fas fa-home icon"></i> %>
-    <%# <span class="label">Home</span> %>
-    <%# <% end %>
-
-    <%# <a href="/veterinaries" class="nav-link-bottom"> %>
-    <%# <i class="fas fa-search icon"></i> %>
-    <%# <span class="label">Search</span> %>
-    <%# </a> %>
-
-    <%# <%= link_to "/pets", class: 'nav-link-bottom' do %>
-      <%# <i class="fa-solid fa-paw icon"></i> %>
-      <%# <span class="label">Pets</span> %>
-    <%# <% end %>
-
-    <%# <%= link_to "/profile", class: 'nav-link-bottom' do %>
-      <%# <i class="fas fa-user icon"></i> %>
-      <%# <span class="label">Profile</span> %>
-    <%# <% end %>
-  <%# <% else %>
-    <%# <%= link_to "/", class: 'nav-link-bottom' do %>
-    <%# <i class="fas fa-home icon"></i> %>
-    <%# <span class="label">Home</span> %>
-    <%# <% end %>
-    <%# <%= link_to "/users/sign_in icon", class: 'nav-link-bottom' do %>
-      <%# <i class="fas fa-sign-in-alt"></i> %>
-      <%# <span class="label">Login</span> %>
-    <%# <% end %>
-  <%# <% end %>
-<%# </nav> %>
-
-<% if user_signed_in?%>
+<% if user_signed_in? %>
   <div class="navigation" data-controller="navbar">
     <ul>
       <li class="list <%= 'active' if params[:controller] == 'dashboard'  %>" data-navbar-target="item">

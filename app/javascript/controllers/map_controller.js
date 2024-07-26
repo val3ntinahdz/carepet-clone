@@ -18,11 +18,17 @@ export default class extends Controller {
       center: [-74.5, 40],
       zoom: 9
     })
-    
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl }))
+      mapboxgl: mapboxgl,
+      zoom: 12
+    }))
+
+    this.map.on('moveend', () => {
+      this.map.getCanvas().style.transition = 'transform 0.5s ease';
+    });
   }
 
   #addMarkersToMap() {
