@@ -22,8 +22,11 @@
   <body>
       <%= render "shared/flashes" %>
     <%= yield %>
+
     <% if user_signed_in? %>
-      <%= render "shared/navbar_bottom" %>
+      <% if current_page?('/dashboard') || current_page?('/veterinaries') || current_page?('/pets') || current_page?('/profile') %>
+        <%= render "shared/navbar_bottom" %>
+      <% end %>
     <% end %>
 
   </body>

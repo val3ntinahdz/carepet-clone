@@ -34,3 +34,12 @@
   font-size: 40px;
   color: #FE8D36;
 }
+.user-avatar2 {
+  transform: translateX(135px) translateY(-140px);
+  background-color: white;
+  width:100px;
+  height: 100px;
+  border-radius: 50%;
+  z-index: 10;
+  position: relative;
+}
