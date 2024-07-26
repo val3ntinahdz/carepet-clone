@@ -186,3 +186,25 @@ border-radius: 50%;
     border-radius: 50%;
   }
  }
+
+ .related-services {
+  margin-top: 50px;
+
+  .vet-service-card {
+    .service-list {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+
+      h4 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      p {
+        margin: 5px 0;
+      }
+    }
+  }
+}

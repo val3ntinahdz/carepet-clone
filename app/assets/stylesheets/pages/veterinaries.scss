@@ -70,9 +70,17 @@
     h3 {
       font-size: 1.8rem;
       color: $dark-gray;
-      border-bottom: 2px solid $light-blue;
+      border-bottom: 1px solid $light-blue;
       padding-bottom: 10px;
       margin-bottom: 20px;
+    }
+
+    .services-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 16px;
+      padding: 10px;
+      scroll-snap-type: x mandatory;
     }
 
     .service-list {
@@ -81,6 +89,13 @@
       border-radius: 8px;
       margin-bottom: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      width: 250px;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
 
       h4 {
         font-size: 1.2rem;
