@@ -4,7 +4,7 @@
       <% if current_user.photo.attached? %>
         <%= cl_image_tag(current_user.photo.key, class: "user-avatar") %>
       <% else %>
-        <%= image_tag("user-default-avatar.webp", class: "user-avatar") %>
+        <i class="fa-solid fa-user user-photo-unavailable" style="font-size: 22px; background-color: white; padding: 8px; border-radius: 50%" ></i>
       <% end %>
       <h1 style="font-size: 20px; margin: 0px 15px">Welcome, <%= current_user.first_name %></h1>
     </div>
