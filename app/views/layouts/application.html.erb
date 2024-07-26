@@ -24,7 +24,7 @@
     <%= yield %>
 
     <% if user_signed_in? %>
-      <% if current_page?('/dashboard') || current_page?('/veterinaries') || current_page?('/pets') || current_page?('/profile') %>
+      <% unless current_page?('/home')  %> <!-- Conditional Not working -->
         <%= render "shared/navbar_bottom" %>
       <% end %>
     <% end %>
