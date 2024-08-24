@@ -23,8 +23,8 @@ class AppointmentsController < ApplicationController
   def update
     if @appointment.update(appointment_params)
       respond_to do |format|
-        format.html { redirect_to appointments_path, notice: 'Appointment was successfully rescheduled.' }
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('appointment_form', partial: 'edit_form', locals: { appointment: @appointment }) }
+        format.html { redirect_to @appointment, notice: 'Appointment was successfully rescheduled.' }
+        format.turbo_stream
       end
     else
       respond_to do |format|

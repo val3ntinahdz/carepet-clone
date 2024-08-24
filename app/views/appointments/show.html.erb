@@ -8,19 +8,19 @@
     </p>
     <% if current_user == @appointment.pet.user %>
       <p class="veterinary">
-        <%= link_to "Dr. #{@appointment.service.veterinary.user.first_name} #{@appointment.service.veterinary.user.last_name}", veterinary_path(@appointment.service.veterinary), class: "text-decoration-none" %>
+        <%= link_to "Dr. #{@appointment.service.veterinary.user.first_name} #{@appointment.service.veterinary.user.last_name}", veterinary_path(@appointment.service.veterinary), class: "text-decoration-none text-dark" %>
       </p>
     <% end%>
-    <p><strong>Date and Time</strong></p>
-    <span class="appointment-date">
-      <i class="fas fa-calendar-alt" style="color: #FE8D36;"></i>
-      <%= @appointment.datetime.strftime("%m.%d.%Y") %>
-    </span>
-    <span class="appointment-time">
-      <i class="far fa-clock" style="color: #FE8D36; margin-left: 8px;"></i>
-      <%= @appointment.datetime.strftime("%H:%M") %>
-    </span>
-    <hr class="mt-4">
+    <div class="datetime-appointment">
+      <p class="appointment-date">
+        <i class="fas fa-calendar-alt" style="color: #FE8D36;"></i>
+        <%= @appointment.datetime.strftime("%m.%d.%Y") %>
+      </p>
+      <p class="appointment-time">
+        <i class="far fa-clock" style="color: #FE8D36; margin-left: 8px;"></i>
+        <%= @appointment.datetime.strftime("%H:%M") %>
+      </p>
+    </div>
     <div class="actions mt-4 d-flex justify-content-center">
       <% if current_user == @appointment.pet.user && @appointment.status == 'Scheduled' %>
         <%= turbo_frame_tag "appointment_form" do %>
