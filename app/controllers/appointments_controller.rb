@@ -24,13 +24,12 @@ class AppointmentsController < ApplicationController
     if @appointment.update(appointment_params)
       respond_to do |format|
         format.html { redirect_to @appointment, notice: 'Appointment was successfully rescheduled.' }
-        format.turbo_stream
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(:_top, partial: 'appointments/edit_form', locals: { appointment: @appointment })
+        end
       end
     else
-      respond_to do |format|
-        format.html { render :edit }
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('appointment_form', partial: 'edit_form', locals: { appointment: @appointment }) }
-      end
+      render :edit, status: :unprocessable_entity
     end
   end
 
