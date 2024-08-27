@@ -1,4 +1,3 @@
-<!-- app/views/appointments/_calendar.html.erb -->
 <%= month_calendar(events: @appointments, attribute: :datetime) do |date, appointments| %>
   <div data-controller="calendar" data-calendar-day-number-value="<%= date %>" data-action="click->calendar#openModal">
     <%= date %>
