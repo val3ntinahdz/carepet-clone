@@ -3,7 +3,7 @@
     <%= form_with(model: @appointment, url: appointment_path(@appointment), method: :patch) do |form| %>
         <div class="form-group">
           <%= form.label :datetime, "Select New Date and Time:", class: "form-label" %>
-          <%= form.datetime_select :datetime, class: "form-control", required: true, min: Time.now.strftime("%Y-%m-%dT%H:%M") %>
+          <%= form.datetime_local_field :datetime, class: "form-control", required: true, min: DateTime.now.strftime("%Y-%m-%dT%H:%M"), max: DateTime.new(2025, 12, 31, 23, 59).strftime("%Y-%m-%dT%H:%M") %>
           <div class="invalid-feedback">
             Please select a new date and time.
           </div>

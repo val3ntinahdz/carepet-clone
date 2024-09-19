@@ -130,3 +130,22 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+
+.btn-arrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+  font-family: inherit;
+  cursor: pointer;
+
+  i {
+    font-size: 1.5rem;
+    color: $orange;
+  }
+}
+
+.btn-month {
+  background: transparent;
+  border: none;
+  text-justify: center;
+}

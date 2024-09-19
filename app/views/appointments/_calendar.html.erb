@@ -11,16 +11,29 @@
         <i class="fas fa-times"></i>
       </div>
       <%= simple_form_for [@service, @appointment], data: { controller: 'flatpickr', booked_dates: @booked_dates.to_json } do |f| %>
-        <% month = Date.today.month %>
-        <% month += 1 if Date.today.day > date.to_i %>
-        <% start_date = DateTime.new(2024, month, date.to_i, 9, 0, 0) %>
-        <% booked_hours = Service.find(params[:service_id]).veterinary.user.appointments.where(datetime: start_date..start_date.end_of_day).pluck(:datetime).map(&:hour) %>
-        <% available_hours = (9..18).to_a - booked_hours %>
-        <div class="hours-grid">
-          <% available_hours.each do |hour| %>
-            <%= link_to "#{hour}:00", nil, class: "btn hour-btn", data: { action: "calendar#select", calendar_target: "hour", tiempo: hour, fecha: date, month: month } %>
-          <% end %>
-        </div>
+        <% date_value = date.to_i %>
+
+        <% if date_value.between?(1, 31) %>
+          <% month = Date.today.month %>
+          <% month += 1 if Date.today.day > date_value %>
+          <% month = 12 if month > 12 %>
+          <% begin %>
+            <% month = Date.today.month %>
+            <% month += 1 if Date.today.day > date.to_i %>
+            <% start_date = DateTime.new(2024, month, date.to_i, 9, 0, 0) %>
+            <% booked_hours = Service.find(params[:service_id]).veterinary.user.appointments.where(datetime: start_date..start_date.end_of_day).pluck(:datetime).map(&:hour) %>
+            <% available_hours = (9..18).to_a - booked_hours %>
+            <div class="hours-grid">
+              <% available_hours.each do |hour| %>
+                <%= link_to "#{hour}:00", nil, class: "btn hour-btn", data: { action: "calendar#select", calendar_target: "hour", tiempo: hour, fecha: date, month: month } %>
+              <% end %>
+            </div>
+            <% rescue ArgumentError => e %>
+              <p>Invalid Date: <%= e.message %></p>
+            <% end %>
+        <% else %>
+          <p>Invalid Date.</p>
+        <% end %>
         <%= f.hidden_field :datetime, data: { calendar_target: 'input' }, autocomplete: "off", value: "" %>
         <%= f.hidden_field :service_id, value: params[:service_id] %>
         <p data-calendar-target="savedDate"></p>

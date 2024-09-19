@@ -1,4 +1,7 @@
 <div class="appointment-container mt-5">
+  <div class="p-3">
+    <%= link_to "", appointments_path, class: "nav-pet fa-solid fa-circle-chevron-left fa-xl text-decoration-none" %>
+  </div>
   <div class="appointment-details">
     <h2><%= @appointment.reason %></h2>
     <p class="comments"><%= @appointment.comments %></p>
@@ -23,7 +26,7 @@
     </div>
     <div class="actions mt-4 d-flex justify-content-center">
       <% if current_user == @appointment.pet.user && @appointment.status == 'Scheduled' %>
-        <%= button_to "Reschedule", appointment_path(@appointment), method: :get, class: "orange-btn mx-3", data: { action: "click->reschedule-form#openForm" } %>
+      <%= button_to "Reschedule", appointment_path(@appointment), method: :get, class: "orange-btn mx-3", data: { action: "click->reschedule-form#openForm" } %>
         <%= button_to "Cancel", appointment_path(@appointment), method: :delete, data: { confirm: "Are you sure?" }, class: "orange-btn mx-3" %>
       <% elsif current_user.veterinary.present? %>
         <%= button_to "Mark as Completed", appointment_path(@appointment), method: :patch, params: { appointment: { status: 'Completed' } }, class: "orange-btn mx-2" %>
