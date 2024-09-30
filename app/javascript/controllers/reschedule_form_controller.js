@@ -6,13 +6,15 @@ export default class extends Controller {
 
   connect() {
     console.log("Connected")
+    this.hideForm();
+    this.openForm();
   }
 
   openForm() {
     this.rescheduleFormTarget.classList.remove("d-none")
   }
 
-  closeForm() {
+  hideForm() {
     this.rescheduleFormTarget.classList.add("d-none")
   }
 }
