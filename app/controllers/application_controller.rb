@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    # Define the path you want to redirect to. For example:
-    dashboard_path # or any other path
+    dashboard_path
   end
 end
