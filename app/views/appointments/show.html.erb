@@ -28,7 +28,8 @@
       <% if current_user == @appointment.pet.user && @appointment.status == 'Scheduled' %>
       <%= button_to "Reschedule", appointment_path(@appointment), method: :get, class: "orange-btn mx-3", data: { action: "click->reschedule-form#openForm" } %>
         <%= button_to "Cancel", appointment_path(@appointment), method: :delete, data: { confirm: "Are you sure?" }, class: "orange-btn mx-3" %>
-      <% elsif current_user.veterinary.present? %>
+
+        <% elsif current_user.veterinary.present? %>
         <%= button_to "Mark as Completed", appointment_path(@appointment), method: :patch, params: { appointment: { status: 'Completed' } }, class: "orange-btn mx-2" %>
       <% end %>
     </div>
